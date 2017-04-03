@@ -1,0 +1,30 @@
+{
+  "name": "evoting-atbu",
+  "version": "1.0.0",
+  "description": "ATBU E-voting application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/dtrexx/evoting-atbu.git"
+  },
+  "author": "Sadiq Hassan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/dtrexx/evoting-atbu/issues"
+  },
+  "homepage": "https://gitlab.com/dtrexx/evoting-atbu#README"
+}
