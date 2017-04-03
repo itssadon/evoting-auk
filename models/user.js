@@ -17,7 +17,7 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     user_role: {
-        type: Model.Types.TINYINT,
+        type: Number,
         required: true
     }
 });
