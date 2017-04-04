@@ -1,26 +1,27 @@
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" [routerLink]="['/']">MEAN Auth App</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-left">
-                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/']">Home</a></li>
-            </ul>
+<!-- Sidebar Menu -->
+<div class="ui vertical sidebar menu">
+    <a class="item" id="logout_2">Log out</a>
+</div>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/dashboard']">Dashboard</a></li>
-                <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/profile']">Profile</a></li>
-                <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/register']">Register</a></li>
-                <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/login']">Login</a></li>
-                <li *ngIf="authService.loggedIn()"><a (click)="onLogoutClick()" href="#">Logout</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
+<nav class="ui large secondary inverted menu">
+    <div class="ui container">
+        <a class="toc item" id="menu_icon">
+            <i class="content icon"></i>
+            <img class="logo" src="/assets/images/ATBU.png">
+            &nbsp; SUG ATBU
+        </a>
+        <a [routerLink]="['/']" class="item">
+            <img class="logo" src="/assets/images/ATBU.png">
+            &nbsp; SUG ATBU
+        </a>
+        <div class="right item">
+            <a class="ui inverted item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
+            <a class="ui inverted item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">Elcom Officers</a>
+            <a class="ui inverted item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/electoral-guidelines']">Electoral Guidelines</a>
+
+            <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/dashboard']">Dashboard</a>
+            <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile']">Profile</a>
+            <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="onLogoutClick()" href="#"><i class="power icon"></i>Logout</a>
+        </div>
     </div>
 </nav>

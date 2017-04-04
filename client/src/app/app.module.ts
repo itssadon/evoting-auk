@@ -14,11 +14,17 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { AuthGuard } from './guards/auth.guard';
+import { AspirantsComponent } from './components/aspirants/aspirants.component';
+import { ElcomOfficersComponent } from './components/elcom-officers/elcom-officers.component';
+import { ElectoralGuidelinesComponent } from './components/electoral-guidelines/electoral-guidelines.component';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
+    {path:'aspirants', component: AspirantsComponent},
+    {path:'elcom-officers', component: ElcomOfficersComponent},
+    {path:'electoral-guidelines', component: ElectoralGuidelinesComponent},
     {path:'register', component: RegisterComponent},
     {path:'login', component: LoginComponent},
     {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
@@ -33,14 +39,17 @@ const appRoutes: Routes = [
         HomeComponent,
         DashboardComponent,
         RegisterComponent,
-        ProfileComponent
+        ProfileComponent,
+        ElectoralGuidelinesComponent,
+        ElcomOfficersComponent,
+        AspirantsComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         RouterModule.forRoot(appRoutes),
-        FlashMessagesModule
+        ToasterModule
     ],
     providers: [ValidateService, AuthService, AuthGuard],
     bootstrap: [AppComponent]

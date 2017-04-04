@@ -4,21 +4,22 @@ html {
 }
 
 body {
-    min-height: 100%;
-    min-width: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     font-family: 'Raleway', sans-serif;
-    background: url("../images/section-background.svg") 50% 50% no-repeat,linear-gradient(to left top, #28a5f5, #1e87f0) 0 0 no-repeat;
+    background: url("assets/images/section-background.svg") no-repeat center center fixed, url("assets/images/bg.jpg") no-repeat center center fixed;
 }
 
-#header {
-    min-height: inherit;
-    /*
-    background: url("../images/bg.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    */
+.Site-content {
+  flex: 1;
+}
+
+.introduction {
+    position: relative;
+    clear: both;
+    display: block;
+    text-align: center;
 }
 
 .hidden.menu {
@@ -38,10 +39,17 @@ body {
 }
 
 .masthead h1.ui.header {
-    margin-top: 3em;
-    margin-bottom: 0em;
-    font-size: 4em;
+    margin-top: 4em;
     font-weight: normal;
+    text-align: center;
+}
+
+.bigheader {
+    font-size: 4em;
+}
+
+.tagline {
+    ￼    font-size: 0.75em;
 }
 
 .masthead h2 {
@@ -51,6 +59,10 @@ body {
 
 .footer.segment {
     padding: 1.5em 0em;
+}
+
+.footer. {
+    bottom: 0;
 }
 
 #welcome-header {

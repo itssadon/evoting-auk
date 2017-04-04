@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 
 @Component({
     selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private router: Router,
         private authService: AuthService,
-        private flashMessage: FlashMessagesService
+        private toasterService: ToasterService
     ) { }
 
     ngOnInit() {
@@ -30,10 +30,10 @@ export class LoginComponent implements OnInit {
         this.authService.authenticateUser(user).subscribe(data => {
             if(data.success) {
                 this.authService.storeUserData(data.token, data.user);
-                this.flashMessage.show('You are now logged in', {cssClass: 'alert-success', timeout: 5000});
+                this.toasterService.pop('success', 'Successful!', 'You are now logged in');
                 this.router.navigate(['/dashboard']);
             } else {
-                this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
+                this.toasterService.pop('error', 'Oops!', data.msg);
                 this.router.navigate(['/login']);
             }
         });
