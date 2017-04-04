@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://gitlab.com/dtrexx/evoting-atbu/issues"
   },
-  "homepage": "https://gitlab.com/dtrexx/evoting-atbu#README"
+  "homepage": "https://gitlab.com/dtrexx/evoting-atbu#README",
+  "devDependencies": {
+    "@angular/cli": "^1.0.0"
+  }
 }
