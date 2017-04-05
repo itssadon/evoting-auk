@@ -1,4 +1,65 @@
-<h2 class="page-header">Dashboard</h2>
-<p>
-    Welcome to your dashboard
-</p>
+<div class="ui stackable grid">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+        <div class="ui segment">
+            <div class="ui three stackable cards">
+                <a *ngIf="authService.canPerformTask('elcom')" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">ELCOM</div>
+                        <div class="description">
+                            <span class="category">Manage ELCOM officers.</span>
+                        </div>
+                    </div>
+                </a>
+                <a *ngIf="authService.canPerformTask('aspirants')" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">Aspirants</div>
+                        <div class="description">
+                            <span class="category">Manage registered aspirants.</span>
+                        </div>
+                    </div>
+                </a>
+                <a *ngIf="authService.canPerformTask('accreditation')" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">Accreditation</div>
+                        <div class="description">
+                            <span class="category">Accredit students for election.</span>
+                        </div>
+                    </div>
+                </a>
+                <a *ngIf="authService.canPerformTask('reports')" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">Reports</div>
+                        <div class="description">
+                            <span class="category">Download reports.</span>
+                        </div>
+                    </div>
+                </a>
+                <a *ngIf="authService.canPerformTask('password')" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">Passwords</div>
+                        <div class="description">
+                            <span class="category">Resend password to student.</span>
+                        </div>
+                    </div>
+                </a>
+                <a *ngIf="authService.canPerformTask('vote')" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">Vote</div>
+                        <div class="description">
+                            <span class="category">Vote for aspirants.</span>
+                        </div>
+                    </div>
+                </a>
+                <a *ngIf="authService.canPerformTask('results')" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">Election Results</div>
+                        <div class="description">
+                            <span class="category">View election results in realtime.</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

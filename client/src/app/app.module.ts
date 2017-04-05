@@ -19,7 +19,6 @@ import { AuthGuard } from './guards/auth.guard';
 import { AspirantsComponent } from './components/aspirants/aspirants.component';
 import { ElcomOfficersComponent } from './components/elcom-officers/elcom-officers.component';
 import { ElectoralGuidelinesComponent } from './components/electoral-guidelines/electoral-guidelines.component';
-import { PageDimmerComponent } from './components/page-dimmer/page-dimmer.component';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -44,7 +43,6 @@ const appRoutes: Routes = [
         ElectoralGuidelinesComponent,
         ElcomOfficersComponent,
         AspirantsComponent,
-        PageDimmerComponent
     ],
     imports: [
         BrowserModule,
@@ -53,7 +51,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         ToasterModule
     ],
-    providers: [ValidateService, AuthService, AuthGuard],
+    providers: [ValidateService, AuthService, AuthGuard, ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

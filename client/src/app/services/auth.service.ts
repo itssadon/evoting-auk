@@ -7,6 +7,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
     authToken: any;
     user: any;
+    user_role: any;
 
     constructor(private http:Http) { }
 
@@ -53,6 +54,18 @@ export class AuthService {
         this.authToken = null;
         this.user = null;
         localStorage.clear();
+    }
+
+    canPerformTask(task) {
+        var user = JSON.parse(localStorage.user);
+        var user_role = user.user_role;
+        if(task=='elcom' && user_role==0) return true;
+        if(task=='password' && user_role==0) return true;
+        if(task=='aspirants' && (user_role==0 || user_role==1)) return true;
+        if(task=='accreditation' && (user_role==0 || user_role==1)) return true;
+        if(task=='reports' && (user_role==0 || user_role==1)) return true;
+        if(task=='results' && (user_role==1 || user_role==2)) return true;
+        if(task=='vote' && user_role==2) return true;
     }
 
 }

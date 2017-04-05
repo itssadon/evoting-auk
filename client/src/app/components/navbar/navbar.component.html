@@ -19,6 +19,7 @@
             <a class="ui inverted item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">Elcom Officers</a>
             <a class="ui inverted item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/electoral-guidelines']">Electoral Guidelines</a>
 
+            <span class="ui item" *ngIf="authService.loggedIn()">Welcome,&nbsp;<span id="user_name"></span></span>
             <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/dashboard']">Dashboard</a>
             <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile']">Profile</a>
             <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="onLogoutClick()" href="#"><i class="power icon"></i>Logout</a>
