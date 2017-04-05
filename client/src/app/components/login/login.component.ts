@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'app-login',
@@ -22,6 +23,8 @@ export class LoginComponent implements OnInit {
     }
 
     onLoginSubmit() {
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+        $('body').prepend(pageDimmer);
         const user = {
             username: this.username,
             password: this.password
@@ -36,6 +39,7 @@ export class LoginComponent implements OnInit {
                 this.toasterService.pop('error', 'Oops!', data.msg);
                 this.router.navigate(['/login']);
             }
+            $('#pageDimmer').remove();
         });
     }
 }

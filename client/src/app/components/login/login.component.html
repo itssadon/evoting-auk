@@ -1,13 +1,39 @@
-<div class="col-md-4 col-md-offset-4 well">
-    <form (submit)="onLoginSubmit()">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" [(ngModel)]="username" name="username" />
+<div class="ui stackable grid">
+    <div class="five wide column"></div>
+    <div class="six wide column">
+        <div id="message_wrapper"></div>
+        <div class="ui segment">
+            <div class="ui one top attached steps">
+                <div class="active step">
+                    <i class="lock icon"></i>
+                </div>
+            </div>
+            <form class="ui small form attached segment" autocomplete="off" (submit)="onLoginSubmit()" id="loginForm">
+                <div class="required field" id="username_div">
+                    <div class="ui corner labeled input">
+                        <input type="text" placeholder="Username or Matric number" required="" [(ngModel)]="username" name="username">
+                        <div class="ui corner label">
+                            <i class="asterisk icon red"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="required field" id="password_div">
+                    <div class="ui corner labeled input">
+                        <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+                        <div class="ui corner label">
+                            <i class="asterisk icon red"></i>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label>
+                        Forgotten your password?
+                        <a id="password-reset-modal-button">Click here.</a>
+                    </label>
+                </div>
+                <div class="ui divider"></div>
+                <button class="large fluid ui primary button" type="submit"><i class="icon sign in"></i>Login</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" [(ngModel)]="password" name="password" />
-        </div>
-        <input type="submit" name="" class="btn btn-primary col-md-12" value="Login">
-    </form>
+    </div>
 </div>
