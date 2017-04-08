@@ -19,6 +19,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { AspirantsComponent } from './components/aspirants/aspirants.component';
 import { ElcomOfficersComponent } from './components/elcom-officers/elcom-officers.component';
 import { ElectoralGuidelinesComponent } from './components/electoral-guidelines/electoral-guidelines.component';
+import { ElcomService } from './services/elcom.service';
+import { PaystackService } from './services/paystack.service';
+import { StatusComponent } from './components/status/status.component';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -26,6 +29,7 @@ const appRoutes: Routes = [
     {path:'elcom-officers', component: ElcomOfficersComponent},
     {path:'electoral-guidelines', component: ElectoralGuidelinesComponent},
     {path:'register', component: RegisterComponent},
+    {path:'status', component: StatusComponent},
     {path:'login', component: LoginComponent},
     {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
@@ -43,6 +47,7 @@ const appRoutes: Routes = [
         ElectoralGuidelinesComponent,
         ElcomOfficersComponent,
         AspirantsComponent,
+        StatusComponent,
     ],
     imports: [
         BrowserModule,
@@ -51,7 +56,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         ToasterModule
     ],
-    providers: [ValidateService, AuthService, AuthGuard, ],
+    providers: [ValidateService, AuthService, AuthGuard, ElcomService, PaystackService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

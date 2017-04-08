@@ -25,7 +25,6 @@
     "angular2-toaster": "^3.0.1",
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
-    "paystack": "^1.4.1",
     "rxjs": "^5.1.0",
     "typescript": "^2.1.5",
     "zone.js": "^0.8.5"

@@ -3,7 +3,7 @@
     <div class="twelve wide column">
         <div class="ui segment">
             <div class="ui three stackable cards">
-                <a *ngIf="authService.canPerformTask('elcom')" class="ui link grey card" >
+                <a *ngIf="authService.canPerformTask('elcom')" [routerLink]="['/elcom-officers']" class="ui link grey card" >
                     <div class="content">
                         <div class="header">ELCOM</div>
                         <div class="description">
@@ -11,7 +11,7 @@
                         </div>
                     </div>
                 </a>
-                <a *ngIf="authService.canPerformTask('aspirants')" class="ui link grey card" >
+                <a *ngIf="authService.canPerformTask('aspirants')" [routerLink]="['/aspirants']" class="ui link grey card" >
                     <div class="content">
                         <div class="header">Aspirants</div>
                         <div class="description">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </a>
-                <a *ngIf="authService.canPerformTask('accreditation')" class="ui link grey card" >
+                <a *ngIf="authService.canPerformTask('accreditation')" [routerLink]="['/accreditation']" class="ui link grey card" >
                     <div class="content">
                         <div class="header">Accreditation</div>
                         <div class="description">
@@ -27,15 +27,7 @@
                         </div>
                     </div>
                 </a>
-                <a *ngIf="authService.canPerformTask('reports')" class="ui link grey card" >
-                    <div class="content">
-                        <div class="header">Reports</div>
-                        <div class="description">
-                            <span class="category">Download reports.</span>
-                        </div>
-                    </div>
-                </a>
-                <a *ngIf="authService.canPerformTask('password')" class="ui link grey card" >
+                <a *ngIf="authService.canPerformTask('password')" [routerLink]="['/resend-password']" class="ui link grey card" >
                     <div class="content">
                         <div class="header">Passwords</div>
                         <div class="description">
@@ -43,7 +35,7 @@
                         </div>
                     </div>
                 </a>
-                <a *ngIf="authService.canPerformTask('vote')" class="ui link grey card" >
+                <a *ngIf="authService.canPerformTask('vote')" [routerLink]="['/vote']" class="ui link grey card" >
                     <div class="content">
                         <div class="header">Vote</div>
                         <div class="description">
@@ -51,11 +43,19 @@
                         </div>
                     </div>
                 </a>
-                <a *ngIf="authService.canPerformTask('results')" class="ui link grey card" >
+                <a *ngIf="authService.canPerformTask('results')" [routerLink]="['/results']" class="ui link grey card" >
                     <div class="content">
                         <div class="header">Election Results</div>
                         <div class="description">
                             <span class="category">View election results in realtime.</span>
+                        </div>
+                    </div>
+                </a>
+                <a *ngIf="authService.canPerformTask('reports')" [routerLink]="['/reports']" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">Reports</div>
+                        <div class="description">
+                            <span class="category">Download reports.</span>
                         </div>
                     </div>
                 </a>

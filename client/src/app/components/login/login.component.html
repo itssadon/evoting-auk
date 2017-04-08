@@ -1,17 +1,16 @@
 <div class="ui stackable grid">
-    <div class="five wide column"></div>
-    <div class="six wide column">
-        <div id="message_wrapper"></div>
+    <div class="six wide column"></div>
+    <div class="four wide column">
         <div class="ui segment">
             <div class="ui one top attached steps">
                 <div class="active step">
                     <i class="lock icon"></i>
                 </div>
             </div>
-            <form class="ui small form attached segment" autocomplete="off" (submit)="onLoginSubmit()" id="loginForm">
+            <form class="ui small form attached segment" autocomplete="off" (submit)="onLoginSubmit()">
                 <div class="required field" id="username_div">
                     <div class="ui corner labeled input">
-                        <input type="text" placeholder="Username or Matric number" required="" [(ngModel)]="username" name="username">
+                        <input type="text" placeholder="Username or Matric no." required="" [(ngModel)]="username" name="username">
                         <div class="ui corner label">
                             <i class="asterisk icon red"></i>
                         </div>
@@ -27,7 +26,7 @@
                 </div>
                 <div>
                     <label>
-                        Forgotten your password?
+                        Forgotten password?
                         <a id="password-reset-modal-button">Click here.</a>
                     </label>
                 </div>

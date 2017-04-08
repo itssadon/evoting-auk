@@ -1,3 +1,91 @@
-<p>
-  elcom-officers works!
-</p>
+<div class="ui stackable grid" *ngIf="authService.loggedIn()">
+    <div class="three wide column">
+        <div class="ui fluid vertical menu">
+            <a class="item" [routerLink]="['/dashboard']">Dashboard</a>
+            <a class="item" *ngIf="authService.canPerformTask('elcom')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">ELCOM</a>
+            <a class="item" *ngIf="authService.canPerformTask('aspirants')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
+            <a class="item" *ngIf="authService.canPerformTask('accreditation')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/accreditation']">Accreditation</a>
+            <a class="item" *ngIf="authService.canPerformTask('password')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/resend-password']">Passwords</a>
+            <a class="item" *ngIf="authService.canPerformTask('vote')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/vote']">Vote</a>
+            <a class="item" *ngIf="authService.canPerformTask('results')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/results']">Results</a>
+            <a class="item" *ngIf="authService.canPerformTask('reports')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/reports']">Reports</a>
+        </div>
+    </div>
+    <div class="nine wide column">
+        <div class="ui segment" id="supervisors">
+            <table class="ui compact celled definition table">
+                <thead>
+                    <tr>
+                        <th>SNo.</th><th>Username</th><th>Full Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="four wide column">
+        <div class="ui segment">
+            <div class="ui one top attached steps">
+                <div class="active step">
+                    <i class="user icon"></i>
+                </div>
+            </div>
+            <form class="ui small form attached segment" autocomplete="off" (submit)="onAddOfficerSubmit()">
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input type="text" placeholder="Matric number" [(ngModel)]="username" name="username">
+                        <div class="ui corner label">
+                            <i class="asterisk icon red"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input type="text" placeholder="Full Name" [(ngModel)]="name" name="name">
+                        <div class="ui corner label">
+                            <i class="asterisk icon red"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui corner labeled input">
+                        <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+                        <div class="ui corner label">
+                            <i class="asterisk icon red"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+                <button class="ui submit primary button fluid" type="submit"><i class="add icon"></i>Add officer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="ui stackable grid" *ngIf="!authService.loggedIn()">
+    <div class="three wide column"></div>
+    <div class="nine wide column">
+        <div class="ui segment" id="supervisors">
+            <table class="ui compact celled definition table">
+                <thead>
+                    <tr>
+                        <th>SNo.</th><th>Username</th><th>Full Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

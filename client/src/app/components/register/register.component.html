@@ -1,21 +1,99 @@
-<div class="col-md-4 col-md-offset-4 well">
-    <form (submit)="onRegisterSubmit()">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" [(ngModel)]="name" name="name" class="form-control">
+<div class="ui stackable grid">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
+        <div class="ui segment">
+            <div class="ui one top attached steps">
+                <div class="active step">
+                    <i class="user icon"></i>
+                </div>
+            </div>
+            <form class="ui small form attached segment" autocomplete="off" (submit)="onPaySubmit()">
+                <div class="two fields">
+                    <div class="field">
+                        <div class="ui corner labeled input">
+                            <select class="ui fluid dropdown" (change)="setOfficeAmount($event)">
+                                <option value="">Select Office</option>
+                                <option value="president">President</option>
+                                <option value="vice_president">Vice President</option>
+                                <option value="sec_gen">Sectretary General</option>
+                                <option value="asst_sec_gen">Asst. Secretary General</option>
+                                <option value="fin_sec">Financial Secretary</option>
+                                <option value="auditor">Internal Auditor</option>
+                                <option value="treasurer">Treasurer</option>
+                                <option value="welfare_I">Welfare Officer I – (Male)</option>
+                                <option value="welfare_II">Welfare Officer II – (Female)</option>
+                                <option value="dir_of_socials">Director of Socials (D.O.S)</option>
+                                <option value="pro_I">Public Relation Officer I – (Male)</option>
+                                <option value="pro_II">Public Relation Officer II – (Female)</option>
+                                <option value="provost">Provost Marshal</option>
+                                <option value="sales_dir">Sales Director</option>
+                                <option value="sports_dir">Sports Director</option>
+                                <option value="dir_of_food">Director of Food</option>
+                            </select>
+                            <div class="ui corner label">
+                                <i class="asterisk icon red"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui corner labeled input">
+                            <input type="text" value="" placeholder="Amount in words" id="amount_words" readonly="">
+                            <div class="ui corner label">
+                                <i class="asterisk icon red"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field" id="matricno_div">
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="Matric Number" [(ngModel)]="matricno" name="matricno">
+                            <div class="ui corner label">
+                                <i class="asterisk icon red"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field" id="first_name_div">
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname">
+                            <div class="ui corner label">
+                                <i class="asterisk icon red"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" id="last_name_div">
+                        <div class="ui corner labeled input">
+                            <input type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname">
+                            <div class="ui corner label">
+                                <i class="asterisk icon red"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field" id="email_div">
+                        <div class="ui corner labeled input">
+                            <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email">
+                            <div class="ui corner label">
+                                <i class="asterisk icon red"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" id="phone_div">
+                        <div class="ui corner labeled input">
+                            <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" maxlength="11">
+                            <div class="ui corner label">
+                                <i class="asterisk icon red"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="ui large fluid primary button">
+                    <i class="credit card icon"></i> Pay now
+                </button>
+            </form>
         </div>
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" [(ngModel)]="username" name="username" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" [(ngModel)]="email" name="email" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" [(ngModel)]="password" name="password" class="form-control">
-        </div>
-        <input type="submit" name="" class="btn btn-primary col-md-12" value="Submit">
-    </form>
+    </div>
 </div>
