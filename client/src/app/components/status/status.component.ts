@@ -62,16 +62,42 @@ export class StatusComponent implements OnInit {
                     office: response.data.metadata.custom_fields[1].value,
                     reference: response.data.reference
                 }
-                this.showAspirantForm(this.aspirant);
+                this.populateAspirantForm(this.aspirant);
             } else {
+                this.paymentStatus = false;
                 this.toasterService.pop('error', 'Oops!', 'Something went wrong');
                 this.router.navigate(['/register']);
             }
         });
     }
 
-    showAspirantForm(aspirant) {
+    getPaymentStatus() {
+        return this.paymentStatus;
+    }
 
+    populateAspirantForm(aspirant) {
+        //
+    }
+
+    showStep1() {
+        $("#step2_content, #step3_content").addClass("hiddenContent");
+        $("#step2, #step3").removeClass("active");
+        $("#step1").addClass("active");
+        $("#step1_content").removeClass("hiddenContent");
+    }
+
+    showStep2() {
+        $("#step1_content, #step3_content").addClass("hiddenContent");
+        $("#step1, #step3").removeClass("active");
+        $("#step2").addClass("active");
+        $("#step2_content").removeClass("hiddenContent");
+    }
+
+    showStep3() {
+        $("#step1_content, #step2_content").addClass("hiddenContent");
+        $("#step1, #step2").removeClass("active");
+        $("#step3").addClass("active");
+        $("#step3_content").removeClass("hiddenContent");
     }
 
 }

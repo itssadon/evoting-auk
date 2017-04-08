@@ -28,7 +28,7 @@ module.exports.getUserById = function(id, callback){
     User.findById(id, callback);
 };
 
-module.exports.getUserByUsername = function(username, callback){
+module.exports.getUserByUsername = function(username, callback) {
     const query = {username: username}
     User.findOne(query, callback);
 };
@@ -49,3 +49,8 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
         callback(null, isMatch);
     });
 };
+
+module.exports.getUsersByUserRole = function(user_role, callback) {
+    const query = {user_role: user_role}
+    User.find(query, callback);
+}
