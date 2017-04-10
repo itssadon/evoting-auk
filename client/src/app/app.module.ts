@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { ElectoralGuidelinesComponent } from './components/electoral-guidelines/
 import { ElcomService } from './services/elcom.service';
 import { PaystackService } from './services/paystack.service';
 import { StatusComponent } from './components/status/status.component';
+import { StudentService } from './services/student.service';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -53,10 +54,11 @@ const appRoutes: Routes = [
         BrowserModule,
         FormsModule,
         HttpModule,
+        JsonpModule,
         RouterModule.forRoot(appRoutes),
         ToasterModule
     ],
-    providers: [ValidateService, AuthService, AuthGuard, ElcomService, PaystackService],
+    providers: [ValidateService, AuthService, AuthGuard, ElcomService, PaystackService, StudentService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

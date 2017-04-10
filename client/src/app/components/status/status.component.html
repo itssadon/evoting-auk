@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
-    <div class="five wide column"></div>
-    <div class="six wide column">
+    <div class="four wide column"></div>
+    <div class="eight wide column">
         <div id="message_wrapper">
             <div class="ui icon message">
                 <i class="notched circle loading icon"></i>
@@ -16,99 +16,109 @@
 </div>
 
 <div class="ui stackable grid" *ngIf="getPaymentStatus()">
-    <div class="two wide column"></div>
-    <div class="twelve wide column">
-        <form class="ui form segment" autocomplete="off" id="exam_form" enctype="multipart/form-data">
+    <div class="three wide column"></div>
+    <div class="ten wide column">
+        <form class="ui form segment" autocomplete="off" id="candidate_form" enctype="multipart/form-data">
             <div class="ui four top attached steps">
-                <div class="link active step" (click)="showStep1()">
+                <div class="link active step" (click)="showStep1()" id="step1">
                     <i class="user icon"></i>
                     <div class="content">
                         <div class="title">Step 1</div>
                         <div class="description">Academics</div>
                     </div>
                 </div>
-                <div class="link step" (click)="showStep2()">
+                <div class="link step" (click)="showStep2()" id="step2">
                     <i class="upload icon"></i>
                     <div class="content">
                         <div class="title">Step 2</div>
                         <div class="description">Photo</div>
                     </div>
                 </div>
-                <div class="link step" (click)="showStep3()">
+                <div class="link step" (click)="showStep3()" id="step3">
                     <i class="info icon"></i>
                     <div class="content">
-                        <div class="title">Step 4</div>
+                        <div class="title">Step 3</div>
                         <div class="description">Confirmation</div>
                     </div>
                 </div>
             </div>
             <div class="ui attached segment">
                 <div class="" id="step1_content">
-                    <div class="two fields">
-                        <div class="field" id="candidate_name_div">
-                            <label for="candidate_name">1. Name of candidate</label>
-                            <div class="ui corner labeled input">
-                                <input type="text" placeholder="Name of candidate" required="" id="candidate_name" readonly="">
-                                <div class="ui corner label">
-                                    <i class="asterisk icon red"></i>
-                                </div>
+                    <div class="field"><label>1. Names of candidate</label></div>
+                    <div class="three fields">
+                        <div class="field" id="first_name_div">
+                            <label for="firstname">First name</label>
+                            <div class="ui input">
+                                <input type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname" id="firstname" readonly="">
                             </div>
                         </div>
-                        <div class="field" id="address_div">
-                            <label for="address">2. Residential address</label>
-                            <div class="ui corner labeled input">
-                                <input type="email" placeholder="Residential Addresss" required="" id="res_address">
-                                <div class="ui corner label">
-                                    <i class="asterisk icon red"></i>
-                                </div>
+                        <div class="field" id="middle_name_div">
+                            <label for="middlename">Middle name</label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Middle Name" [(ngModel)]="middlename" name="middlename" id="middlename" readonly="">
+                            </div>
+                        </div>
+                        <div class="field" id="last_name_div">
+                            <label for="lasname">Last name</label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" id="lastname" readonly="">
                             </div>
                         </div>
                     </div>
                     <div class="two fields">
                         <div class="field" id="email_div">
-                            <label for="email">3. Email address</label>
-                            <div class="ui corner labeled input">
-                                <input type="email" placeholder="Email Addresss" required="" id="email_address" readonly="">
-                                <div class="ui corner label">
-                                    <i class="asterisk icon red"></i>
-                                </div>
+                            <label for="email">2. Email address</label>
+                            <div class="ui input">
+                                <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email" id="email" readonly="">
                             </div>
                         </div>
                         <div class="field" id="phone_div">
-                            <label for="phone">4. Phone number (e.g 08033445566)</label>
-                            <div class="ui corner labeled input">
-                                <input type="text" placeholder="Phone" required="" id="phone">
-                                <div class="ui corner label">
-                                    <i class="asterisk icon red"></i>
-                                </div>
+                            <label for="phone">3. Phone number (e.g. 08033344455)</label>
+                            <div class="ui input">
+                                <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" id="phone" readonly="">
                             </div>
                         </div>
                     </div>
-                    <div class="field" id="bus_address_div">
-                        <label for="bus_address">5. Business address (if different from residential address)</label>
-                        <input type="text" placeholder="Business Addresss" id="bus_address">
+                    <div class="field" id="address_div">
+                        <label for="address">4. Address</label>
+                        <input type="text" placeholder="Addresss" id="address">
                     </div>
-                    <div class="field"><label>6. Previous qualifications (upload results in Step 3)</label></div>
-                    <div class="two fields" id="qualifications_div">
-                        <div class="field">
-                            <label for="secondary_qualification">Secondary school attended</label>
-                            <div class="ui corner labeled input">
-                                <input type="text" placeholder="Secondary school" required="" id="sec_sch">
-                                <div class="ui corner label">
-                                    <i class="asterisk icon red"></i>
-                                </div>
+                    <div class="two fields">
+                        <div class="field" id="">
+                            <label for="department">5. Department</label>
+                            <div class="ui input">
+                                <input type="email" placeholder="Department" [(ngModel)]="department" name="department" id="department" readonly="">
                             </div>
                         </div>
-                        <div class="field">
-                            <label for="tertiary_qualification">University or Polytechnic attended</label>
-                            <div class="ui corner labeled input">
-                                <input type="text" placeholder="University or Polytechnic" required="" id="higher_inst">
-                                <div class="ui corner label">
-                                    <i class="asterisk icon red"></i>
-                                </div>
+                        <div class="field" id="">
+                            <label for="course">6. Course of study</label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Course of study" [(ngModel)]="course" name="course" id="course" readonly="">
                             </div>
                         </div>
                     </div>
+                    <div class="two fields">
+                        <div class="field" id="">
+                            <label for="level">7. Level</label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Level of study" [(ngModel)]="level" name="level" id="level" readonly="">
+                            </div>
+                        </div>
+                        <div class="field" id="">
+                            <label for="level">8. Current CGPA</label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Current CGPA" [(ngModel)]="cgpa" name="cgpa" id="cgpa">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="reason">9. Reason for contesting</label>
+                        <div class="ui input">
+                            <textarea placeholder="Reason for contesting" [(ngModel)]="reason" name="reason" id="reason"></textarea>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <button class="ui button" (click)="showStep2()">Next</button>
                 </div>
                 <div class="hiddenContent" id="step2_content">
                     <div class="ui stackable grid">

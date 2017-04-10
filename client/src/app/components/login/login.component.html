@@ -9,25 +9,18 @@
             </div>
             <form class="ui small form attached segment" autocomplete="off" (submit)="onLoginSubmit()">
                 <div class="required field" id="username_div">
-                    <div class="ui corner labeled input">
-                        <input type="text" placeholder="Username or Matric no." required="" [(ngModel)]="username" name="username">
-                        <div class="ui corner label">
-                            <i class="asterisk icon red"></i>
-                        </div>
+                    <div class="ui input">
+                        <input type="text" placeholder="Username/Matric No." required="" [(ngModel)]="username" name="username">
                     </div>
                 </div>
                 <div class="required field" id="password_div">
-                    <div class="ui corner labeled input">
+                    <div class="ui input">
                         <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
-                        <div class="ui corner label">
-                            <i class="asterisk icon red"></i>
-                        </div>
                     </div>
                 </div>
                 <div>
                     <label>
-                        Forgotten password?
-                        <a id="password-reset-modal-button">Click here.</a>
+                        <a id="password-reset-modal-button">Forgotten password?</a>
                     </label>
                 </div>
                 <div class="ui divider"></div>

@@ -12,6 +12,10 @@ const AspirantSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    middlename: {
+        type: String,
+        required: false
+    },
     lastname: {
         type: String,
         required: true

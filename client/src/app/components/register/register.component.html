@@ -5,12 +5,16 @@
             <div class="ui one top attached steps">
                 <div class="active step">
                     <i class="user icon"></i>
+                    <div class="content">
+                        <div class="title">Candidate form payment</div>
+                        <div class="description">Enter your matric number &amp; search</div>
+                    </div>
                 </div>
             </div>
             <form class="ui small form attached segment" autocomplete="off" (submit)="onPaySubmit()">
                 <div class="two fields">
                     <div class="field">
-                        <div class="ui corner labeled input">
+                        <div class="ui input">
                             <select class="ui fluid dropdown" (change)="setOfficeAmount($event)">
                                 <option value="">Select Office</option>
                                 <option value="president">President</option>
@@ -30,66 +34,66 @@
                                 <option value="sports_dir">Sports Director</option>
                                 <option value="dir_of_food">Director of Food</option>
                             </select>
-                            <div class="ui corner label">
-                                <i class="asterisk icon red"></i>
-                            </div>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui corner labeled input">
+                        <div class="ui input">
                             <input type="text" value="" placeholder="Amount in words" id="amount_words" readonly="">
-                            <div class="ui corner label">
-                                <i class="asterisk icon red"></i>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="two fields">
-                    <div class="field" id="matricno_div">
-                        <div class="ui corner labeled input">
-                            <input type="text" placeholder="Matric Number" [(ngModel)]="matricno" name="matricno">
-                            <div class="ui corner label">
-                                <i class="asterisk icon red"></i>
-                            </div>
-                        </div>
+                <div class="field" id="matricno_div">
+                    <div class="ui fluid action input">
+                        <input type="text" placeholder="Matric Number" (keypress)="triggerSearch($event)" [(ngModel)]="matricno" name="matricno" id="matricno">
+                        <button type="button" class="ui primary right labeled icon button" (click)="searchMatric()" id="searchBtn">
+                            <i class="search icon"></i>
+                            Get details
+                        </button>
                     </div>
                 </div>
-                <div class="two fields">
+                <div class="ui divider"></div>
+                <div class="three fields">
                     <div class="field" id="first_name_div">
-                        <div class="ui corner labeled input">
-                            <input type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname">
-                            <div class="ui corner label">
-                                <i class="asterisk icon red"></i>
-                            </div>
+                        <div class="ui input">
+                            <input type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname" id="firstname" readonly="">
+                        </div>
+                    </div>
+                    <div class="field" id="middle_name_div">
+                        <div class="ui input">
+                            <input type="text" placeholder="Middle Name" [(ngModel)]="middlename" name="middlename" id="middlename" readonly="">
                         </div>
                     </div>
                     <div class="field" id="last_name_div">
-                        <div class="ui corner labeled input">
-                            <input type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname">
-                            <div class="ui corner label">
-                                <i class="asterisk icon red"></i>
-                            </div>
+                        <div class="ui input">
+                            <input type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" id="lastname" readonly="">
                         </div>
                     </div>
                 </div>
                 <div class="two fields">
                     <div class="field" id="email_div">
-                        <div class="ui corner labeled input">
-                            <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email">
-                            <div class="ui corner label">
-                                <i class="asterisk icon red"></i>
-                            </div>
+                        <div class="ui input">
+                            <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email" id="email">
                         </div>
                     </div>
                     <div class="field" id="phone_div">
-                        <div class="ui corner labeled input">
-                            <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" maxlength="11">
-                            <div class="ui corner label">
-                                <i class="asterisk icon red"></i>
-                            </div>
+                        <div class="ui input">
+                            <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" id="phone">
                         </div>
                     </div>
                 </div>
+                <div class="two fields">
+                    <div class="field" id="">
+                        <div class="ui input">
+                            <input type="email" placeholder="Department" [(ngModel)]="department" name="department" id="department" readonly="">
+                        </div>
+                    </div>
+                    <div class="field" id="">
+                        <div class="ui input">
+                            <input type="text" placeholder="Course of study" [(ngModel)]="course" name="course" id="course" readonly="">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui divider"></div>
                 <button type="submit" class="ui large fluid primary button">
                     <i class="credit card icon"></i> Pay now
                 </button>

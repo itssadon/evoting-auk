@@ -1,9 +1,4 @@
-<!-- Sidebar Menu -->
-<div class="ui vertical sidebar menu">
-    <a class="item" id="logout_2">Log out</a>
-</div>
-
-<nav class="ui large secondary inverted menu">
+<nav class="ui menu">
     <div class="ui container">
         <a class="toc item" id="menu_icon">
             <i class="content icon"></i>
@@ -14,15 +9,13 @@
             <img class="logo" src="/assets/images/ATBU.png">
             &nbsp; SUG ATBU
         </a>
-        <div class="right item">
-            <a class="ui inverted item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
-            <a class="ui inverted item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">Elcom Officers</a>
-            <a class="ui inverted item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/electoral-guidelines']">Electoral Guidelines</a>
+        <a class="ui item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
+        <a class="ui item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">Elcom Officers</a>
+        <a class="ui item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/electoral-guidelines']">Electoral Guidelines</a>
 
-            <span class="ui item" *ngIf="authService.loggedIn()">Welcome,&nbsp;<span id="user_name"></span></span>
-            <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/dashboard']">Dashboard</a>
-            <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile']">Profile</a>
-            <a class="ui inverted item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="onLogoutClick()" href="#"><i class="power icon"></i>Logout</a>
-        </div>
+        <span class="ui item" *ngIf="authService.loggedIn()">Welcome,&nbsp;<span id="user_name"></span></span>
+        <a class="ui item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/dashboard']">Dashboard</a>
+        <a class="ui item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile']">Profile</a>
+        <a class="ui item right" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="onLogoutClick()" href="#"><i class="power icon"></i>Logout</a>
     </div>
 </nav>
