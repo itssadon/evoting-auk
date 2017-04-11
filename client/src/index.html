@@ -11,9 +11,6 @@
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/semantic.min.js"></script>
-    <script>
-        $('select.dropdown').dropdown();
-    </script>
 </head>
 <body>
     <app-root class="Site-content">Loading...</app-root>
@@ -27,5 +24,14 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    $('select.dropdown').dropdown();
+    $('ui.checkbox').checkbox();
+
+    // create sidebar and attach to menu open
+    $('.ui.sidebar').sidebar('attach events', '.toc.item');
+    $(".c_year").text(new Date().getFullYear());
+    </script>
 </body>
 </html>
