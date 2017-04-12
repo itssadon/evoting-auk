@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
         // Register user
         this.authService.registerUser(user).subscribe(data => {
             if(data.success) {
-                this.toasterService.pop('success', 'Oops!', 'You are now registered and can log in');
+                this.toasterService.pop('success', 'Success!', 'You are now registered and can log in');
                 this.router.navigate(['/login']);
             } else {
                 this.toasterService.pop('error', 'Oops!', 'Something went wrong');

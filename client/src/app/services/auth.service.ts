@@ -10,7 +10,7 @@ export class AuthService {
     user_role: any;
 
     constructor(
-        private http:Http
+        private http: Http
     ) { }
 
     registerUser(user) {

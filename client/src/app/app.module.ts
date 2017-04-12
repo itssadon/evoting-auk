@@ -23,6 +23,7 @@ import { ElcomService } from './services/elcom.service';
 import { PaystackService } from './services/paystack.service';
 import { StatusComponent } from './components/status/status.component';
 import { StudentService } from './services/student.service';
+import { AspirantService } from './services/aspirant.service';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -58,7 +59,15 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes),
         ToasterModule
     ],
-    providers: [ValidateService, AuthService, AuthGuard, ElcomService, PaystackService, StudentService],
+    providers: [
+        ValidateService,
+        AuthService,
+        AuthGuard,
+        ElcomService,
+        PaystackService,
+        StudentService,
+        AspirantService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

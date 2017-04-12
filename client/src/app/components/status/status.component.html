@@ -1,4 +1,4 @@
-<div class="ui stackable grid">
+<div class="ui stackable grid" id="msg_grid">
     <div class="four wide column"></div>
     <div class="eight wide column">
         <div id="message_wrapper">
@@ -18,20 +18,20 @@
 <div class="ui stackable grid" *ngIf="getPaymentStatus()">
     <div class="three wide column"></div>
     <div class="ten wide column">
-        <form class="ui form segment" autocomplete="off" id="candidate_form" enctype="multipart/form-data">
+        <form class="ui form segment" autocomplete="off" (submit)="onAspirantSubmit()">
             <div class="ui four top attached steps">
                 <div class="link active step" (click)="showStep1()" id="step1">
                     <i class="user icon"></i>
                     <div class="content">
                         <div class="title">Step 1</div>
-                        <div class="description">Academics</div>
+                        <div class="description">Details</div>
                     </div>
                 </div>
                 <div class="link step" (click)="showStep2()" id="step2">
                     <i class="upload icon"></i>
                     <div class="content">
                         <div class="title">Step 2</div>
-                        <div class="description">Photo</div>
+                        <div class="description">Campaign Photo</div>
                     </div>
                 </div>
                 <div class="link step" (click)="showStep3()" id="step3">
@@ -46,22 +46,22 @@
                 <div class="" id="step1_content">
                     <div class="field"><label>1. Names of candidate</label></div>
                     <div class="three fields">
-                        <div class="field" id="first_name_div">
-                            <label for="firstname">First name</label>
-                            <div class="ui input">
-                                <input type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname" id="firstname" readonly="">
-                            </div>
-                        </div>
-                        <div class="field" id="middle_name_div">
-                            <label for="middlename">Middle name</label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Middle Name" [(ngModel)]="middlename" name="middlename" id="middlename" readonly="">
-                            </div>
-                        </div>
                         <div class="field" id="last_name_div">
                             <label for="lasname">Last name</label>
                             <div class="ui input">
-                                <input type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" id="lastname" readonly="">
+                                <input type="text" placeholder="Last Name" [(ngModel)]="aspirant_model.lastname" name="lastname" id="lastname" readonly="" />
+                            </div>
+                        </div>
+                        <div class="field" id="othernames_div">
+                            <label for="firstname">Othernames</label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Othernames" [(ngModel)]="othernames" name="othernames" id="othernames" readonly="" />
+                            </div>
+                        </div>
+                        <div class="field" id="middle_name_div">
+                            <label for="nickname">Nickname</label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Nickname" [(ngModel)]="aspirant_model.nickname" name="nickname" id="nickname" />
                             </div>
                         </div>
                     </div>
@@ -69,31 +69,31 @@
                         <div class="field" id="email_div">
                             <label for="email">2. Email address</label>
                             <div class="ui input">
-                                <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email" id="email" readonly="">
+                                <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email" id="email" readonly="" />
                             </div>
                         </div>
                         <div class="field" id="phone_div">
                             <label for="phone">3. Phone number (e.g. 08033344455)</label>
                             <div class="ui input">
-                                <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" id="phone" readonly="">
+                                <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" id="phone" readonly="" />
                             </div>
                         </div>
                     </div>
                     <div class="field" id="address_div">
                         <label for="address">4. Address</label>
-                        <input type="text" placeholder="Addresss" id="address">
+                        <input type="text" placeholder="Addresss" [(ngModel)]="address" name="address" id="address" />
                     </div>
                     <div class="two fields">
                         <div class="field" id="">
                             <label for="department">5. Department</label>
                             <div class="ui input">
-                                <input type="email" placeholder="Department" [(ngModel)]="department" name="department" id="department" readonly="">
+                                <input type="email" placeholder="Department" [(ngModel)]="department" name="department" id="department" readonly="" />
                             </div>
                         </div>
                         <div class="field" id="">
                             <label for="course">6. Course of study</label>
                             <div class="ui input">
-                                <input type="text" placeholder="Course of study" [(ngModel)]="course" name="course" id="course" readonly="">
+                                <input type="text" placeholder="Course of study" [(ngModel)]="course" name="course" id="course" readonly="" />
                             </div>
                         </div>
                     </div>
@@ -101,70 +101,69 @@
                         <div class="field" id="">
                             <label for="level">7. Level</label>
                             <div class="ui input">
-                                <input type="text" placeholder="Level of study" [(ngModel)]="level" name="level" id="level" readonly="">
+                                <input type="text" placeholder="Level of study" [(ngModel)]="level" name="level" id="level" readonly="" />
                             </div>
                         </div>
                         <div class="field" id="">
                             <label for="level">8. Current CGPA</label>
                             <div class="ui input">
-                                <input type="text" placeholder="Current CGPA" [(ngModel)]="cgpa" name="cgpa" id="cgpa">
+                                <input type="text" placeholder="Current CGPA" [(ngModel)]="aspirant_model.cgpa" name="cgpa" id="cgpa" />
                             </div>
                         </div>
                     </div>
                     <div class="field">
                         <label for="reason">9. Reason for contesting</label>
                         <div class="ui input">
-                            <textarea placeholder="Reason for contesting" [(ngModel)]="reason" name="reason" id="reason"></textarea>
+                            <textarea placeholder="Reason for contesting" [(ngModel)]="aspirant_model.reason" name="reason" id="reason"></textarea>
                         </div>
                     </div>
                     <div class="ui divider"></div>
-                    <button class="ui button" (click)="showStep2()">Next</button>
+                    <button type="button" class="ui fluid button" (click)="showStep2()">Next<i class="arrow right icon"></i></button>
                 </div>
                 <div class="hiddenContent" id="step2_content">
                     <div class="ui stackable grid">
                         <div class="eight wide column">
-                            <form class="ui form" method="post" id="passport_form" enctype="multipart/form-data">
-                                <div class="ui fluid action input">
-                                    <input type="text" readonly placeholder="Passport" id="passport_text">
-                                    <input type="file" name="passport" accept="image/*" id="passport">
-                                    <div class="ui icon button" id="passport_button">
-                                        <i class="cloud upload icon"></i>
-                                    </div>
-                                </div>
-                            </form>
+                            <input type="file" [(ngModel)]="picture" name="picture" id="picture" accept="image/*" required (change)="fileChange($event)" />
                         </div>
                         <div class="eight wide column">
                             <div class="field" style="text-align:center;">
-                                <img class="ui segment image-preview" id="preview_passport">
+                                <img [attr.src]='file_srcs[0]' alt="" id="image_preview"/>
                             </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="two fields">
+                        <div class="field">
+                            <button type="button" class="ui fluid button" (click)="showStep1()"><i class="arrow left icon"></i>Back</button>
+                        </div>
+                        <div class="field">
+                            <button type="button" class="ui fluid button" (click)="showStep3()">Next<i class="arrow right icon"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="hiddenContent" id="step3_content">
                     <div class="ui stackable grid">
-                        <div class="four wide column"></div>
-                        <div class="eight wide column">
+                        <div class="two wide column"></div>
+                        <div class="twelve wide column">
                             <div class="ui segment">
                                 <div class="field">
                                     <div class="ui toggle checkbox">
-                                        <input type="checkbox" id="confirm" tabindex="0">
+                                        <input type="checkbox" (click)="enableSubmit()" tabindex="0" id="confirm">
                                         <label>
                                             I certify that to my personal knowledge and subject to any conditions
-                                            required by the Nigerian Institute of Town Planners Bye-Laws, the
-                                            above named applicant is a student of aforesaid Institution
-                                            and is proposed for election accordingly.
+                                            required by the ATBU SUG ELCOM Bye-Laws, the information provided in the form
+                                            is accurate and up to date and is verifiable.
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" disabled="true" class="large fluid ui vertical animated submit button green" id="submit_btn">
-                                <div class="visible content">Submit Form</div>
-                                <div class="hidden content">
-                                    <i class="save icon"></i>
-                                </div>
+                            <button type="submit" class="ui large fluid submit button green disabled" id="submit_btn">
+                                <i class="save icon"></i> Submit Form
                             </button>
                         </div>
                     </div>
+                    <div class="ui divider"></div>
+                    <button type="button" class="ui fluid button" (click)="showStep2()"><i class="arrow left icon"></i>Back</button>
                 </div>
             </div>
         </form>

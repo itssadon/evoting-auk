@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class ElcomService {
 
   constructor(
-        private http:Http
+        private http: Http
     ) { }
 
     getElcomOfficers() {

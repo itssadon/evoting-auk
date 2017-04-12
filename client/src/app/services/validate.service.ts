@@ -26,4 +26,22 @@ export class ValidateService {
         }
     }
 
+    validateAspirant(aspirant) {
+        if(
+            aspirant.matricno==undefined ||
+            aspirant.firstname==undefined ||
+            aspirant.middlename==undefined ||
+            aspirant.lastname==undefined ||
+            aspirant.nickname==undefined ||
+            aspirant.cgpa==undefined ||
+            aspirant.office==undefined ||
+            aspirant.reason==undefined ||
+            aspirant.picture==undefined
+        ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
