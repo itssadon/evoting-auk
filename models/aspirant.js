@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 const fs = require('fs');
 
@@ -22,6 +21,10 @@ const AspirantSchema = mongoose.Schema({
         required: true
     },
     nickname: {
+        type: String,
+        required: true
+    },
+    address: {
         type: String,
         required: true
     },
@@ -49,22 +52,20 @@ const AspirantSchema = mongoose.Schema({
 
 const Aspirant = module.exports = mongoose.model('Aspirant', AspirantSchema);
 
-module.exports.addAspirant = function (Aspirant, callback) {
+module.exports.addAspirant = function (aspirant, callback) {
     var dt = new Date(); //current date and time of server
     var text = ""; //random text
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for( var i=0; i < 5; i++ ) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
-    var base64d = Aspirant.picture.replace(/^data:image\/png;base64,/, "");
-    var path = "./public/images/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
-    var path1 = "/images/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
+    var base64d = aspirant.picture.replace(/^data:image\/[a-z]+;base64,/, "");
+    var path = "./public/images/aspirants/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
+    var path1 = "/images/aspirants/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
+    aspirant.picture = path1;
 
     fs.writeFile(path, base64d, 'base64', function(err) {
-        if(err) {
-            return console.log(err);
-        }
-        console.log("The file was saved!");
+        if(err) throw err;
+        aspirant.save(callback);
     });
-    Aspirant.save(callback);
 };

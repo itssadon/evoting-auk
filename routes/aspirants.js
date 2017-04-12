@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const User = require('../models/aspirant');
+const Aspirant = require('../models/aspirant');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -13,8 +11,9 @@ router.post('/register', (req, res, next) => {
         middlename: req.body.middlename,
         lastname: req.body.lastname,
         nickname: req.body.nickname,
+        address: req.body.address,
         cgpa: req.body.cgpa,
-        position: req.body.position,
+        office: req.body.office,
         reason: req.body.reason,
         picture: req.body.picture,
         vote: 0

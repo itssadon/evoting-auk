@@ -15,7 +15,7 @@ export class AspirantService {
   addAspirant(aspirant) {
       let headers = new Headers();
       headers.append('Content-Type','application/json');
-      return this.http.post('http://localhost:3000/aspirant/register', aspirant, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+      return this.http.post('http://localhost:3000/aspirants/register', aspirant, {headers: headers}).map(res => res.json()).catch(err => err.toString());
   }
 
 }

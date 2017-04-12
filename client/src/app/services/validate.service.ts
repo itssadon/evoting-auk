@@ -33,6 +33,7 @@ export class ValidateService {
             aspirant.middlename==undefined ||
             aspirant.lastname==undefined ||
             aspirant.nickname==undefined ||
+            aspirant.address==undefined ||
             aspirant.cgpa==undefined ||
             aspirant.office==undefined ||
             aspirant.reason==undefined ||

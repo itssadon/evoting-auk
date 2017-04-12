@@ -24,6 +24,7 @@ export class StatusComponent implements OnInit {
         middlename: '',
         lastname: '',
         nickname: '',
+        address: '',
         cgpa: '',
         office: '',
         reason: '',
@@ -71,8 +72,6 @@ export class StatusComponent implements OnInit {
             response => {
                 if(response.status) {
                     this.paymentStatus = true;
-                    $('#msg_grid').remove();
-                    this.toasterService.pop('success', response.message, 'Please fill in all the empty fields in the form.');
                     this.aspirant = {
                         matricno: response.data.customer.metadata.matric_number,
                         email: response.data.customer.email,
@@ -129,6 +128,8 @@ export class StatusComponent implements OnInit {
                     $('#course').val(course);
                     $('#level').val(level);
                     $('#pageDimmer').remove();
+                    $('#msg_grid').remove();
+                    this.toasterService.pop('success', response.message, 'Please fill in all the empty fields in the form.');
                 }
             },
             error => {
@@ -245,9 +246,7 @@ export class StatusComponent implements OnInit {
 
     onAspirantSubmit() {
         var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
-        //$('body').prepend(pageDimmer);
-
-        console.log(this.aspirant_model);
+        $('body').prepend(pageDimmer);
 
         // Required Fields
         if(!this.validateService.validateAspirant(this.aspirant_model)) {
@@ -255,22 +254,23 @@ export class StatusComponent implements OnInit {
             $('#pageDimmer').remove();
             return false;
         }
-        this.toasterService.pop('info', 'Success!', 'You are now good to go');
-        /*//
         this.aspirantService.addAspirant(this.aspirant_model).subscribe(
-            (data:any) => {
-                this.toasterService.pop('success', 'Success!', 'You are now registered as an aspirant');
+            data => {
+                if(data.success) {
+                    this.toasterService.pop('success', 'Congratulations!', 'You are now registered as an aspirant');
+                    $('#pageDimmer').remove();
+                    this.router.navigate(['/aspirants']);
+                } else {
+                    this.toasterService.pop('error', 'Oops!', 'Something went wrong');
+                    $('#pageDimmer').remove();
+                }
             },
             function(error) {
                 this.toasterService.pop('error', 'Oops!', error);
-                console.log(error);
-            },
-            function() {
-                this.toasterService.pop('success', 'Success!', 'Completed');
-                console.log("On Complete");
+                $('#pageDimmer').remove();
+                return false;
             }
         );
-        */
     }
 
 }
