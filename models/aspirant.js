@@ -28,8 +28,8 @@ const AspirantSchema = mongoose.Schema({
     cgpa: {
         type: String,
         required: true
-    }
-    position: {
+    },
+    office: {
         type: String,
         required: true
     },
