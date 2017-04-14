@@ -1,4 +1,4 @@
-<div class="ui four doubling raised cards">
+<div class="ui four doubling raised cards" *ngIf="!authService.loggedIn()">
     <div class="card" *ngFor="let aspirant of aspirants; let i = index">
         <div class="image">
             <img style="max-height: 220px;" src="http://localhost:3000{{aspirant.picture}}">
@@ -16,6 +16,51 @@
             <label class="ui blue label" style="text-transform: capitalize;">
                 For {{aspirant.office}}
             </label>
+        </div>
+    </div>
+</div>
+
+<div class="ui stackable grid" *ngIf="authService.loggedIn()">
+    <div class="three wide column">
+        <div class="ui fluid vertical menu">
+            <a class="item" [routerLink]="['/dashboard']">Dashboard</a>
+            <a class="item" *ngIf="authService.canPerformTask('elcom')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">ELCOM</a>
+            <a class="item" *ngIf="authService.canPerformTask('aspirants')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
+            <a class="item" *ngIf="authService.canPerformTask('accreditation')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/accreditation']">Accreditation</a>
+            <a class="item" *ngIf="authService.canPerformTask('password')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/resend-password']">Passwords</a>
+            <a class="item" *ngIf="authService.canPerformTask('vote')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/vote']">Vote</a>
+            <a class="item" *ngIf="authService.canPerformTask('results')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/results']">Results</a>
+            <a class="item" *ngIf="authService.canPerformTask('reports')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/reports']">Reports</a>
+        </div>
+    </div>
+    <div class="thirteen wide column">
+        <div class="ui segment">
+            <table class="ui compact celled definition table segment">
+                <thead>
+                    <tr>
+                        <th>SNo.</th><th>Full Names</th><th>Nickname</th><th>CGPA</th><th>Office</th><th>Reason for contesting</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let aspirant of aspirants; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{aspirant.firstname}} {{aspirant.middlename}} {{aspirant.lastname}}</td>
+                        <td>{{aspirant.nickname}}</td>
+                        <td>
+                            {{aspirant.cgpa}}
+                        </td>
+                        <td>
+                            <span style="text-transform: capitalize;">{{aspirant.office}}</span>
+                        </td>
+                        <td>
+                            {{aspirant.reason}}
+                        </td>
+                        <td>
+                            <img class="ui fluid image" src="http://localhost:3000{{aspirant.picture}}" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         var userObj = JSON.parse(localStorage.user);
         var user_name = userObj.name;
-
         $('#user_name').text(user_name);
     }
 

@@ -1,3 +1,25 @@
+<div class="ui stackable grid" *ngIf="!authService.loggedIn()">
+    <div class="three wide column"></div>
+    <div class="nine wide column">
+        <div class="ui segment" id="supervisors">
+            <table class="ui compact celled definition table">
+                <thead>
+                    <tr>
+                        <th>SNo.</th><th>Username</th><th>Full Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 <div class="ui stackable grid" *ngIf="authService.loggedIn()">
     <div class="three wide column">
         <div class="ui fluid vertical menu">
@@ -64,28 +86,6 @@
                 <div class="ui divider"></div>
                 <button class="ui submit primary button fluid" type="submit"><i class="add icon"></i>Add officer</button>
             </form>
-        </div>
-    </div>
-</div>
-
-<div class="ui stackable grid" *ngIf="!authService.loggedIn()">
-    <div class="three wide column"></div>
-    <div class="nine wide column">
-        <div class="ui segment" id="supervisors">
-            <table class="ui compact celled definition table">
-                <thead>
-                    <tr>
-                        <th>SNo.</th><th>Username</th><th>Full Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of users; let i = index">
-                        <td>{{i + 1}}</td>
-                        <td>{{user.username}}</td>
-                        <td>{{user.name}}</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

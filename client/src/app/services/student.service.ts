@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-
 import * as $ from 'jquery';
 
 @Injectable()
@@ -18,9 +16,9 @@ export class StudentService {
 
     getStudentRecord(matricno) {
         let headers = new Headers();
-        headers.append('Origin', undefined);
+        //headers.append('Origin', undefined);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('https://crossorigin.me/'+this.apiUrl+matricno).map(this.extractData).catch(this.handleError);
+        return this.http.get('http://localhost:3000/proxy/'+this.apiUrl+matricno, {headers: headers}).map(this.extractData).catch(this.handleError);
     }
 
     private extractData(res: Response) {

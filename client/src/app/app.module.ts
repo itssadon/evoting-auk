@@ -24,6 +24,8 @@ import { PaystackService } from './services/paystack.service';
 import { StatusComponent } from './components/status/status.component';
 import { StudentService } from './services/student.service';
 import { AspirantService } from './services/aspirant.service';
+import { AccreditationComponent } from './components/accreditation/accreditation.component';
+import { AccreditationService } from './services/accreditation.service';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     {path:'status', component: StatusComponent},
     {path:'login', component: LoginComponent},
     {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-    {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+    {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+    {path:'accreditation', component: AccreditationComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -50,6 +53,7 @@ const appRoutes: Routes = [
         ElcomOfficersComponent,
         AspirantsComponent,
         StatusComponent,
+        AccreditationComponent,
     ],
     imports: [
         BrowserModule,
@@ -66,7 +70,8 @@ const appRoutes: Routes = [
         ElcomService,
         PaystackService,
         StudentService,
-        AspirantService
+        AspirantService,
+        AccreditationService
     ],
     bootstrap: [AppComponent]
 })

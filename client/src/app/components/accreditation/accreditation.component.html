@@ -1,0 +1,97 @@
+<div class="ui stackable grid" *ngIf="authService.loggedIn()">
+    <div class="three wide column">
+        <div class="ui fluid vertical menu">
+            <a class="item" [routerLink]="['/dashboard']">Dashboard</a>
+            <a class="item" *ngIf="authService.canPerformTask('elcom')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">ELCOM</a>
+            <a class="item" *ngIf="authService.canPerformTask('aspirants')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
+            <a class="item" *ngIf="authService.canPerformTask('accreditation')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/accreditation']">Accreditation</a>
+            <a class="item" *ngIf="authService.canPerformTask('password')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/resend-password']">Passwords</a>
+            <a class="item" *ngIf="authService.canPerformTask('vote')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/vote']">Vote</a>
+            <a class="item" *ngIf="authService.canPerformTask('results')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/results']">Results</a>
+            <a class="item" *ngIf="authService.canPerformTask('reports')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/reports']">Reports</a>
+        </div>
+    </div>
+    <div class="thirteen wide column">
+        <div class="ui segment">
+            <div class="ui large message info">
+                Accreditation is open from {{accreditationTime.startingDay}} to {{accreditationTime.closingDay}} between the hours of {{accreditationTime.startingTime}} - {{accreditationTime.closingTime}}.
+            </div>
+            <div class="ui stackable grid">
+                <div class="six wide column center aligned">
+                    <div class="ui massive message">
+                        Total Accredited Students
+                        <div class="ui divider"></div>
+                        <span id="accredited_students"></span>
+                    </div>
+                </div>
+                <div class="ten wide column">
+                    <div class="ui segment">
+                        <div class="ui message success" *ngIf="canAccredit()">
+                            {{message}}
+                        </div>
+                        <form class="ui form" autocomplete="off" (submit)="onAccreditSubmit()" *ngIf="canAccredit()">
+                            <div class="field" id="matricno_div">
+                                <div class="ui fluid action input">
+                                    <input type="text" placeholder="Matric Number" (keypress)="triggerSearch($event)" [(ngModel)]="matricno" name="matricno" id="matricno">
+                                    <button type="button" class="ui primary right labeled icon button" (click)="searchMatric()" id="searchBtn">
+                                        <i class="search icon"></i>
+                                        Search Matric
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="three fields">
+                                <div class="field" id="first_name_div">
+                                    <div class="ui input">
+                                        <input type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname" id="firstname" readonly="">
+                                    </div>
+                                </div>
+                                <div class="field" id="middle_name_div">
+                                    <div class="ui input">
+                                        <input type="text" placeholder="Middle Name" [(ngModel)]="middlename" name="middlename" id="middlename" readonly="">
+                                    </div>
+                                </div>
+                                <div class="field" id="last_name_div">
+                                    <div class="ui input">
+                                        <input type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" id="lastname" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="two fields">
+                                <div class="field" id="email_div">
+                                    <div class="ui input">
+                                        <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email" id="email">
+                                    </div>
+                                </div>
+                                <div class="field" id="phone_div">
+                                    <div class="ui input">
+                                        <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" id="phone" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="two fields">
+                                <div class="field" id="">
+                                    <div class="ui input">
+                                        <input type="text" placeholder="Department" [(ngModel)]="department" name="department" id="department" readonly="">
+                                    </div>
+                                </div>
+                                <div class="field" id="">
+                                    <div class="ui input">
+                                        <input type="text" placeholder="Course of study" [(ngModel)]="course" name="course" id="course" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui divider"></div>
+                            <button type="submit" class="ui large right labeled icon green button">
+                                <i class="checkmark icon"></i>
+                                Accredit Student
+                            </button>
+                        </form>
+                        <div class="ui huge message error" *ngIf="!canAccredit()">
+                            {{message}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

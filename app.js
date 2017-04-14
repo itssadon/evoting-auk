@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const request = require('request');
 
 const config = require('./config/database');
 
@@ -40,18 +41,25 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
+// Endpoints
 app.use('/users', users);
 app.use('/aspirants', aspirants);
+app.use('/proxy/:url', function(req, res) {
+    var url = 'https:/'+req.url;
+    req.pipe(request(url)).pipe(res);
+});
 
 // Index Route
 app.get('/', (req, res) => {
     res.send('Invalid Endpoint');
 });
 
+// Fetch aspirant picture from the pucblic folder
 app.get('/assets/images/aspirants/:picture', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/assets/images/aspirants/:picture'));
 });
 
+// Redirect all other invalid request
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
 });
