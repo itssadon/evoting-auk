@@ -60,12 +60,26 @@ module.exports.addAspirant = function (aspirant, callback) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     var base64d = aspirant.picture.replace(/^data:image\/[a-z]+;base64,/, "");
-    var path = "./public/images/aspirants/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
-    var path1 = "/images/aspirants/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
+    var path = "./public/assets/images/aspirants/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
+    var path1 = "/assets/images/aspirants/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
     aspirant.picture = path1;
 
+    try {
+        fs.statSync("./public/assets/images/aspirants/");
+    } catch(e) {
+        fs.mkdirSync("./public/assets/images/aspirants/");
+    }
+
     fs.writeFile(path, base64d, 'base64', function(err) {
-        if(err) throw err;
+        if(err) res.send(err);
         aspirant.save(callback);
     });
+};
+
+module.exports.getAspirants = function(callback) {
+    Aspirant.find(callback);
+};
+
+module.exports.getAspirantById = function(id, callback){
+    Aspirant.findById(id, callback);
 };

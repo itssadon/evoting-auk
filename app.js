@@ -48,6 +48,10 @@ app.get('/', (req, res) => {
     res.send('Invalid Endpoint');
 });
 
+app.get('/assets/images/aspirants/:picture', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/assets/images/aspirants/:picture'));
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
 });

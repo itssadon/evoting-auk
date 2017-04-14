@@ -1,3 +1,21 @@
-<p>
-  aspirants works!
-</p>
+<div class="ui four doubling raised cards">
+    <div class="card" *ngFor="let aspirant of aspirants; let i = index">
+        <div class="image">
+            <img style="max-height: 220px;" src="http://localhost:3000{{aspirant.picture}}">
+        </div>
+        <div class="content">
+            <div class="header">{{aspirant.lastname}}, {{aspirant.firstname}} {{aspirant.middlename}}</div>
+            <div class="meta">
+                <label class="ui red label">{{aspirant.nickname}}</label>
+            </div>
+            <div class="description">
+                {{aspirant.reason}}
+            </div>
+        </div>
+        <div class="extra content center aligned">
+            <label class="ui blue label" style="text-transform: capitalize;">
+                For {{aspirant.office}}
+            </label>
+        </div>
+    </div>
+</div>

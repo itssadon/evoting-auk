@@ -28,12 +28,12 @@ router.post('/authenticate', (req, res, next) => {
     const password = req.body.password;
 
     User.getUserByUsername(username, (err, user) => {
-        if(err) throw err;
+        if(err) res.send(err);
         if(!user){
             return res.json({success: false, msg:'User not found'});
         }
         User.comparePassword(password, user.password, (err, isMatch) => {
-            if(err) throw err;
+            if(err) res.send(err);
             if(isMatch){
                 const token = jwt.sign(user, config.secret, {
                     expiresIn: 14400
@@ -64,7 +64,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 router.get('/elcom', (req, res, next) => {
     const user_role = 1;
     User.getUsersByUserRole(user_role, (err, users) => {
-        if(err) throw err;
+        if(err) res.send(err);
         if(!users) {
             return res.json({success:false, msg:'User not found'});
         }

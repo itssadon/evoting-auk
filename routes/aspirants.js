@@ -3,8 +3,22 @@ const router = express.Router();
 const config = require('../config/database');
 const Aspirant = require('../models/aspirant');
 
-// Register
-router.post('/register', (req, res, next) => {
+// Get all registered aspirants
+router.get('', (req, res, next) => {
+    Aspirant.getAspirants((err, aspirants) => {
+        if(err) res.send(err);
+        if(!aspirants) {
+            return res.json({success:false, msg:'Aspirants not found'});
+        }
+        return res.json({
+            success: true,
+            aspirants: aspirants
+        });
+    });
+});
+
+// Register an aspirant
+router.post('/aspirant', (req, res, next) => {
     let newAspirant = new Aspirant({
         matricno: req.body.matricno,
         firstname: req.body.firstname,
@@ -24,6 +38,21 @@ router.post('/register', (req, res, next) => {
         } else {
             res.json({success:true, msg:'Aspirant registered'});
         }
+    });
+});
+
+// Get an aspirant
+router.get('/aspirant/:id', (req, res, next) => {
+    const id = req.params.id;
+    Aspirant.getAspirantById(id, (err, aspirant) => {
+        if(err) res.send(err);
+        if(!aspirant) {
+            return res.json({success:false, msg:'Aspirant not found'});
+        }
+        return res.json({
+            success: true,
+            aspirant: aspirant
+        });
     });
 });
 
