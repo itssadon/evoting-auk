@@ -44,8 +44,8 @@ require('./config/passport')(passport);
 // Endpoints
 app.use('/users', users);
 app.use('/aspirants', aspirants);
-app.use('/proxy/:url', function(req, res) {
-    var url = 'https:/'+req.url;
+app.use('/proxy', function(req, res) {
+    var url = req.url.replace('/?url=', '');
     req.pipe(request(url)).pipe(res);
 });
 

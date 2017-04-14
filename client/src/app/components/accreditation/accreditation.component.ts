@@ -128,7 +128,6 @@ export class AccreditationComponent implements OnInit {
                         email: email,
                         phone: phone
                     }
-                    console.log(this.student);
                     $('#searchBtn').removeClass("loading disabled");
                 }
             },
