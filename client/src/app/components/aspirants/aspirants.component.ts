@@ -27,7 +27,6 @@ export class AspirantsComponent implements OnInit {
 
       this.aspirateService.getAspirants().subscribe(data => {
           this.aspirants = data.aspirants;
-          console.log(data);
       },
       err => {
           this.toasterService.pop('error', 'Oops!', err);

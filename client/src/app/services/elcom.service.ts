@@ -12,7 +12,12 @@ export class ElcomService {
     getElcomOfficers() {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/users/elcom', {headers: headers})
-            .map(res => res.json());
+        return this.http.get('http://localhost:3000/users/elcom', {headers: headers}).map(res => res.json());
+    }
+
+    getElcomOfficer(matricno) {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('http://localhost:3000/users/elcom/'+matricno, {headers: headers}).map(res => res.json());
     }
 }

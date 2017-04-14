@@ -61,9 +61,9 @@ export class ElcomOfficersComponent implements OnInit {
             } else {
                 this.toasterService.pop('error', 'Oops!', 'Something went wrong');
             }
-            this.ngOnInit()
-            this.router.navigate(['/elcom-officers']);
+            this.ngOnInit();
             $('#pageDimmer').remove();
+            this.router.navigate(['/elcom-officers']);
         });
     }
 }

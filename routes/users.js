@@ -60,7 +60,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
     res.send({user: req.user});
 });
 
-// Elcome officers
+// Elcom officers
 router.get('/elcom', (req, res, next) => {
     const user_role = 1;
     User.getUsersByUserRole(user_role, (err, users) => {
@@ -71,6 +71,21 @@ router.get('/elcom', (req, res, next) => {
         return res.json({
             success: true,
             users: users
+        });
+    });
+});
+
+// Elcom officer
+router.get('/elcom/:matricno', (req, res, next) => {
+    var matricno = req.params.matricno.replace(/\./g, '/');
+    User.getUserByUsername(matricno, (err, elcom) => {
+        if(err) res.send(err);
+        if(!elcom) {
+            return res.json({success:false, msg:'Student is not an ELCOM Officer'});
+        }
+        return res.json({
+            success: true,
+            elcomOfficer: elcom
         });
     });
 });

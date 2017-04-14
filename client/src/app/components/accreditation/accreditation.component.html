@@ -29,59 +29,64 @@
                         <div class="ui message success" *ngIf="canAccredit()">
                             {{message}}
                         </div>
-                        <form class="ui form" autocomplete="off" (submit)="onAccreditSubmit()" *ngIf="canAccredit()">
-                            <div class="field" id="matricno_div">
-                                <div class="ui fluid action input">
-                                    <input type="text" placeholder="Matric Number" (keypress)="triggerSearch($event)" [(ngModel)]="matricno" name="matricno" id="matricno">
-                                    <button type="button" class="ui primary right labeled icon button" (click)="searchMatric()" id="searchBtn">
-                                        <i class="search icon"></i>
-                                        Search Matric
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="three fields">
-                                <div class="field" id="first_name_div">
-                                    <div class="ui input">
-                                        <input type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname" id="firstname" readonly="">
+                        <form class="ui form" autocomplete="off" (submit)="onAccreditSubmit()" *ngIf="canAccredit()" id="accreditationForm">
+                            <div class="ui stackable grid">
+                                <div class="ten wide column">
+                                    <div class="field" id="matricno_div">
+                                        <div class="ui fluid action input">
+                                            <input type="text" placeholder="Matric Number" (keypress)="triggerSearch($event)" [(ngModel)]="matricno" name="matricno" id="matricno">
+                                            <button type="button" class="ui primary right labeled icon button" (click)="searchMatric()" id="searchBtn">
+                                                <i class="search icon"></i>
+                                                Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="three fields">
+                                        <div class="field" id="first_name_div">
+                                            <div class="ui input">
+                                                <input type="text" placeholder="First" [(ngModel)]="firstname" name="firstname" id="firstname" readonly="">
+                                            </div>
+                                        </div>
+                                        <div class="field" id="middle_name_div">
+                                            <div class="ui input">
+                                                <input type="text" placeholder="Middle" [(ngModel)]="middlename" name="middlename" id="middlename" readonly="">
+                                            </div>
+                                        </div>
+                                        <div class="field" id="last_name_div">
+                                            <div class="ui input">
+                                                <input type="text" placeholder="Last" [(ngModel)]="lastname" name="lastname" id="lastname" readonly="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field" id="email_div">
+                                        <div class="ui input">
+                                            <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email" id="email">
+                                        </div>
+                                    </div>
+                                    <div class="field" id="phone_div">
+                                        <div class="ui input">
+                                            <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" id="phone" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="field" id="">
+                                        <div class="ui input">
+                                            <input type="text" placeholder="Department" [(ngModel)]="department" name="department" id="department" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="field" id="">
+                                        <div class="ui input">
+                                            <input type="text" placeholder="Course of study" [(ngModel)]="course" name="course" id="course" readonly="">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="field" id="middle_name_div">
-                                    <div class="ui input">
-                                        <input type="text" placeholder="Middle Name" [(ngModel)]="middlename" name="middlename" id="middlename" readonly="">
-                                    </div>
-                                </div>
-                                <div class="field" id="last_name_div">
-                                    <div class="ui input">
-                                        <input type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" id="lastname" readonly="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="two fields">
-                                <div class="field" id="email_div">
-                                    <div class="ui input">
-                                        <input type="email" placeholder="Email Addresss" [(ngModel)]="email" name="email" id="email">
-                                    </div>
-                                </div>
-                                <div class="field" id="phone_div">
-                                    <div class="ui input">
-                                        <input type="tel" placeholder="Phone" [(ngModel)]="phone" name="phone" id="phone" readonly="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="two fields">
-                                <div class="field" id="">
-                                    <div class="ui input">
-                                        <input type="text" placeholder="Department" [(ngModel)]="department" name="department" id="department" readonly="">
-                                    </div>
-                                </div>
-                                <div class="field" id="">
-                                    <div class="ui input">
-                                        <input type="text" placeholder="Course of study" [(ngModel)]="course" name="course" id="course" readonly="">
+                                <div class="six wide column">
+                                    <div class="image center aligned">
+                                        <img class="ui small fluid image" src="" id="picture">
                                     </div>
                                 </div>
                             </div>
                             <div class="ui divider"></div>
-                            <button type="submit" class="ui large right labeled icon green button">
+                            <button type="submit" class="ui large right labeled icon green button disabled" id="submitBtn">
                                 <i class="checkmark icon"></i>
                                 Accredit Student
                             </button>

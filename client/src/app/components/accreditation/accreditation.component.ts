@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { AuthService } from '../../services/auth.service';
 import { StudentService } from '../../services/student.service';
+import { AccreditationService } from '../../services/accreditation.service';
+import { MailService } from '../../services/mail.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -19,14 +21,16 @@ export class AccreditationComponent implements OnInit {
         startingDay: '2017-04-02',
         closingDay: '2017-10-04',
         startingTime: '09:00',
-        closingTime: '18:00'
+        closingTime: '23:59'
     }
 
     constructor(
         private toasterService: ToasterService,
         private authService: AuthService,
         private router: Router,
-        private studentService: StudentService
+        private studentService: StudentService,
+        private accreditationService: AccreditationService,
+        private mailService: MailService
     ) { }
 
     ngOnInit() {
@@ -99,6 +103,9 @@ export class AccreditationComponent implements OnInit {
             response => {
                 if(response.content === 'Record not Found!') {
                     this.toasterService.pop('error', 'Oops!', response.content);
+                    $('#picture').attr('src', '');
+                    $('#accreditationForm').trigger('reset');
+                    $('#submitBtn').addClass('disabled');
                     $('#searchBtn').removeClass("loading disabled");
                 } else {
                     var matricno = response.content.regNumber;
@@ -111,8 +118,7 @@ export class AccreditationComponent implements OnInit {
                     var department = response.content.deptName;
                     var course = response.content.optionName;
 
-                    //
-
+                    $('#picture').attr('src', 'https://atbu.edu.ng/'+response.content.picURL);
                     $('#firstname').val(firstname);
                     $('#middlename').val(middlename);
                     $('#lastname').val(lastname);
@@ -123,19 +129,89 @@ export class AccreditationComponent implements OnInit {
 
                     this.student = {
                         matricno: matricno,
-                        firstname: firstname,
-                        lastname: lastname,
+                        studentName: response.content.studentName,
                         email: email,
-                        phone: phone
+                        phone: phone,
+                        department: department,
+                        course: course
                     }
+                    $('#submitBtn').removeClass('disabled');
                     $('#searchBtn').removeClass("loading disabled");
                 }
             },
             error => {
-                this.toasterService.pop('error', 'Oops!', 'Search failed due to server error. Please try after a while');
+                this.toasterService.pop('error', 'Oops!', 'Search failed due to network/server error. Please try after a while');
                 $('#searchBtn').removeClass("loading disabled");
             }
         );
+    }
+
+    onAccreditSubmit() {
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Accrediting student.<br><be>Please wait...</h3></div></div></div></div></div>';
+        $('body').prepend(pageDimmer);
+
+        this.accreditationService.addStudent(this.student).subscribe(response => {
+            if(response.status) {
+                const user = {
+                    name: this.student.studentName,
+                    username: this.student.matricno,
+                    password: this.randomPasswordString(),
+                    user_role: 2
+                }
+                // Add user
+                this.authService.registerUser(user).subscribe(
+                    data => {
+                        if(data.success) {
+                            // Send mail
+                            const mailDetails = {
+                                to: this.student.email,
+                                subject: 'Accreditation Successful',
+                                text: 'You have been accredited to vote. Here are your login detail. Username:'+this.student.matricno+', Password: '+user.password,
+                                html: ''
+                            }
+                            this.mailService.sendMail(mailDetails).subscribe(
+                                response => {
+                                    if(response.success) {
+                                        this.toasterService.pop('success', 'Success', 'Student has been accredited.');
+                                        $('#accreditationForm').trigger('reset');
+                                        $('#submitBtn').addClass('disabled');
+                                    } else {
+                                        this.toasterService.pop('error', 'Oops!', 'Something went wrong');
+                                    }
+                                },
+                                error => {
+                                    this.toasterService.pop('error', 'Oops!', 'We just encountered a server error.');
+                                }
+                            );
+                        } else {
+                            this.toasterService.pop('error', 'Oops!', 'Something went wrong');
+                        }
+                        $('#pageDimmer').remove();
+                        //this.router.navigate(['/accreditation']);
+                    }
+                );
+            } else {
+                this.toasterService.pop('error', 'Oops!', 'Something went wrong');
+                $('#pageDimmer').remove();
+            }
+        });
+    }
+
+    randomPasswordString() {
+        var length = 8;
+        var chars = '#aA!';
+        var mask = '';
+        if (chars.indexOf('a') > -1) mask += 'abcdefghijklmnopqrstuvwxyz';
+        if (chars.indexOf('A') > -1) mask += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        if (chars.indexOf('#') > -1) mask += '0123456789';
+        if (chars.indexOf('!') > -1) mask += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
+        var result = '';
+        for (var i = length; i > 0; --i) result += mask[Math.round(Math.random() * (mask.length - 1))];
+        return result;
+    }
+
+    canBeAccredited(matricno) {
+        //
     }
 
 }

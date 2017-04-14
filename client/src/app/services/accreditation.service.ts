@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { StudentService } from './student.service';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import * as $ from 'jquery';
 
 @Injectable()
 export class AccreditationService {
-    
+
 
     constructor(
         private http: Http,
-        private studentService: StudentService
     ) { }
 
-    isAccreditationTime() {
-
+    addStudent(student) {
+        let headers = new Headers();
+        headers.append('Content-Type','application/json');
+        return this.http.post('http://localhost:3000/students/student', student, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
 }
