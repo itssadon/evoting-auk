@@ -81,12 +81,9 @@ router.get('/elcom/:matricno', (req, res, next) => {
     User.getUserByUsername(matricno, (err, elcom) => {
         if(err) res.send(err);
         if(!elcom) {
-            return res.json({success:false, msg:'Student is not an ELCOM Officer'});
+            return res.json({isElcom:false, msg:'Student is not an ELCOM Officer'});
         }
-        return res.json({
-            success: true,
-            elcomOfficer: elcom
-        });
+        return res.json({isElcom: true, msg: 'Student is an ELCOM Officer'});
     });
 });
 

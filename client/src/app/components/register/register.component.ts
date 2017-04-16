@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { PaystackService } from '../../services/paystack.service';
 import { StudentService } from '../../services/student.service';
+import { ElcomService } from '../../services/elcom.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -34,11 +35,12 @@ export class RegisterComponent implements OnInit {
         private authService: AuthService,
         private router: Router,
         private paystackService: PaystackService,
-        private studentService: StudentService
+        private studentService: StudentService,
+        private elcomService: ElcomService
     ) { }
 
     ngOnInit() {
-        //$('select.dropdown').dropdown();
+
     }
 
     onRegisterSubmit() {
@@ -169,45 +171,60 @@ export class RegisterComponent implements OnInit {
             $('#searchBtn').removeClass("loading disabled");
             return false;
         }
-        this.studentService.getStudentRecord(matricno).subscribe(
+        // Check id student is an elcom officer first
+        this.elcomService.getElcomOfficer(matricno).subscribe(
             response => {
-                if(response.content === 'Record not Found!') {
-                    this.toasterService.pop('error', 'Oops!', response.content);
+                if(response.isElcom) {
+                    this.toasterService.pop('error', 'Oops!', response.msg+ ' and cannot register as an aspirant');
                     $('#searchBtn').removeClass("loading disabled");
+                    return false;
                 } else {
-                    var matricno = response.content.regNumber;
-                    var studentName = response.content.studentName.split(" ");
-                    var lastname = studentName[0];
-                    var firstname = studentName[1];
-                    if(studentName[2]) var middlename = studentName[2];
-                    var email = response.content.email;
-                    var phone = response.content.phoneNumber;
-                    var department = response.content.deptName;
-                    var course = response.content.optionName;
-                    var office = this.office;
-                    var amount = this.amount;
-                    $('#firstname').val(firstname);
-                    $('#middlename').val(middlename);
-                    $('#lastname').val(lastname);
-                    $('#email').val(email);
-                    $('#phone').val(phone);
-                    $('#department').val(department);
-                    $('#course').val(course);
+                    this.studentService.getStudentRecord(matricno).subscribe(
+                        response => {
+                            if(response.content === 'Record not Found!') {
+                                this.toasterService.pop('error', 'Oops!', response.content);
+                                $('#searchBtn').removeClass("loading disabled");
+                            } else {
+                                var matricno = response.content.regNumber;
+                                var studentName = response.content.studentName.split(" ");
+                                var lastname = studentName[0];
+                                var firstname = studentName[1];
+                                if(studentName[2]) var middlename = studentName[2];
+                                var email = response.content.email;
+                                var phone = response.content.phoneNumber;
+                                var department = response.content.deptName;
+                                var course = response.content.optionName;
+                                var office = this.office;
+                                var amount = this.amount;
+                                $('#firstname').val(firstname);
+                                $('#middlename').val(middlename);
+                                $('#lastname').val(lastname);
+                                $('#email').val(email);
+                                $('#phone').val(phone);
+                                $('#department').val(department);
+                                $('#course').val(course);
 
-                    this.aspirant = {
-                        matricno: matricno,
-                        firstname: firstname,
-                        lastname: lastname,
-                        email: email,
-                        phone: phone,
-                        office: office,
-                        amount: amount
-                    }
-                    $('#searchBtn').removeClass("loading disabled");
+                                this.aspirant = {
+                                    matricno: matricno,
+                                    firstname: firstname,
+                                    lastname: lastname,
+                                    email: email,
+                                    phone: phone,
+                                    office: office,
+                                    amount: amount
+                                }
+                                $('#searchBtn').removeClass("loading disabled");
+                            }
+                        },
+                        error => {
+                            this.toasterService.pop('error', 'Oops!', 'Search failed due to server error. Please try after a while');
+                            $('#searchBtn').removeClass("loading disabled");
+                        }
+                    );
                 }
             },
             error => {
-                this.toasterService.pop('error', 'Oops!', 'Search failed due to server error. Please try after a while');
+                this.toasterService.pop('error', 'Oops!', 'Search failed due to network/server error. Please try after a while');
                 $('#searchBtn').removeClass("loading disabled");
             }
         );

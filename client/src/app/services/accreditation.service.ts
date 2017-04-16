@@ -3,18 +3,21 @@ import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class AccreditationService {
 
-
     constructor(
         private http: Http,
+        private authService: AuthService
     ) { }
 
     addStudent(student) {
         let headers = new Headers();
-        headers.append('Content-Type','application/json');
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.authToken);
+        headers.append('Content-Type', 'application/json');
         return this.http.post('http://localhost:3000/students/student', student, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
