@@ -86,9 +86,17 @@
                                 </div>
                             </div>
                             <div class="ui divider"></div>
-                            <button type="submit" class="ui large right labeled icon green button disabled" id="submitBtn">
+                            <button type="submit" class="ui right labeled icon green button disabled" id="submitBtn">
                                 <i class="checkmark icon"></i>
                                 Accredit Student
+                            </button>
+                            <button type="button" class="ui primary button" id="" (click)="testSMS()">
+                                <i class="checkmark icon"></i>
+                                Get Balance
+                            </button>
+                            <button type="button" class="ui red button" id="" (click)="testSendSMS()">
+                                <i class="checkmark icon"></i>
+                                Send test SMS
                             </button>
                         </form>
                         <div class="ui huge message error" *ngIf="!canAccredit()">

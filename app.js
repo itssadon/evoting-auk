@@ -34,7 +34,7 @@ const aspirants = require('./routes/aspirants');
 const students = require('./routes/students');
 
 // Port Number
-const port = 3000;
+const port = process.env.PORT || 8080;
 
 // CORS Middleware
 app.use(cors());
@@ -57,15 +57,20 @@ app.use('/users', users);
 app.use('/aspirants', aspirants);
 app.use('/students', students);
 // proxy request to external endpont
-app.use('/proxy', function(req, res, err) {
-    var url = req.url.replace('/?url=', '');
-    try {
-        req.pipe(request(url)).pipe(res);
-    } catch (err) {
-        console.log(err);
-        res.end;
-    }
-
+app.use('/proxy', function(req, res) {
+    var url = req.url.replace('/?urls=', '');
+    req.pipe(
+        request({
+            url: url
+        },
+        function(error, response){
+            if(error) {
+                console.error('ATBU Refused connection');
+            } else {
+                console.log('Student record fetched');
+            }
+        })
+    ).pipe(res);
 });
 // Send mail
 app.use('/send', function(req, res) {
@@ -75,17 +80,31 @@ app.use('/send', function(req, res) {
         subject: req.body.subject,
         text: req.body.text
     }
-    console.log(mailOptions); //
     smtpTransport.sendMail(mailOptions, function(error, response){
         if(error) {
             console.log(error);
             return res.json({success:false, msg:'Failed to send mail'})
         } else {
-            console.log(response);
             console.log("Message sent: " + response.message);
             return res.json({success:true, msg:'Message sent: ' + response.message});
         }
     });
+});
+// Send sms
+app.use('/sms', function(req, res) {
+    var url = req.url.replace('/?url=', '');
+    req.pipe(
+        request({
+            url: url
+        },
+        function(error, response){
+            if(error){
+                console.error('Refused connection');
+            } else {
+                console.log('SMS API responded.');
+            }
+        })
+    ).pipe(res);
 });
 
 // Index Route
@@ -106,4 +125,10 @@ app.get('*', (req, res) => {
 // Start Server
 app.listen(port, () => {
     console.log('Server started on port ' + port);
+});
+
+// Uncaught error catching
+process.on('uncaughtException', function(err){
+    console.error('uncaughtException: ' + err);
+    process.exit(1);             // exit with error
 });

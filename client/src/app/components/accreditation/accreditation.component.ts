@@ -6,6 +6,7 @@ import { ElcomService } from '../../services/elcom.service';
 import { StudentService } from '../../services/student.service';
 import { AccreditationService } from '../../services/accreditation.service';
 import { MailService } from '../../services/mail.service';
+import { SmsService } from '../../services/sms.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -22,7 +23,7 @@ export class AccreditationComponent implements OnInit {
         startingDay: '2017-04-02',
         closingDay: '2017-10-04',
         startingTime: '09:00',
-        closingTime: '23:59'
+        closingTime: '23:50'
     }
 
     constructor(
@@ -32,7 +33,8 @@ export class AccreditationComponent implements OnInit {
         private elcomService: ElcomService,
         private studentService: StudentService,
         private accreditationService: AccreditationService,
-        private mailService: MailService
+        private mailService: MailService,
+        private smsService: SmsService,
     ) { }
 
     ngOnInit() {
@@ -52,8 +54,12 @@ export class AccreditationComponent implements OnInit {
 
         var todayDay = year + "-" + month + "-" + day;
 
-        var hour = dateObj.getHours();
-        var minute = dateObj.getMinutes();
+        var hour = dateObj.getHours().toString();
+        if(hour.length < 2) hour = '0' + hour;
+
+        var minute = dateObj.getMinutes().toString();
+        if(minute.length < 2) minute = '0' + minute;
+
         var todayTime = hour + ":" + minute;
 
         if(todayDay < this.accreditationTime.startingDay) {
@@ -190,11 +196,28 @@ export class AccreditationComponent implements OnInit {
                             this.mailService.sendMail(mailDetails).subscribe(
                                 response => {
                                     if(response.success) {
-                                        this.toasterService.pop('success', 'Success', 'Student has been accredited.');
-                                        $('#accreditationForm').trigger('reset');
-                                        $('#submitBtn').addClass('disabled');
+                                        this.toasterService.pop('success', 'Success', 'Email has been sent.');
+                                        const smsDetails = {
+                                            recipient: this.student.phone,
+                                            message: this.student.studentName+', you have been accredited to vote. Your Password is '+user.password+' to be used to login'
+                                        }
+                                        this.smsService.sendSMS(smsDetails).subscribe(
+                                            response => {
+                                                console.log(response);
+                                                if(response) {
+                                                    this.toasterService.pop('success', 'Success', 'Password has been sent to student\'s phone');
+                                                    $('#accreditationForm').trigger('reset');
+                                                    $('#submitBtn').addClass('disabled');
+                                                } else {
+                                                    this.toasterService.pop('error', 'Oops!', 'Could not send SMS');
+                                                }
+                                            },
+                                            error => {
+                                                this.toasterService.pop('error', 'Oops!', 'We just encountered a server error.');
+                                            }
+                                        );
                                     } else {
-                                        this.toasterService.pop('error', 'Oops!', 'Something went wrong');
+                                        this.toasterService.pop('error', 'Oops!', 'Could not send mail');
                                     }
                                 },
                                 error => {
@@ -228,8 +251,31 @@ export class AccreditationComponent implements OnInit {
         return result;
     }
 
-    canBeAccredited(matricno) {
-        //
+    testSMS() {
+        this.smsService.checkBalance().subscribe(
+            response => {
+                this.toasterService.pop('success', 'Success', 'SMS Balance: '+response);
+            },
+            error => {
+                this.toasterService.pop('error', 'Oops!', error);
+            }
+        );
+    }
+
+    testSendSMS() {
+        const smsDetails = {
+            recipient: '08060686834',
+            message: 'Sadiq, you have been accredited to vote. Your Password is testPassword to be used to login.'
+        }
+        this.smsService.sendSMS(smsDetails).subscribe(
+            response => {
+                console.log(JSON.parse(response));
+                this.toasterService.pop('success', 'Success', response);
+            },
+            error => {
+                this.toasterService.pop('error', 'Oops!', error);
+            }
+        );
     }
 
 }

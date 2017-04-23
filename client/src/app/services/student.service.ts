@@ -17,7 +17,7 @@ export class StudentService {
     getStudentRecord(matricno) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/proxy?url='+this.apiUrl+matricno, {headers: headers}).map(this.extractData).catch(this.handleError);
+        return this.http.get('http://localhost:8080/proxy?url='+this.apiUrl+matricno, {headers: headers}).map(this.extractData).catch(this.handleError);
     }
 
     private extractData(res: Response) {
