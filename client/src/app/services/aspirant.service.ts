@@ -14,19 +14,19 @@ export class AspirantService {
   getAspirants() {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      return this.http.get('http://localhost:8080/aspirants', {headers: headers}).map(res => res.json()).catch(err => err.toString());
+      return this.http.get('aspirants', {headers: headers}).map(res => res.json()).catch(err => err.toString());
   }
 
   addAspirant(aspirant) {
       let headers = new Headers();
       headers.append('Content-Type','application/json');
-      return this.http.post('http://localhost:8080/aspirants/aspirant', aspirant, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+      return this.http.post('aspirants/aspirant', aspirant, {headers: headers}).map(res => res.json()).catch(err => err.toString());
   }
 
   getAspirant(id) {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      return this.http.get('http://localhost:8080/aspirants/aspirant/'+id, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+      return this.http.get('aspirants/aspirant/'+id, {headers: headers}).map(res => res.json()).catch(err => err.toString());
   }
 
 }

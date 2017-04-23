@@ -36,13 +36,13 @@ var AuthService = (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:8080/users/register', user, { headers: headers })
+        return this.http.post('users/register', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:8080/users/authenticate', user, { headers: headers })
+        return this.http.post('users/authenticate', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getProfile = function () {
@@ -50,7 +50,7 @@ var AuthService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:8080/users/profile', { headers: headers })
+        return this.http.get('users/profile', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.storeUserData = function (token, user) {
@@ -157,12 +157,12 @@ var ElcomService = (function () {
     ElcomService.prototype.getElcomOfficers = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:8080/users/elcom', { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.get('users/elcom', { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     ElcomService.prototype.getElcomOfficer = function (matricno) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:8080/users/elcom/' + matricno, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.get('users/elcom/' + matricno, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     return ElcomService;
 }());
@@ -210,7 +210,7 @@ var StudentService = (function () {
     StudentService.prototype.getStudentRecord = function (matricno) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:8080/proxy?url=' + this.apiUrl + matricno, { headers: headers }).map(this.extractData).catch(this.handleError);
+        return this.http.get('proxy?url=' + this.apiUrl + matricno, { headers: headers }).map(this.extractData).catch(this.handleError);
     };
     StudentService.prototype.extractData = function (res) {
         var body = res.json();
@@ -344,17 +344,17 @@ var AspirantService = (function () {
     AspirantService.prototype.getAspirants = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:8080/aspirants', { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.get('aspirants', { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     AspirantService.prototype.addAspirant = function (aspirant) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:8080/aspirants/aspirant', aspirant, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.post('aspirants/aspirant', aspirant, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     AspirantService.prototype.getAspirant = function (id) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:8080/aspirants/aspirant/' + id, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.get('aspirants/aspirant/' + id, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     return AspirantService;
 }());
@@ -490,7 +490,7 @@ var AccreditationService = (function () {
         this.authService.loadToken();
         headers.append('Authorization', this.authService.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:8080/students/student', student, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.post('students/student', student, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     return AccreditationService;
 }());
@@ -534,7 +534,7 @@ var MailService = (function () {
     MailService.prototype.sendMail = function (mailDetails) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:8080/send', mailDetails, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.post('send', mailDetails, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     return MailService;
 }());
@@ -578,11 +578,11 @@ var SmsService = (function () {
     }
     SmsService.prototype.sendSMS = function (smsDetails) {
         var data = this.apiUrlCredentials + '&sender=SUG ELCOM&recipient=' + smsDetails.recipient + '&message=' + smsDetails.message;
-        return this.http.get('http://localhost:8080/sms?url=' + data).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.get('sms?url=' + data).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     SmsService.prototype.checkBalance = function () {
         var data = this.apiUrlCredentials + '&balance=true';
-        return this.http.get('http://localhost:8080/sms?url=' + data).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
+        return this.http.get('sms?url=' + data).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     return SmsService;
 }());

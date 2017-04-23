@@ -18,7 +18,7 @@ export class AccreditationService {
         this.authService.loadToken();
         headers.append('Authorization', this.authService.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:8080/students/student', student, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+        return this.http.post('students/student', student, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
 }

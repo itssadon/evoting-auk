@@ -14,7 +14,7 @@ export class MailService {
   sendMail(mailDetails) {
       let headers = new Headers();
       headers.append('Content-Type','application/json');
-      return this.http.post('http://localhost:8080/send', mailDetails, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+      return this.http.post('send', mailDetails, {headers: headers}).map(res => res.json()).catch(err => err.toString());
   }
 
 }
