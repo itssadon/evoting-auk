@@ -29,6 +29,11 @@ export class RegisterComponent implements OnInit {
     office: String;
     amount: Number;
 
+    middlename: String;
+    department: String;
+    course: String;
+    
+
     constructor(
         private validateService: ValidateService,
         private toasterService: ToasterService,
@@ -40,7 +45,9 @@ export class RegisterComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-
+        var script = document.createElement('script');
+        script.innerText = "$('select.dropdown').dropdown();";
+        $('body').append(script);
     }
 
     onRegisterSubmit() {
