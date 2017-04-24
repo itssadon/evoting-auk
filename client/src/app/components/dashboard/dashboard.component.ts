@@ -11,7 +11,7 @@ import * as $ from 'jquery';
 export class DashboardComponent implements OnInit {
 
     constructor(
-        private authService: AuthService,
+        public authService: AuthService,
     ) { }
 
     ngOnInit() {

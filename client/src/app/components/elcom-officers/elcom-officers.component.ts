@@ -21,7 +21,7 @@ export class ElcomOfficersComponent implements OnInit {
     constructor(
         private router: Router,
         private validateService: ValidateService,
-        private authService: AuthService,
+        public authService: AuthService,
         private toasterService: ToasterService,
         private elcomService: ElcomService
     ) { }

@@ -13,7 +13,7 @@ export class AspirantsComponent implements OnInit {
     aspirants: any;
 
   constructor(
-      private authService: AuthService,
+      public authService: AuthService,
       private aspirateService: AspirantService,
       private toasterService: ToasterService
   ) { }

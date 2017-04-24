@@ -28,7 +28,7 @@ export class AccreditationComponent implements OnInit {
 
     constructor(
         private toasterService: ToasterService,
-        private authService: AuthService,
+        public authService: AuthService,
         private router: Router,
         private elcomService: ElcomService,
         private studentService: StudentService,
