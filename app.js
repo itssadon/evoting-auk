@@ -58,7 +58,7 @@ app.use('/aspirants', aspirants);
 app.use('/students', students);
 // proxy request to external endpont
 app.use('/proxy', function(req, res) {
-    var url = req.url.replace('/?urls=', '');
+    var url = req.url.replace('/?url=', '');
     req.pipe(
         request({
             url: url
