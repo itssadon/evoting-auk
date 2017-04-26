@@ -23,4 +23,12 @@ export class AccreditationService {
         return this.http.post(this.apiService.getAPI()+'students/student', student, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
+    countAccreditedStudents() {
+        let headers = new Headers();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.authToken);
+        headers.append('Content-Type', 'application/json');
+        return this.http.get(this.apiService.getAPI()+'students/count', {headers: headers}).map(res => res.json()).catch(err => err.toString());
+    }
+
 }

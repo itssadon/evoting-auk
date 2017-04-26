@@ -98,7 +98,7 @@ export class ElcomOfficersComponent implements OnInit {
 
         const user = {
             name: this.name,
-            username: this.username,
+            username: this.username.toUpperCase(),
             password: this.password,
             user_role: 1
         }
@@ -115,6 +115,7 @@ export class ElcomOfficersComponent implements OnInit {
             data => {
                 if(data.success) {
                     this.toasterService.pop('success', 'Success!', 'ELCOM officer registered and can log in');
+                    $('#addElcomForm').trigger('reset');
                 } else {
                     this.toasterService.pop('error', 'Oops!', 'Something went wrong');
                 }

@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <form class="ui small form attached segment" autocomplete="off" (submit)="onAddOfficerSubmit()">
+            <form class="ui small form attached segment" autocomplete="off" (submit)="onAddOfficerSubmit()" id="addElcomForm">
                 <div class="field" id="matricno_div">
                     <div class="ui fluid action input">
                         <input type="text" placeholder="Matric Number" (keypress)="triggerSearch($event)" [(ngModel)]="username" name="username" id="username">

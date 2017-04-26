@@ -6,7 +6,7 @@ const config = require('../config/database');
 const User = require('../models/user');
 
 // Register
-router.post('/register', (req, res, next) => {
+router.post('/register', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     let newUser = new User({
         name: req.body.name,
         username: req.body.username,

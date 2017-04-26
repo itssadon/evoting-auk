@@ -16,6 +16,7 @@ mongoose.connection.on('connected', () => {
 });
 mongoose.connection.on('error', (err) => {
     console.log('Database error ' + err);
+    process.exit(1);
 });
 
 const app = express();
@@ -65,7 +66,7 @@ app.use('/proxy', function(req, res) {
         },
         function(error, response){
             if(error) {
-                console.error('ATBU Refused connection');
+                console.error('ATBU API Refused connection');
             } else {
                 console.log('Student record fetched');
             }
@@ -83,10 +84,10 @@ app.use('/send', function(req, res) {
     smtpTransport.sendMail(mailOptions, function(error, response){
         if(error) {
             console.log(error);
-            return res.json({success:false, msg:'Failed to send mail'})
+            return res.json({success:false, msg:'Failed to send mail'});
         } else {
-            console.log("Message sent: " + response.message);
-            return res.json({success:true, msg:'Message sent: ' + response.message});
+            console.log("Mail sent");
+            return res.json({success:true, msg:'Email message sent'});
         }
     });
 });
@@ -99,9 +100,9 @@ app.use('/sms', function(req, res) {
         },
         function(error, response){
             if(error){
-                console.error('Refused connection');
+                console.log(error);
             } else {
-                console.log('SMS API responded.');
+                console.log("SMS gateway reached");
             }
         })
     ).pipe(res);

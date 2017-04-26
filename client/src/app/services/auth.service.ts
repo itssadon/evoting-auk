@@ -17,6 +17,8 @@ export class AuthService {
 
     registerUser(user) {
         let headers = new Headers();
+        this.loadToken();
+        headers.append('Authorization', this.authToken);
         headers.append('Content-Type','application/json');
         return this.http.post(this.apiService.getAPI()+'users/register', user, {headers: headers})
             .map(res => res.json());

@@ -38,3 +38,7 @@ module.exports.addStudent = function (Student, callback) {
 module.exports.getStudents = function(callback) {
     Student.find(callback);
 };
+
+module.exports.countStudents = function(callback) {
+    Student.count(callback);
+}

@@ -21,8 +21,12 @@
                     <div class="ui massive message">
                         Total Accredited Students
                         <div class="ui divider"></div>
-                        <span id="accredited_students"></span>
+                        <h1 id="accredited_students"></h1>
                     </div>
+                    <button type="button" class="ui primary right labeled icon fluid button" id="balanceBtn" (click)="checkSMSBalance()">
+                        <i class="send icon"></i>
+                        Check SMS Balance
+                    </button>
                 </div>
                 <div class="ten wide column">
                     <div class="ui segment">
@@ -89,14 +93,6 @@
                             <button type="submit" class="ui right labeled icon green button disabled" id="submitBtn">
                                 <i class="checkmark icon"></i>
                                 Accredit Student
-                            </button>
-                            <button type="button" class="ui primary button" id="" (click)="testSMS()">
-                                <i class="checkmark icon"></i>
-                                Get Balance
-                            </button>
-                            <button type="button" class="ui red button" id="" (click)="testSendSMS()">
-                                <i class="checkmark icon"></i>
-                                Send test SMS
                             </button>
                         </form>
                         <div class="ui huge message error" *ngIf="!canAccredit()">
