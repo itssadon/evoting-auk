@@ -54,3 +54,8 @@ module.exports.getUsersByUserRole = function(user_role, callback) {
     const query = {user_role: user_role}
     User.find(query, callback);
 };
+
+module.exports.deleteUserByUsername = function(username, callback) {
+    const query = {username: username}
+    User.deleteOne(query, callback);
+}

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import * as $ from 'jquery';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class StudentService {
@@ -12,12 +13,13 @@ export class StudentService {
 
     constructor(
         private http: Http,
+        private apiService: ApiService,
     ) { }
 
     getStudentRecord(matricno) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('proxy?url='+this.apiUrl+matricno, {headers: headers}).map(this.extractData).catch(this.handleError);
+        return this.http.get(this.apiService.getAPI()+'proxy?url='+this.apiUrl+matricno, {headers: headers}).map(this.extractData).catch(this.handleError);
     }
 
     private extractData(res: Response) {

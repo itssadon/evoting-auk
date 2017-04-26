@@ -47,10 +47,14 @@ router.get('/aspirant/:id', (req, res, next) => {
     Aspirant.getAspirantById(id, (err, aspirant) => {
         if(err) res.send(err);
         if(!aspirant) {
-            return res.json({success:false, msg:'Aspirant not found'});
+            return res.json({
+                isAspirant: false,
+                msg: 'Aspirant not found'
+            });
         }
         return res.json({
-            success: true,
+            isAspirant: true,
+            msg: 'Student is an Aspirant',
             aspirant: aspirant
         });
     });

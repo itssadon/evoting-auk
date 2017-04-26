@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
     middlename: String;
     department: String;
     course: String;
-    
+
 
     constructor(
         private validateService: ValidateService,
@@ -238,7 +238,7 @@ export class RegisterComponent implements OnInit {
     }
 
     onPaySubmit() {
-        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Initializing payment process...</h3></div></div></div></div></div>';
         $('body').prepend(pageDimmer);
 
         // Required Fields

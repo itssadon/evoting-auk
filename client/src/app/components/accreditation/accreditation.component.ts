@@ -171,7 +171,7 @@ export class AccreditationComponent implements OnInit {
     }
 
     onAccreditSubmit() {
-        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Accrediting student.<br><be>Please wait...</h3></div></div></div></div></div>';
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Accrediting student...<br><be>Please wait...</h3></div></div></div></div></div>';
         $('body').prepend(pageDimmer);
 
         this.accreditationService.addStudent(this.student).subscribe(response => {

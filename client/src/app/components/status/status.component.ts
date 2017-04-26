@@ -79,7 +79,7 @@ export class StatusComponent implements OnInit {
                         office: response.data.metadata.custom_fields[1].value,
                         reference: response.data.reference
                     }
-                    var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+                    var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Fetching details...</h3></div></div></div></div></div>';
                     $('body').prepend(pageDimmer);
                     this.populateAspirantForm();
                 } else {
@@ -245,7 +245,7 @@ export class StatusComponent implements OnInit {
     }
 
     onAspirantSubmit() {
-        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Submiting form...</h3></div></div></div></div></div>';
         $('body').prepend(pageDimmer);
 
         // Required Fields

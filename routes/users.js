@@ -15,9 +15,15 @@ router.post('/register', (req, res, next) => {
     });
     User.addUser(newUser, (err, user) => {
         if(err){
-            res.json({success:false, msg:'Failed to register user'})
+            res.json({
+                success:false,
+                msg:'Failed to register user'
+            });
         } else {
-            res.json({success:true, msg:'User registered'});
+            res.json({
+                success:true,
+                msg:'User registered'
+            });
         }
     });
 });
@@ -60,7 +66,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
     res.send({user: req.user});
 });
 
-// Elcom officers
+// Get all Elcom officers
 router.get('/elcom', (req, res, next) => {
     const user_role = 1;
     User.getUsersByUserRole(user_role, (err, users) => {
@@ -75,15 +81,39 @@ router.get('/elcom', (req, res, next) => {
     });
 });
 
-// Elcom officer
+// Get one Elcom officer
 router.get('/elcom/:matricno', (req, res, next) => {
     var matricno = req.params.matricno.replace(/\./g, '/');
     User.getUserByUsername(matricno, (err, elcom) => {
         if(err) res.send(err);
         if(!elcom) {
-            return res.json({isElcom:false, msg:'Student is not an ELCOM Officer'});
+            return res.json({
+                isElcom: false,
+                msg: 'Student is not an ELCOM Officer'
+            });
         }
-        return res.json({isElcom: true, msg: 'Student is an ELCOM Officer'});
+        return res.json({
+            isElcom: true,
+            msg: 'Student is an ELCOM Officer'
+        });
+    });
+});
+
+// Delete an ELCOM Officer
+router.delete('/elcom/:matricno', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    var matricno = req.params.matricno.replace(/\./g, '/');
+    User.deleteUserByUsername(matricno, (err, elcom) => {
+        if(err) {
+            res.json({
+                success: false,
+                msg: 'ELCOM Officer not deleted'
+            });
+        } else {
+            res.json({
+                success: true,
+                msg: 'ELCOM Officer deleted'
+            });
+        }
     });
 });
 

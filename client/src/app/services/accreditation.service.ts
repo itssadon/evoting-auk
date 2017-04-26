@@ -4,13 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { AuthService } from './auth.service';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class AccreditationService {
 
     constructor(
         private http: Http,
-        private authService: AuthService
+        private authService: AuthService,
+        private apiService: ApiService,
     ) { }
 
     addStudent(student) {
@@ -18,7 +20,7 @@ export class AccreditationService {
         this.authService.loadToken();
         headers.append('Authorization', this.authService.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.post('students/student', student, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+        return this.http.post(this.apiService.getAPI()+'students/student', student, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
 }

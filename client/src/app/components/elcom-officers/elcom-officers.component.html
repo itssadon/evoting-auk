@@ -38,7 +38,7 @@
             <table class="ui compact celled definition table">
                 <thead>
                     <tr>
-                        <th>SNo.</th><th>Username</th><th>Full Name</th>
+                        <th>SNo.</th><th>Username</th><th>Full Name</th><th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +46,11 @@
                         <td>{{i + 1}}</td>
                         <td>{{user.username}}</td>
                         <td>{{user.name}}</td>
+                        <td>
+                            <button type="button" class="ui red icon fluid tiny button" (click)="deleteElcom(user.username)">
+                                <i class="trash icon"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -56,32 +61,26 @@
             <div class="ui one top attached steps">
                 <div class="active step">
                     <i class="user icon"></i>
+                    <div class="content">
+                        <div class="title">Add ELCOM</div>
+                        <div class="description">Add an Elcom Officer</div>
+                    </div>
                 </div>
             </div>
             <form class="ui small form attached segment" autocomplete="off" (submit)="onAddOfficerSubmit()">
-                <div class="field">
-                    <div class="ui corner labeled input">
-                        <input type="text" placeholder="Matric number" [(ngModel)]="username" name="username">
-                        <div class="ui corner label">
-                            <i class="asterisk icon red"></i>
-                        </div>
+                <div class="field" id="matricno_div">
+                    <div class="ui fluid action input">
+                        <input type="text" placeholder="Matric Number" (keypress)="triggerSearch($event)" [(ngModel)]="username" name="username" id="username">
+                        <button type="button" class="ui primary right icon button" (click)="searchMatric()" id="searchBtn">
+                            <i class="search icon"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="field">
-                    <div class="ui corner labeled input">
-                        <input type="text" placeholder="Full Name" [(ngModel)]="name" name="name">
-                        <div class="ui corner label">
-                            <i class="asterisk icon red"></i>
-                        </div>
-                    </div>
+                    <input type="text" placeholder="Full Name" [(ngModel)]="name" name="name" id="name" readonly="">
                 </div>
                 <div class="field">
-                    <div class="ui corner labeled input">
-                        <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
-                        <div class="ui corner label">
-                            <i class="asterisk icon red"></i>
-                        </div>
-                    </div>
+                    <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
                 </div>
                 <div class="ui divider"></div>
                 <button class="ui submit primary button fluid" type="submit"><i class="add icon"></i>Add officer</button>

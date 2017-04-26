@@ -28,6 +28,7 @@ import { AccreditationComponent } from './components/accreditation/accreditation
 import { AccreditationService } from './services/accreditation.service';
 import { MailService } from './services/mail.service';
 import { SmsService } from './services/sms.service';
+import { ApiService } from './services/api.service';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
         AccreditationService,
         MailService,
         SmsService,
+        ApiService,
     ],
     bootstrap: [AppComponent]
 })
