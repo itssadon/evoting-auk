@@ -188,19 +188,19 @@ export class RegisterComponent implements OnInit {
                 } else {
                     this.studentService.getStudentRecord(matricno).subscribe(
                         response => {
-                            if(response.content === 'Record not Found!') {
-                                this.toasterService.pop('error', 'Oops!', response.content);
+                            if(!response.success) {
+                                this.toasterService.pop('error', 'Oops!', response.msg);
                                 $('#searchBtn').removeClass("loading disabled");
                             } else {
-                                var matricno = response.content.regNumber;
-                                var studentName = response.content.studentName.split(" ");
+                                var matricno = response.student_info.regNumber;
+                                var studentName = response.student_info.studentName.split(" ");
                                 var lastname = studentName[0];
                                 var firstname = studentName[1];
                                 if(studentName[2]) var middlename = studentName[2];
-                                var email = response.content.email;
-                                var phone = response.content.phoneNumber;
-                                var department = response.content.deptName;
-                                var course = response.content.optionName;
+                                var email = response.student_info.email;
+                                var phone = response.student_info.phoneNumber;
+                                var department = response.student_info.deptName;
+                                var course = response.student_info.optionName;
                                 var office = this.office;
                                 var amount = this.amount;
                                 $('#firstname').val(firstname);
@@ -238,7 +238,7 @@ export class RegisterComponent implements OnInit {
     }
 
     onPaySubmit() {
-        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Initializing payment process...</h3></div></div></div></div></div>';
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="student_info"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Initializing payment process...</h3></div></div></div></div></div>';
         $('body').prepend(pageDimmer);
 
         // Required Fields

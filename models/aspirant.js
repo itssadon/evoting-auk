@@ -83,3 +83,8 @@ module.exports.getAspirants = function(callback) {
 module.exports.getAspirantById = function(id, callback){
     Aspirant.findById(id, callback);
 };
+
+module.exports.getAspirantsByOffice = function(office, callback) {
+    const query = {office: office}
+    Aspirant.find(query, callback);
+};

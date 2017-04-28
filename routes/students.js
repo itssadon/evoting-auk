@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const https = require('https');
 const config = require('../config/database');
 const Student = require('../models/student');
 
@@ -53,6 +54,36 @@ router.get('/count', passport.authenticate('jwt', {session:false}), (req, res, n
             number_of_students: students
         });
     });
+});
+
+router.get('/student/:matricno', (req, res, next) => {
+    var apiUrl = 'https://atbu.edu.ng/api/vote/voterdetails/';
+    var matricno = req.params.matricno;
+    console.log('Request to ATBU Endpoint: '+ apiUrl+matricno);
+    https.get(
+        apiUrl+matricno,
+        function(response) {
+            // Continuously update stream with data
+            var body = '';
+            response.on('data', function(d) {
+                body += d;
+            });
+            response.on('end', function() {
+                body = body.replace(")]}',", '');
+                body = JSON.parse(body);
+                if(body.content == 'Record not Found!') {
+                    return res.json({
+                        success: false,
+                        msg: 'Record not Found!'
+                    });
+                }
+                return res.json({
+                    success: true,
+                    student_info: body.content
+                });
+            });
+        }
+    );
 });
 
 module.exports = router;

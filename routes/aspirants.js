@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Aspirant = require('../models/aspirant');
 
@@ -56,6 +58,24 @@ router.get('/aspirant/:id', (req, res, next) => {
             isAspirant: true,
             msg: 'Student is an Aspirant',
             aspirant: aspirant
+        });
+    });
+});
+
+// Get all aspirants by position
+router.get('/office/:office', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    const office = req.params.office;
+    Aspirant.getAspirantsByOffice(office, (err, aspirants) => {
+        if(err) res.send(err);
+        if(!aspirants) {
+            return res.json({
+                success: false,
+                msg: 'No aspirants registered for the office of ' + office
+            });
+        }
+        return res.json({
+            success: true,
+            aspirants: aspirants
         });
     });
 });

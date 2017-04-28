@@ -29,6 +29,8 @@ import { AccreditationService } from './services/accreditation.service';
 import { MailService } from './services/mail.service';
 import { SmsService } from './services/sms.service';
 import { ApiService } from './services/api.service';
+import { VoteComponent } from './components/vote/vote.component';
+import { ResultsComponent } from './components/results/results.component';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
     {path:'login', component: LoginComponent},
     {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-    {path:'accreditation', component: AccreditationComponent, canActivate:[AuthGuard]}
+    {path:'accreditation', component: AccreditationComponent, canActivate:[AuthGuard]},
+    {path:'vote', component: VoteComponent, canActivate:[AuthGuard]},
+    {path:'results', component: ResultsComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -57,6 +61,8 @@ const appRoutes: Routes = [
         AspirantsComponent,
         StatusComponent,
         AccreditationComponent,
+        VoteComponent,
+        ResultsComponent,
     ],
     imports: [
         BrowserModule,

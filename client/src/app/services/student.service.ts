@@ -9,7 +9,7 @@ import { ApiService } from './api.service';
 @Injectable()
 export class StudentService {
     student: Object;
-    apiUrl = 'https://atbu.edu.ng/api/vote/voterdetails/';
+    apiUrl = 'http://atbu.edu.ng/api/vote/voterdetails/';
 
     constructor(
         private http: Http,
@@ -19,7 +19,7 @@ export class StudentService {
     getStudentRecord(matricno) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get(this.apiService.getAPI()+'proxy?url='+this.apiUrl+matricno, {headers: headers}).map(this.extractData).catch(this.handleError);
+        return this.http.get(this.apiService.getAPI()+'students/student/'+matricno, {headers: headers}).map(this.extractData).catch(this.handleError);
     }
 
     private extractData(res: Response) {
