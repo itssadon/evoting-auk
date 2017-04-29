@@ -26,7 +26,6 @@ router.get('/mail', (req, res, next) => {
             console.log(error);
             return res.json({success:false, msg:'Failed to send mail'});
         } else {
-            console.log("Mail sent");
             return res.json({success:true, msg:'Email message sent'});
         }
     });
@@ -37,7 +36,6 @@ router.post('/sms', (req, res, next) => {
     var sender = 'ATBU ELCOM';
     var recipient = req.body.recipient;
     var message = req.body.message;
-    console.log('Sending sms to '+recipient);
     https.get(
         apiUrl+'&sender='+sender+'&recipient='+recipient+'&message='+message,
         function(response) {
@@ -120,8 +118,6 @@ router.post('/sms', (req, res, next) => {
                         msg: 'Sender ID not allowed by the operator.'
                     });
                 }
-
-                console.log('SMS sent');
                 return res.json({
                     success: true,
                     msg: body
@@ -133,7 +129,6 @@ router.post('/sms', (req, res, next) => {
 
 router.get('/sms', (req, res, next) => {
     var apiUrl = 'https://api.smartsmssolutions.com/smsapi.php?username=sadon12&password=LIacAnuclommIc2';
-    console.log('Getting sms balance....');
     https.get(
         apiUrl+'&balance=true&recipient=null',
         function(response) {
@@ -150,7 +145,6 @@ router.get('/sms', (req, res, next) => {
                 body += d;
             });
             response.on('end', function() {
-                console.log('Balance is: '+body);
                 return res.json({
                     success: true,
                     sms_balance: body

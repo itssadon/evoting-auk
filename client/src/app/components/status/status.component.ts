@@ -71,6 +71,7 @@ export class StatusComponent implements OnInit {
         this.paystackService.verifyTransaction(this.reference).subscribe(
             response => {
                 if(response.status) {
+                    $('#message_wrapper').html('<div class="ui icon success message"><i class="checkmark icon"></i><div class="content"><div class="header">All done</div><p>We\'ve verified your transaction.</p></div></div>');
                     this.paymentStatus = true;
                     this.aspirant = {
                         matricno: response.data.customer.metadata.matric_number,
@@ -79,7 +80,7 @@ export class StatusComponent implements OnInit {
                         office: response.data.metadata.custom_fields[1].value,
                         reference: response.data.reference
                     }
-                    var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Fetching details...</h3></div></div></div></div></div>';
+                    var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Preparing Form.<br><br>Please wait...</h3></div></div></div></div></div>';
                     $('body').prepend(pageDimmer);
                     this.populateAspirantForm();
                 } else {
@@ -105,19 +106,19 @@ export class StatusComponent implements OnInit {
         var matricno = this.aspirant.matricno.replace(/\//g, ".");
         this.studentService.getStudentRecord(matricno).subscribe(
             response => {
-                if(response.content === 'Record not Found!') {
-                    this.toasterService.pop('error', 'Oops!', response.content);
+                if(response.student_info === 'Record not Found!') {
+                    this.toasterService.pop('error', 'Oops!', response.student_info);
                 } else {
-                    var matricno = this.aspirant_model.matricno = response.content.regNumber;
-                    var studentName = response.content.studentName.split(" ");
+                    var matricno = this.aspirant_model.matricno = response.student_info.regNumber;
+                    var studentName = response.student_info.studentName.split(" ");
                     var lastname = this.aspirant_model.lastname = studentName[0];
                     var firstname = this.aspirant_model.firstname = studentName[1];
                     if(studentName[2]) var middlename = this.aspirant_model.middlename = studentName[2];
-                    var email = response.content.email;
-                    var phone = response.content.phoneNumber;
-                    var department = response.content.deptName;
-                    var course = response.content.optionName;
-                    var level = response.content.levelId+"00 Level";
+                    var email = response.student_info.email;
+                    var phone = response.student_info.phoneNumber;
+                    var department = response.student_info.deptName;
+                    var course = response.student_info.optionName;
+                    var level = response.student_info.levelId+"00 Level";
                     var office = this.aspirant_model.office = this.aspirant.office;
                     var amount = this.aspirant.amount;
                     $('#othernames').val(firstname + " " + middlename);

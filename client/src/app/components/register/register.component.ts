@@ -238,7 +238,7 @@ export class RegisterComponent implements OnInit {
     }
 
     onPaySubmit() {
-        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="student_info"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Initializing payment process...</h3></div></div></div></div></div>';
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="student_info"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Initializing Payment Gateway.<br><br>Please wait...</h3></div></div></div></div></div>';
         $('body').prepend(pageDimmer);
 
         // Required Fields

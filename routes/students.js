@@ -59,7 +59,6 @@ router.get('/count', passport.authenticate('jwt', {session:false}), (req, res, n
 router.get('/student/:matricno', (req, res, next) => {
     var apiUrl = 'https://atbu.edu.ng/api/vote/voterdetails/';
     var matricno = req.params.matricno;
-    console.log('Request to ATBU Endpoint: '+ apiUrl+matricno);
     https.get(
         apiUrl+matricno,
         function(response) {
