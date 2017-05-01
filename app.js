@@ -55,16 +55,14 @@ if (cluster.isWorker) {
     require('./config/passport')(passport);
 
     // Endpoints/Routes
-    app.use('/users', users);
-    app.use('/aspirants', aspirants);
-    app.use('/students', students);
-    app.use('/messaging', messaging);
-
     // Index Route
     app.get('/', (req, res) => {
         res.send('Invalid Endpoint');
     });
-
+    app.use('/users', users);
+    app.use('/aspirants', aspirants);
+    app.use('/students', students);
+    app.use('/messaging', messaging);
     // Fetch aspirant picture from the pucblic folder
     app.use('/assets/images/aspirants/:picture', (req, res) => {
         res.sendFile(path.join(__dirname, 'public/assets/images/aspirants/:picture'));
