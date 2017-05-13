@@ -88,3 +88,8 @@ module.exports.getAspirantsByOffice = function(office, callback) {
     const query = {office: office}
     Aspirant.find(query, callback);
 };
+
+module.exports.updateAspirantVote = function(matricno, callback) {
+    const query = {matricno: matricno}
+    Aspirant.update(query, {$inc: {"votes":1}}, callback);
+}

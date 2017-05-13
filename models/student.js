@@ -26,13 +26,17 @@ const StudentSchema = mongoose.Schema({
     course: {
         type: String,
         required: true
+    },
+    vote_status: {
+        type: Number,
+        required: false
     }
 });
 
 const Student = module.exports = mongoose.model('Student', StudentSchema);
 
-module.exports.addStudent = function (Student, callback) {
-    Student.save(callback);
+module.exports.addStudent = function (student, callback) {
+    student.save(callback);
 };
 
 module.exports.getStudents = function(callback) {
@@ -41,4 +45,14 @@ module.exports.getStudents = function(callback) {
 
 module.exports.countStudents = function(callback) {
     Student.count(callback);
+};
+
+module.exports.getVoteStatus = function(matricno, callback) {
+    const query = {matricno: matricno}
+    Student.find(query, callback);
+};
+
+module.exports.setVoteStatus = function(matricno, callback) {
+    const query = {matricno: matricno}
+    Student.update(query, {$set: {"vote_status": 1}}, callback);
 }

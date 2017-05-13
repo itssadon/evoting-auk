@@ -34,6 +34,7 @@ if (cluster.isWorker) {
     const aspirants = require('./routes/aspirants');
     const students = require('./routes/students');
     const messaging = require('./routes/messaging');
+    const vote = require('./routes/votes');
 
     // Port Number
     const port = process.env.PORT || 8080;
@@ -55,20 +56,19 @@ if (cluster.isWorker) {
     require('./config/passport')(passport);
 
     // Endpoints/Routes
-    app.use('/users', users);
-    app.use('/aspirants', aspirants);
-    app.use('/students', students);
-    app.use('/messaging', messaging);
-
     // Index Route
     app.get('/', (req, res) => {
         res.send('Invalid Endpoint');
     });
-
+    app.use('/users', users);
+    app.use('/aspirants', aspirants);
+    app.use('/students', students);
+    app.use('/messaging', messaging);
     // Fetch aspirant picture from the pucblic folder
     app.use('/assets/images/aspirants/:picture', (req, res) => {
         res.sendFile(path.join(__dirname, 'public/assets/images/aspirants/:picture'));
     });
+    app.use('/vote', vote);
 
     // Redirect all other invalid request
     app.get('*', (req, res) => {

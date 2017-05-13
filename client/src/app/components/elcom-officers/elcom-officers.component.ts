@@ -66,12 +66,12 @@ export class ElcomOfficersComponent implements OnInit {
                 } else {
                     this.studentService.getStudentRecord(username).subscribe(
                         response => {
-                            if(response.content === 'Record not Found!') {
-                                this.toasterService.pop('error', 'Oops!', response.content);
+                            if(!response.success) {
+                                this.toasterService.pop('error', 'Oops!', response.msg);
                                 $('#name').val('');
                                 $('#searchBtn').removeClass("loading disabled");
                             } else {
-                                var studentName = this.name = response.content.studentName;
+                                var studentName = this.name = response.student_info.studentName;
                                 $('#name').val(studentName);
                                 $('#searchBtn').removeClass("loading disabled");
                             }

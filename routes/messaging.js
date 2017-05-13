@@ -14,7 +14,7 @@ var smtpTransport = nodemailer.createTransport({
     }
 });
 
-router.get('/mail', (req, res, next) => {
+router.post('/mail', (req, res, next) => {
     var mailOptions = {
         from: 'SUG ATBU ELCOM <elcom@sugatbu.com>',
         to: req.body.to,

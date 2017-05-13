@@ -31,6 +31,7 @@ import { SmsService } from './services/sms.service';
 import { ApiService } from './services/api.service';
 import { VoteComponent } from './components/vote/vote.component';
 import { ResultsComponent } from './components/results/results.component';
+import { VoteService } from './services/vote.service';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -84,6 +85,7 @@ const appRoutes: Routes = [
         MailService,
         SmsService,
         ApiService,
+        VoteService
     ],
     bootstrap: [AppComponent]
 })
