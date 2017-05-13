@@ -7,7 +7,7 @@ import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class ElcomService {
+export class VoteService {
 
     constructor(
         private http: Http,
@@ -15,23 +15,20 @@ export class ElcomService {
         private authService: AuthService
     ) { }
 
-    getElcomOfficers() {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.get(this.apiService.getAPI()+'users/elcom', {headers: headers}).map(res => res.json()).catch(err => err.toString());
-    }
-
-    getElcomOfficer(matricno) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.get(this.apiService.getAPI()+'users/elcom/'+matricno, {headers: headers}).map(res => res.json()).catch(err => err.toString());
-    }
-
-    deleteElcomOfficer(matricno) {
+    getVoteStatus(matricno) {
         let headers = new Headers();
         this.authService.loadToken();
         headers.append('Authorization', this.authService.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.delete(this.apiService.getAPI()+'users/elcom/'+matricno, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+        return this.http.get(this.apiService.getAPI()+'vote/status/'+matricno , {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
+
+    saveVote(voteSlip) {
+        let headers = new Headers();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.authToken);
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.apiService.getAPI()+'vote', voteSlip, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+    }
+
 }

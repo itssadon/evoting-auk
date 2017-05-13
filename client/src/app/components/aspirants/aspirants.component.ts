@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { AspirantService } from '../../services/aspirant.service';
 import { AuthService } from '../../services/auth.service';
+import { ApiService } from '../../services/api.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -15,7 +16,8 @@ export class AspirantsComponent implements OnInit {
   constructor(
       public authService: AuthService,
       private aspirateService: AspirantService,
-      private toasterService: ToasterService
+      private toasterService: ToasterService,
+      private apiService: ApiService
   ) { }
 
   ngOnInit() {

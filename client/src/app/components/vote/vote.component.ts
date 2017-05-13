@@ -4,6 +4,9 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { AuthService } from '../../services/auth.service';
 import { MailService } from '../../services/mail.service';
 import { AspirantService } from '../../services/aspirant.service';
+import { ApiService } from '../../services/api.service';
+import { VoteService } from '../../services/vote.service';
+import { StudentService } from '../../services/student.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -13,8 +16,28 @@ import * as $ from 'jquery';
 })
 export class VoteComponent implements OnInit {
     isVotingTime: Boolean;
+    voteStatus: Boolean;
     message: any;
-    student: any;
+
+    voteSlip = {
+        matricno: String,
+        president: String,
+        vice_president: String,
+        sec_gen: String,
+        asst_sec_gen: String,
+        fin_sec: String,
+        auditor: String,
+        treasurer: String,
+        welfare_I: String,
+        welfare_II: String,
+        dir_of_socials: String,
+        pro_I: String,
+        pro_II: String,
+        provost: String,
+        sales_dir: String,
+        sports_dir: String,
+        dir_of_food: String,
+    }
 
     presidents: any;
     vice_presidents: any;
@@ -34,9 +57,9 @@ export class VoteComponent implements OnInit {
     dir_of_foods: any;
 
     public votingTime = {
-        votingDay: '2017-05-01',
-        startingTime: '08:00',
-        closingTime: '23:00'
+        votingDay: '2017-05-13',
+        startingTime: '00:01',
+        closingTime: '23:59'
     }
 
     constructor(
@@ -44,12 +67,16 @@ export class VoteComponent implements OnInit {
         public authService: AuthService,
         private router: Router,
         private mailService: MailService,
-        private aspirantService: AspirantService
+        private aspirantService: AspirantService,
+        private apiService: ApiService,
+        private voteService: VoteService,
+        private studentService: StudentService
     ) { }
 
     ngOnInit() {
         var userObj = JSON.parse(localStorage.user);
         var user_name = userObj.name;
+        this.voteSlip.matricno = userObj.username;
         $('#user_name').text(user_name);
 
         var dateObj = new Date();
@@ -90,7 +117,7 @@ export class VoteComponent implements OnInit {
                     } else {
                         this.isVotingTime = true;
                         this.message = 'Voting is open';
-                        this.showSlip();
+                        this.getVoteStatus();
                     }
                 }
             }
@@ -99,6 +126,33 @@ export class VoteComponent implements OnInit {
 
     canVote() {
         return this.isVotingTime;
+    }
+
+    hasVoted() {
+        if(!this.voteStatus) {
+            this.showSlip();
+        } else {
+            $("#votingForm").html('<div class="ui message red"><p>You have already voted for the aspirants you wish.<br><br>Thank you for exercising your rights.</p></div>');
+            $("#votingForm").append('<a href="/receipt" class="ui button large green">View/Download your vote slip</a> <a href="/results" class="ui button large blue">View Election results</a>');
+        }
+    }
+
+    getVoteStatus() {
+        var userObj = JSON.parse(localStorage.user);
+        var matricno = userObj.username.replace(/\//g, ".");
+        this.voteService.getVoteStatus(matricno).subscribe(
+            response => {
+                if(response.hasVoted) {
+                    this.voteStatus = true;
+                } else {
+                    this.voteStatus = false;
+                }
+                this.hasVoted();
+            },
+            error => {
+                this.toasterService.pop('error', 'Oops!', 'We just experienced a server error. Please refresh your browser');
+            }
+        );
     }
 
     getAspirantsByOffice(office) {
@@ -113,7 +167,7 @@ export class VoteComponent implements OnInit {
                     } else if(office === 'sec_gen') {
                         this.sec_gens = aspirants;
                     } else if(office === 'asst_sec_gen') {
-                         this.asst_sec_gens = aspirants;
+                        this.asst_sec_gens = aspirants;
                     } else if(office === 'fin_sec') {
                         this.fin_secs = aspirants;
                     } else if(office === 'auditor') {
@@ -142,7 +196,6 @@ export class VoteComponent implements OnInit {
                         this.toasterService.pop('error', 'Oops!', 'Office not available');
                     }
                 } else {
-                    console.log(response);
                     if(office === 'president') {
                         this.presidents = false;
                     } else if(office === 'vice_president') {
@@ -150,7 +203,7 @@ export class VoteComponent implements OnInit {
                     } else if(office === 'sec_gen') {
                         this.sec_gens = aspirants;
                     } else if(office === 'asst_sec_gen') {
-                         this.asst_sec_gens = aspirants;
+                        this.asst_sec_gens = aspirants;
                     } else if(office === 'fin_sec') {
                         this.fin_secs = aspirants;
                     } else if(office === 'auditor') {
@@ -171,7 +224,6 @@ export class VoteComponent implements OnInit {
                         this.provosts = aspirants;
                     } else if(office === 'sales_dir') {
                         this.sales_dirs = aspirants;
-                        console.log(aspirants);
                     } else if(office === 'sports_dir') {
                         this.sports_dirs = aspirants;
                     } else if(office === 'dir_of_food') {
@@ -183,10 +235,6 @@ export class VoteComponent implements OnInit {
                 this.toasterService.pop('error', 'Oops!', 'We just encountered a server error fetching aspirants.');
             }
         );
-    }
-
-    getCandidateInfo(matricno) {
-        // TODO: Get candidate information
     }
 
     showSlip() {
@@ -209,7 +257,49 @@ export class VoteComponent implements OnInit {
     }
 
     onVoteSubmit() {
-        // TODO: Get vote selections and submit vote
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class=""><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Sumbitting your vote slip.<br><br>Please wait...</h3></div></div></div></div></div>';
+        $('body').prepend(pageDimmer);
+
+        this.voteSlip = {
+            matricno: this.voteSlip.matricno,
+            president: this.voteSlip.president,
+            vice_president: this.voteSlip.vice_president,
+            sec_gen: this.voteSlip.sec_gen,
+            asst_sec_gen: this.voteSlip.asst_sec_gen,
+            fin_sec: this.voteSlip.fin_sec,
+            auditor: this.voteSlip.auditor,
+            treasurer: this.voteSlip.treasurer,
+            welfare_I: this.voteSlip.welfare_I,
+            welfare_II: this.voteSlip.welfare_II,
+            dir_of_socials: this.voteSlip.dir_of_socials,
+            pro_I: this.voteSlip.pro_I,
+            pro_II: this.voteSlip.pro_II,
+            provost: this.voteSlip.provost,
+            sales_dir: this.voteSlip.sales_dir,
+            sports_dir: this.voteSlip.sports_dir,
+            dir_of_food: this.voteSlip.dir_of_food,
+        }
+
+        this.voteService.saveVote(this.voteSlip).subscribe(
+            response => {
+                if(response.success) {
+                    this.toasterService.pop('success', 'Congratulations!', response.msg);
+                    this.getVoteStatus();
+                    $('#pageDimmer').remove();
+                } else {
+                    this.toasterService.pop('error', 'Oops!', response.msg);
+                    $('#pageDimmer').remove();
+                }
+            },
+            error => {
+                this.toasterService.pop('error', 'Oops!', 'We just experienced a server error. Please refresh your browser');
+                $('#pageDimmer').remove();
+            }
+        );
+    }
+
+    updateVoteStatus() {
+
     }
 
     voterSlip() {

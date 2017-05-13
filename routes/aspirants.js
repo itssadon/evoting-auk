@@ -32,7 +32,7 @@ router.post('/aspirant', (req, res, next) => {
         office: req.body.office,
         reason: req.body.reason,
         picture: req.body.picture,
-        vote: 0
+        votes: '0'
     });
     Aspirant.addAspirant(newAspirant, (err, user) => {
         if(err){
