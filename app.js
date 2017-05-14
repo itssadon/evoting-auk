@@ -14,7 +14,6 @@ if (cluster.isWorker) {
     const cors = require('cors');
     const passport = require('passport');
     const mongoose = require('mongoose');
-    const request = require('request');
 
     const config = require('./config/database');
 
