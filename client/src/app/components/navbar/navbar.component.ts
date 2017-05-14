@@ -17,6 +17,11 @@ export class NavbarComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        if(this.authService.loggedIn()) {
+            var userObj = JSON.parse(localStorage.user);
+            var user_name = userObj.name;
+            $('#user_name').text(user_name);
+        }
     }
 
     onLogoutClick() {

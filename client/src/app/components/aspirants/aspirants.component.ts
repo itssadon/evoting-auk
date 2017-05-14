@@ -6,34 +6,34 @@ import { ApiService } from '../../services/api.service';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-aspirants',
-  templateUrl: './aspirants.component.html',
-  styleUrls: ['./aspirants.component.css']
+    selector: 'app-aspirants',
+    templateUrl: './aspirants.component.html',
+    styleUrls: ['./aspirants.component.css']
 })
 export class AspirantsComponent implements OnInit {
     aspirants: any;
 
-  constructor(
-      public authService: AuthService,
-      private aspirateService: AspirantService,
-      private toasterService: ToasterService,
-      private apiService: ApiService
-  ) { }
+    constructor(
+        public authService: AuthService,
+        private aspirateService: AspirantService,
+        private toasterService: ToasterService,
+        private apiService: ApiService
+    ) { }
 
-  ngOnInit() {
-      if(this.authService.loggedIn()) {
-          var userObj = JSON.parse(localStorage.user);
-          var user_name = userObj.name;
-          $('#user_name').text(user_name);
-      }
+    ngOnInit() {
+        if(this.authService.loggedIn()) {
+            var userObj = JSON.parse(localStorage.user);
+            var user_name = userObj.name;
+            $('#user_name').text(user_name);
+        }
 
-      this.aspirateService.getAspirants().subscribe(data => {
-          this.aspirants = data.aspirants;
-      },
-      err => {
-          this.toasterService.pop('error', 'Oops!', err);
-          return false;
-      });
-  }
+        this.aspirateService.getAspirants().subscribe(data => {
+            this.aspirants = data.aspirants;
+        },
+        err => {
+            this.toasterService.pop('error', 'Oops!', err);
+            return false;
+        });
+    }
 
 }

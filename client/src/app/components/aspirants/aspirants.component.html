@@ -38,26 +38,17 @@
             <table class="ui compact celled definition table segment">
                 <thead>
                     <tr>
-                        <th>SNo.</th><th>Full Names</th><th>Nickname</th><th>CGPA</th><th>Office</th><th>Reason for contesting</th>
+                        <th></th><th>Full Names</th><th>Nickname</th><th>CGPA</th><th>Office</th><th>Reason for contesting</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let aspirant of aspirants; let i = index">
-                        <td>{{i + 1}}</td>
+                        <td><img class="ui image" style="max-height:100px;" src="{{this.apiService.getAPI()+aspirant.picture}}" /></td>
                         <td>{{aspirant.firstname}} {{aspirant.middlename}} {{aspirant.lastname}}</td>
                         <td>{{aspirant.nickname}}</td>
-                        <td>
-                            {{aspirant.cgpa}}
-                        </td>
-                        <td>
-                            <span style="text-transform: capitalize;">{{aspirant.office}}</span>
-                        </td>
-                        <td>
-                            {{aspirant.reason}}
-                        </td>
-                        <td>
-                            <img class="ui fluid image" src="{{this.apiService.getAPI()+aspirant.picture}}" />
-                        </td>
+                        <td>{{aspirant.cgpa}}</td>
+                        <td><span style="text-transform: capitalize;">{{aspirant.office}}</span></td>
+                        <td>{{aspirant.reason}}</td>
                     </tr>
                 </tbody>
             </table>
