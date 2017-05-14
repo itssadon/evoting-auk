@@ -279,7 +279,7 @@ export class RegisterComponent implements OnInit {
                             {display_name: "Office Aspiring For", variable_name: "office", value: this.aspirant.office}
                         ]
                     },
-                    subaccount: "ACCT_h0ei6f30smsz0mg",
+                    subaccount: "ACCT_h0ei6f30smsz0mg", //ACCT_x1orvccv8a8mj39
                     bearer: "subaccount"
                 };
                 this.paystackService.initializeTransaction(dataString).subscribe(response => {
