@@ -1,34 +1,34 @@
 {
-  "name": "evoting-atbu",
-  "version": "1.0.0",
-  "description": "ATBU E-voting application",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
-  },
-  "dependencies": {
-    "bcryptjs": "*",
-    "body-parser": "*",
-    "cors": "*",
-    "express": "*",
-    "jsonwebtoken": "*",
-    "mongoose": "*",
-    "nodemailer": "^4.0.1",
-    "passport": "*",
-    "passport-jwt": "*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/dtrexx/evoting-atbu.git"
-  },
-  "author": "Sadiq Hassan",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/dtrexx/evoting-atbu/issues"
-  },
-  "homepage": "https://gitlab.com/dtrexx/evoting-atbu#README",
-  "devDependencies": {
-    "@angular/cli": "^1.0.0"
-  }
+    "name": "evoting-atbu",
+    "version": "1.0.0",
+    "description": "ATBU E-voting application",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.17.1",
+        "cors": "^2.8.3",
+        "express": "^4.15.2",
+        "jsonwebtoken": "^7.4.0",
+        "mongoose": "^4.9.9",
+        "nodemailer": "^4.0.1",
+        "passport": "^0.3.2",
+        "passport-jwt": "^2.2.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@gitlab.com/dtrexx/evoting-atbu.git"
+    },
+    "author": "Sadiq Hassan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/dtrexx/evoting-atbu/issues"
+    },
+    "homepage": "https://gitlab.com/dtrexx/evoting-atbu#README",
+    "devDependencies": {
+        "@angular/cli": "^1.0.0"
+    }
 }

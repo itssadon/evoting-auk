@@ -32,6 +32,7 @@ import { ApiService } from './services/api.service';
 import { VoteComponent } from './components/vote/vote.component';
 import { ResultsComponent } from './components/results/results.component';
 import { VoteService } from './services/vote.service';
+import { ReceiptComponent } from './components/receipt/receipt.component';
 
 const appRoutes: Routes = [
     {path:'', component: HomeComponent},
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
     {path:'accreditation', component: AccreditationComponent, canActivate:[AuthGuard]},
     {path:'vote', component: VoteComponent, canActivate:[AuthGuard]},
-    {path:'results', component: ResultsComponent, canActivate:[AuthGuard]}
+    {path:'results', component: ResultsComponent, canActivate:[AuthGuard]},
+    {path:'receipt', component:ReceiptComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -64,6 +66,7 @@ const appRoutes: Routes = [
         AccreditationComponent,
         VoteComponent,
         ResultsComponent,
+        ReceiptComponent,
     ],
     imports: [
         BrowserModule,

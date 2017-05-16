@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 })
 export class ResultsComponent implements OnInit {
     aspirants: any;
+    id: any;
 
     constructor(
         public authService: AuthService,
@@ -21,19 +22,31 @@ export class ResultsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        if(this.authService.loggedIn()) {
-            var userObj = JSON.parse(localStorage.user);
-            var user_name = userObj.name;
-            $('#user_name').text(user_name);
-        }
+        var userObj = JSON.parse(localStorage.user);
+        var user_name = userObj.name;
+        $('#user_name').text(user_name);
 
-        this.aspirateService.getAspirants().subscribe(data => {
-            this.aspirants = data.aspirants;
-        },
-        err => {
-            this.toasterService.pop('error', 'Oops!', err);
-            return false;
-        });
+        this.getAspirants();
+        this.id = setInterval(() => { this.getAspirants(); }, 1000 * 10 * 1);
+    }
+
+    ngOnDestroy() {
+        if (this.id) {
+            clearInterval(this.id);
+        }
+    }
+
+    getAspirants() {
+        this.aspirateService.getAspirants().subscribe(
+            data => {
+                this.aspirants = data.aspirants;
+                this.toasterService.pop("info", "", "Election results will be refreshed again in the next 10secs.")
+            },
+            err => {
+                this.toasterService.pop('error', 'Oops!', err);
+                return false;
+            }
+        );
     }
 
 }

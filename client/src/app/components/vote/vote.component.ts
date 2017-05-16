@@ -57,7 +57,7 @@ export class VoteComponent implements OnInit {
     dir_of_foods: any;
 
     public votingTime = {
-        votingDay: '2017-05-13',
+        votingDay: '2017-05-16',
         startingTime: '00:01',
         closingTime: '23:59'
     }

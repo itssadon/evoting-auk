@@ -43,6 +43,14 @@
                         </div>
                     </div>
                 </a>
+                <a *ngIf="authService.canPerformTask('receipt')" [routerLink]="['/receipt']" class="ui link grey card" >
+                    <div class="content">
+                        <div class="header">Vote Receipt</div>
+                        <div class="description">
+                            <span class="category">View vote slip.</span>
+                        </div>
+                    </div>
+                </a>
                 <a *ngIf="authService.canPerformTask('results')" [routerLink]="['/results']" class="ui link grey card" >
                     <div class="content">
                         <div class="header">Election Results</div>

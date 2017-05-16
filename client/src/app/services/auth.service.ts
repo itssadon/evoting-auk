@@ -72,6 +72,7 @@ export class AuthService {
         if(task=='reports' && (user_role==0 || user_role==1)) return true;
         if(task=='results' && (user_role==1 || user_role==2)) return true;
         if(task=='vote' && user_role==2) return true;
+        if(task=='receipt' && user_role==2) return true;
     }
 
 }

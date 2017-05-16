@@ -1,26 +1,4 @@
-<div class="ui four doubling raised cards" *ngIf="!authService.loggedIn()">
-    <div class="card" *ngFor="let aspirant of aspirants; let i = index">
-        <div class="image">
-            <img style="max-height: 220px;" src="{{this.apiService.getAPI()+aspirant.picture}}">
-        </div>
-        <div class="content">
-            <div class="header">{{aspirant.lastname}}, {{aspirant.firstname}} {{aspirant.middlename}}</div>
-            <div class="meta">
-                <label class="ui red label">{{aspirant.nickname}}</label>
-            </div>
-            <div class="description">
-                {{aspirant.office}}
-            </div>
-        </div>
-        <div class="extra content center aligned">
-            <label class="ui blue label" style="text-transform: capitalize;">
-                Votes: {{aspirant.votes}}
-            </label>
-        </div>
-    </div>
-</div>
-
-<div class="ui stackable grid" *ngIf="authService.loggedIn()">
+<div class="ui stackable grid">
     <div class="three wide column">
         <div class="ui fluid vertical menu">
             <a class="item" [routerLink]="['/dashboard']">Dashboard</a>
@@ -29,6 +7,7 @@
             <a class="item" *ngIf="authService.canPerformTask('accreditation')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/accreditation']">Accreditation</a>
             <a class="item" *ngIf="authService.canPerformTask('password')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/resend-password']">Passwords</a>
             <a class="item" *ngIf="authService.canPerformTask('vote')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/vote']">Vote</a>
+            <a class="item" *ngIf="authService.canPerformTask('receipt')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/receipt']">Receipt</a>
             <a class="item" *ngIf="authService.canPerformTask('results')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/results']">Results</a>
             <a class="item" *ngIf="authService.canPerformTask('reports')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/reports']">Reports</a>
         </div>
@@ -43,7 +22,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let aspirant of aspirants; let i = index">
-                        <td><img class="ui image" style="max-height:100px;" src="{{this.apiService.getAPI()+aspirant.picture}}" /></td>
+                        <td><img class="ui image" style="max-height:50px;" src="{{this.apiService.getAPI()+aspirant.picture}}" /></td>
                         <td>{{aspirant.firstname}} {{aspirant.middlename}} {{aspirant.lastname}}</td>
                         <td>{{aspirant.nickname}}</td>
                         <td>{{aspirant.cgpa}}</td>
