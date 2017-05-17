@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const config = require('../config/database');
 const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+    cloud_name: 'evoting-atbu',
+    api_key: '936118271562774',
+    api_secret: 'FWyXmy3Yogcpsrpq9jnoPm56Lf4'
+});
 
 // Aspirant Schema
 const AspirantSchema = mongoose.Schema({
@@ -53,26 +60,14 @@ const AspirantSchema = mongoose.Schema({
 const Aspirant = module.exports = mongoose.model('Aspirant', AspirantSchema);
 
 module.exports.addAspirant = function (aspirant, callback) {
-    var dt = new Date(); //current date and time of server
-    var text = ""; //random text
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for( var i=0; i < 5; i++ ) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    var base64d = aspirant.picture.replace(/^data:image\/[a-z]+;base64,/, "");
-    var path = "./public/assets/images/aspirants/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
-    var path1 = "/assets/images/aspirants/" + text + dt.getDate() + dt.getMonth() + dt.getMilliseconds() + ".png";
-    aspirant.picture = path1;
-
-    try {
-        fs.statSync("./public/assets/images/aspirants/");
-    } catch(e) {
-        fs.mkdirSync("./public/assets/images/aspirants/");
-    }
-
-    fs.writeFile(path, base64d, 'base64', function(err) {
-        if(err) res.send(err);
+    // File upload for promise api
+    cloudinary.uploader.upload(aspirant.picture, {tags:'basic_sample'})
+    .then(function(image) {
+        aspirant.picture = image.url;
         aspirant.save(callback);
+    })
+    .catch(function(err) {
+        if (err){ console.warn(err); res.send(err);}
     });
 };
 

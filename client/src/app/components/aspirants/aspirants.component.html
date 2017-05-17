@@ -1,7 +1,7 @@
 <div class="ui four doubling raised cards" *ngIf="!authService.loggedIn()">
     <div class="card" *ngFor="let aspirant of aspirants; let i = index">
         <div class="image">
-            <img style="max-height: 220px;" src="{{this.apiService.getAPI()+aspirant.picture}}">
+            <img style="max-height: 220px;" src="{{aspirant.picture}}">
         </div>
         <div class="content">
             <div class="header">{{aspirant.lastname}}, {{aspirant.firstname}} {{aspirant.middlename}}</div>
@@ -43,7 +43,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let aspirant of aspirants; let i = index">
-                        <td><img class="ui image" style="max-height:100px;" src="{{this.apiService.getAPI()+aspirant.picture}}" /></td>
+                        <td><img class="ui image" style="max-height:100px;" src="{{aspirant.picture}}" /></td>
                         <td>{{aspirant.firstname}} {{aspirant.middlename}} {{aspirant.lastname}}</td>
                         <td>{{aspirant.nickname}}</td>
                         <td>{{aspirant.cgpa}}</td>

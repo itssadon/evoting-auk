@@ -63,10 +63,6 @@ if (cluster.isWorker) {
     app.use('/aspirants', aspirants);
     app.use('/students', students);
     app.use('/messaging', messaging);
-    // Fetch aspirant picture from the pucblic folder
-    app.use('/assets/images/aspirants/:picture', (req, res) => {
-        res.sendFile(path.join(__dirname, 'public/assets/images/aspirants/:picture'));
-    });
     app.use('/vote', vote);
 
     // Redirect all other invalid request

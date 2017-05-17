@@ -30,7 +30,7 @@
                     <div class="ui five raised cards" *ngIf="presidents">
                         <div class="card" *ngFor="let president of presidents">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+president.picture}}">
+                                <img style="max-height: 110px;" src="{{president.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -53,7 +53,7 @@
                     <div class="ui five raised cards" *ngIf="vice_presidents">
                         <div class="card" *ngFor="let vice_president of vice_presidents; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+vice_president.picture}}">
+                                <img style="max-height: 110px;" src="{{vice_president.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -76,7 +76,7 @@
                     <div class="ui five raised cards" *ngIf="sec_gens">
                         <div class="card" *ngFor="let sec_gen of sec_gens; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+sec_gen.picture}}">
+                                <img style="max-height: 110px;" src="{{sec_gen.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -99,7 +99,7 @@
                     <div class="ui five raised cards" *ngIf="asst_sec_gens">
                         <div class="card" *ngFor="let asst_sec_gen of asst_sec_gens; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+asst_sec_gen.picture}}">
+                                <img style="max-height: 110px;" src="{{asst_sec_gen.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -122,7 +122,7 @@
                     <div class="ui five raised cards" *ngIf="fin_secs">
                         <div class="card" *ngFor="let fin_sec of fin_secs; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+fin_sec.picture}}">
+                                <img style="max-height: 110px;" src="{{fin_sec.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -145,7 +145,7 @@
                     <div class="ui five raised cards" *ngIf="auditors">
                         <div class="card" *ngFor="let auditor of auditors; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+auditor.picture}}">
+                                <img style="max-height: 110px;" src="{{auditor.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -168,7 +168,7 @@
                     <div class="ui five raised cards" *ngIf="treasurers">
                         <div class="card" *ngFor="let treasurer of treasurers; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+treasurer.picture}}">
+                                <img style="max-height: 110px;" src="{{treasurer.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -191,7 +191,7 @@
                     <div class="ui five raised cards" *ngIf="welfare_Is">
                         <div class="card" *ngFor="let welfare_I of welfare_Is; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+welfare_I.picture}}">
+                                <img style="max-height: 110px;" src="{{welfare_I.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -214,7 +214,7 @@
                     <div class="ui five raised cards" *ngIf="welfare_IIs">
                         <div class="card" *ngFor="let welfare_II of welfare_IIs; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+welfare_II.picture}}">
+                                <img style="max-height: 110px;" src="{{welfare_II.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -237,7 +237,7 @@
                     <div class="ui five raised cards" *ngIf="dir_of_socialss">
                         <div class="card" *ngFor="let dir_of_socials of dir_of_socialss; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+dir_of_socials.picture}}">
+                                <img style="max-height: 110px;" src="{{dir_of_socials.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -260,7 +260,7 @@
                     <div class="ui five raised cards" *ngIf="pro_Is">
                         <div class="card" *ngFor="let pro_I of pro_Is; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+pro_I.picture}}">
+                                <img style="max-height: 110px;" src="{{pro_I.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -283,7 +283,7 @@
                     <div class="ui five raised cards" *ngIf="pro_IIs">
                         <div class="card" *ngFor="let pro_II of pro_IIs; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+pro_II.picture}}">
+                                <img style="max-height: 110px;" src="{{pro_II.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -306,7 +306,7 @@
                     <div class="ui five raised cards" *ngIf="provosts">
                         <div class="card" *ngFor="let provost of provosts; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+provost.picture}}">
+                                <img style="max-height: 110px;" src="{{provost.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -329,7 +329,7 @@
                     <div class="ui five raised cards" *ngIf="sales_dirs">
                         <div class="card" *ngFor="let sales_dir of sales_dirs; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+sales_dir.picture}}">
+                                <img style="max-height: 110px;" src="{{sales_dir.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -352,7 +352,7 @@
                     <div class="ui five raised cards" *ngIf="sports_dirs">
                         <div class="card" *ngFor="let sports_dir of sports_dirs; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+sports_dir.picture}}">
+                                <img style="max-height: 110px;" src="{{sports_dir.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
@@ -375,7 +375,7 @@
                     <div class="ui five raised cards" *ngIf="dir_of_foods">
                         <div class="card" *ngFor="let dir_of_food of dir_of_foods; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{this.apiService.getAPI()+dir_of_food.picture}}">
+                                <img style="max-height: 110px;" src="{{dir_of_food.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
