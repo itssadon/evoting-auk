@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     }
 
     onLoginSubmit() {
-        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Loggin in...</h3></div></div></div></div></div>';
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Logging you in... Please wait!</h3></div></div></div></div></div>';
         $('body').prepend(pageDimmer);
         const user = {
             username: this.username,
