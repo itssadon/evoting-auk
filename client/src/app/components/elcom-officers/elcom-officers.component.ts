@@ -31,13 +31,21 @@ export class ElcomOfficersComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.elcomService.getElcomOfficers().subscribe(data => {
-            this.users = data.users;
-        },
-        err => {
-            console.log(err);
-            return false;
-        });
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+        $('body').prepend(pageDimmer);
+        this.getElcomOfficers();
+    }
+
+    getElcomOfficers() {
+        this.elcomService.getElcomOfficers().subscribe(
+            data => {
+                this.users = data.users;
+            },
+            err => {
+                return false;
+            }
+        );
+        $('#pageDimmer').remove();
     }
 
     triggerSearch(event) {

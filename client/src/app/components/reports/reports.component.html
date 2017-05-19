@@ -1,0 +1,69 @@
+<div class="ui stackable grid">
+    <div class="three wide column">
+        <div class="ui fluid vertical menu">
+            <a class="item" [routerLink]="['/dashboard']">Dashboard</a>
+            <a class="item" *ngIf="authService.canPerformTask('elcom')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">ELCOM</a>
+            <a class="item" *ngIf="authService.canPerformTask('aspirants')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
+            <a class="item" *ngIf="authService.canPerformTask('accreditation')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/accreditation']">Accreditation</a>
+            <a class="item" *ngIf="authService.canPerformTask('password')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/resend-password']">Passwords</a>
+            <a class="item" *ngIf="authService.canPerformTask('vote')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/vote']">Vote</a>
+            <a class="item" *ngIf="authService.canPerformTask('receipt')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/receipt']">Receipt</a>
+            <a class="item" *ngIf="authService.canPerformTask('results')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/results']">Results</a>
+            <a class="item" *ngIf="authService.canPerformTask('reports')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/reports']">Reports</a>
+        </div>
+    </div>
+    <div class="thirteen wide column">
+        <div class="ui segment">
+            <div class="ui three stackable cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header">ELCOM Members</div>
+                        <div class="description">
+                            Download the list of ELCOM officers in the system.
+                        </div>
+                    </div>
+                    <div class="ui bottom attached button" (click)="downloadElcomReport()">
+                        <i class="download icon"></i>
+                        Download File
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">Aspirants</div>
+                        <div class="description">
+                            Download the list of registered aspirants in the system.
+                        </div>
+                    </div>
+                    <div class="ui bottom attached button" (click)="downloadAspirantsReport()">
+                        <i class="download icon"></i>
+                        Download File
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">Accreditation</div>
+                        <div class="description">
+                            Report on accreditation exercise showing all the accredited students.
+                        </div>
+                    </div>
+                    <div class="ui bottom attached button" (click)="downloadAccreditationReport()">
+                        <i class="download icon"></i>
+                        Download Report
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="content">
+                        <div class="header">Election Results</div>
+                        <div class="description">
+                            Election results showing respective scores of the aspirants.
+                        </div>
+                    </div>
+                    <div class="ui bottom attached button" (click)="downloadElectionResultsReport()">
+                        <i class="download icon"></i>
+                        Download Results
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
