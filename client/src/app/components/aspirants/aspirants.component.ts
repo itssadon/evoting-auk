@@ -21,19 +21,33 @@ export class AspirantsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Preparing Form.<br><br>Please wait...</h3></div></div></div></div></div>';
+        $('body').prepend(pageDimmer);
+
         if(this.authService.loggedIn()) {
             var userObj = JSON.parse(localStorage.user);
             var user_name = userObj.name;
             $('#user_name').text(user_name);
         }
 
-        this.aspirateService.getAspirants().subscribe(data => {
-            this.aspirants = data.aspirants;
-        },
-        err => {
-            this.toasterService.pop('error', 'Oops!', err);
-            return false;
-        });
+        this.getAspirants();
+    }
+
+    getAspirants() {
+        this.aspirateService.getAspirants().subscribe(
+            data => {
+                if(data.success) {
+                    this.aspirants = data.aspirants;
+                } else {
+                    this.toasterService.pop('info', 'Oops!', 'There are no aspirants registered yet');
+                }
+            },
+            err => {
+                this.toasterService.pop('error', 'Oops!', err);
+                return false;
+            }
+        );
+        $('#pageDimmer').remove();
     }
 
 }
