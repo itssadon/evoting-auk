@@ -39,9 +39,14 @@ export class ElcomOfficersComponent implements OnInit {
     getElcomOfficers() {
         this.elcomService.getElcomOfficers().subscribe(
             data => {
-                this.users = data.users;
+                if(data.success) {
+                    this.users = data.users;
+                } else {
+                    this.toasterService.pop('info', 'Oops!', 'There are no ELCOM officers yet');
+                }
             },
             err => {
+                this.toasterService.pop('error', 'Oops!', err);
                 return false;
             }
         );
