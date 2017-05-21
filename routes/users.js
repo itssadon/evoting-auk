@@ -71,8 +71,8 @@ router.get('/elcom', (req, res, next) => {
     const user_role = 1;
     User.getUsersByUserRole(user_role, (err, users) => {
         if(err) res.send(err);
-        if(!users) {
-            return res.json({success:false, msg:'User not found'});
+        if(users.length < 1) {
+            return res.json({success:false, msg:'ELCOM officers not registered'});
         }
         return res.json({
             success: true,

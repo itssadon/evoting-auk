@@ -27,10 +27,11 @@ export class AspirantService {
         return this.http.post(this.apiService.getAPI()+'aspirants/aspirant', aspirant, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
-    getAspirant(id) {
+    getAspirant(username) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.get(this.apiService.getAPI()+'aspirants/aspirant/'+id, {headers: headers}).map(res => res.json()).catch(err => err.toString());
+        console.log("ELCOM to add: "+username);
+        return this.http.get(this.apiService.getAPI()+'aspirants/aspirant/'+username, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
     getAspirantsByOffice(office) {

@@ -44,11 +44,11 @@ router.post('/aspirant', (req, res, next) => {
 });
 
 // Get an aspirant
-router.get('/aspirant/:id', (req, res, next) => {
-    const id = req.params.id;
-    Aspirant.getAspirantById(id, (err, aspirant) => {
+router.get('/aspirant/:matricno', (req, res, next) => {
+    var matricno = req.params.matricno.replace(/\./g, '/');
+    Aspirant.getAspirant(matricno, (err, aspirant) => {
         if(err) res.send(err);
-        if(!aspirant) {
+        if(aspirant.length < 1) {
             return res.json({
                 isAspirant: false,
                 msg: 'Aspirant not found'
@@ -67,7 +67,7 @@ router.get('/office/:office', passport.authenticate('jwt', {session:false}), (re
     const office = req.params.office;
     Aspirant.getAspirantsByOffice(office, (err, aspirants) => {
         if(err) res.send(err);
-        if(!aspirants) {
+        if(aspirants.length < 1) {
             return res.json({
                 success: false,
                 msg: 'No aspirants registered for the office of ' + office

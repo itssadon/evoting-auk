@@ -75,8 +75,9 @@ module.exports.getAspirants = function(callback) {
     Aspirant.find(callback);
 };
 
-module.exports.getAspirantById = function(id, callback){
-    Aspirant.findById(id, callback);
+module.exports.getAspirant = function(matricno, callback) {
+    const query = {matricno: matricno}
+    Aspirant.find(query, callback);
 };
 
 module.exports.getAspirantsByOffice = function(office, callback) {
