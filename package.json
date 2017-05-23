@@ -8,6 +8,7 @@
     "start": "node app"
   },
   "dependencies": {
+    "apiai": "^4.0.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "cloudinary": "^1.9.0",
