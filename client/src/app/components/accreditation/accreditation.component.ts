@@ -136,7 +136,7 @@ export class AccreditationComponent implements OnInit {
                                 var department = response.student_info.deptName;
                                 var course = response.student_info.optionName;
 
-                                $('#picture').attr('src', 'https://atbu.edu.ng/'+response.student_info.picURL);
+                                $('#picture').attr('src', response.student_info.picURL);
                                 $('#firstname').val(firstname);
                                 $('#middlename').val(middlename);
                                 $('#lastname').val(lastname);

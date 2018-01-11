@@ -19,7 +19,7 @@ export class ValidateService {
     }
 
     validatePayerDetails(aspirant) {
-        if(aspirant.firstname==undefined || aspirant.lastname==undefined || aspirant.email==undefined || aspirant.phone==undefined || aspirant.office==undefined || aspirant.amount==undefined) {
+        if(aspirant.firstname==undefined || aspirant.lastname==undefined || aspirant.email==undefined || aspirant.office==undefined || aspirant.amount==undefined) {
             return false;
         } else {
             return true;

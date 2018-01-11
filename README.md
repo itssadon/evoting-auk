@@ -1,4 +1,4 @@
-# SUG ATBU E-voting System (Server & Client) using MEAN stack (MongoDB, Express, AngularJS and NodeJS)
+# SUG FPTB E-voting System (Server & Client) using MEAN stack (MongoDB, Express, AngularJS and NodeJS)
 
 
 ## Official Documentation

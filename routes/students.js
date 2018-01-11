@@ -57,7 +57,7 @@ router.get('/count', passport.authenticate('jwt', {session:false}), (req, res, n
 });
 
 router.get('/student/:matricno', (req, res, next) => {
-    var apiUrl = 'https://atbu.edu.ng/api/vote/voterdetails/';
+    var apiUrl = 'https://api.fptb.edu.ng/student/';
     var matricno = req.params.matricno;
     https.get(
         apiUrl+matricno,
@@ -68,9 +68,8 @@ router.get('/student/:matricno', (req, res, next) => {
                 body += d;
             });
             response.on('end', function() {
-                body = body.replace(")]}',", '');
                 body = JSON.parse(body);
-                if(body.content == 'Record not Found!') {
+                if(body.status != 200) {
                     return res.json({
                         success: false,
                         msg: 'Record not Found!'
@@ -78,7 +77,7 @@ router.get('/student/:matricno', (req, res, next) => {
                 }
                 return res.json({
                     success: true,
-                    student_info: body.content
+                    student_info: body.data
                 });
             });
         }

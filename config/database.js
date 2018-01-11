@@ -1,11 +1,11 @@
 /*
 module.exports = {
-    database: 'mongodb://evoting:evotingAdmin@ds115671.mlab.com:15671/evoting-atbu',
+    database: 'mongodb://evoting:evotingAdmin@ds247347.mlab.com:47347/evoting-fptb',
     secret: 'yoursecret'
 }
 */
 
 module.exports = {
-    database: 'mongodb://localhost:27017/evoting-atbu',
+    database: 'mongodb://localhost:27017/evoting-fptb',
     secret: 'yoursecret'
 }

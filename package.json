@@ -1,7 +1,7 @@
 {
-  "name": "evoting-atbu",
+  "name": "evoting-fptb",
   "version": "1.0.0",
-  "description": "ATBU E-voting application",
+  "description": "FPTB E-voting application",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,19 +17,20 @@
     "jsonwebtoken": "^7.4.0",
     "mongoose": "^4.9.9",
     "nodemailer": "^4.0.1",
+    "nodemon": "^1.14.11",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/dtrexx/evoting-atbu.git"
+    "url": "git+ssh://git@gitlab.com/dtrexx/evoting-fptb.git"
   },
   "author": "Sadiq Hassan",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/dtrexx/evoting-atbu/issues"
+    "url": "https://gitlab.com/dtrexx/evoting-fptb/issues"
   },
-  "homepage": "https://gitlab.com/dtrexx/evoting-atbu#README",
+  "homepage": "https://gitlab.com/dtrexx/evoting-fptb#README",
   "devDependencies": {
     "@angular/cli": "^1.0.0"
   }

@@ -171,7 +171,7 @@ export class RegisterComponent implements OnInit {
 
     searchMatric() {
         $('#searchBtn').addClass("loading disabled");
-        var matricno = $('#matricno').val().replace(/\//g, ".").toUpperCase();
+        var matricno = $('#matricno').val().replace(/\//g, "-").toUpperCase();
         if(matricno === "" || matricno === null) {
             this.toasterService.pop('error', 'Oops!', 'Please enter your matric number');
             $('#matricno').focus();
@@ -192,15 +192,14 @@ export class RegisterComponent implements OnInit {
                                 this.toasterService.pop('error', 'Oops!', response.msg);
                                 $('#searchBtn').removeClass("loading disabled");
                             } else {
-                                var matricno = response.student_info.regNumber;
-                                var studentName = response.student_info.studentName.split(" ");
-                                var lastname = studentName[0];
-                                var firstname = studentName[1];
-                                if(studentName[2]) var middlename = studentName[2];
+                                var matricno = $('#matricno').val();
+                                var lastname = response.student_info.last_name;
+                                var firstname = response.student_info.first_name;
+                                if (response.student_info.other_names) var middlename = response.student_info.other_names;
                                 var email = response.student_info.email;
-                                var phone = response.student_info.phoneNumber;
-                                var department = response.student_info.deptName;
-                                var course = response.student_info.optionName;
+                                var phone = null; //response.student_info.phoneNumber;
+                                var department = response.student_info.department;
+                                var course = response.student_info.programme;
                                 var office = this.office;
                                 var amount = this.amount;
                                 $('#firstname').val(firstname);
@@ -275,7 +274,7 @@ export class RegisterComponent implements OnInit {
                     callback_url: window.location.host + "/status",
                     metadata: {
                         custom_fields: [
-                            {display_name: "Payment For", variable_name: "payment_purpose", value: "ATBU SUG Aspirant Form"},
+                            {display_name: "Payment For", variable_name: "payment_purpose", value: "FPTB SUG Aspirant Form"},
                             {display_name: "Office Aspiring For", variable_name: "office", value: this.aspirant.office}
                         ]
                     },
