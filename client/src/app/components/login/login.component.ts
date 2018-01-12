@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
                 this.authService.storeUserData(data.token, data.user);
                 this.toasterService.pop('success', 'Successful!', 'You are now logged in');
                 this.router.navigate(['/dashboard']);
-                window.location.href = '/dashboard';
             } else {
                 this.toasterService.pop('error', 'Oops!', data.msg);
                 this.router.navigate(['/login']);

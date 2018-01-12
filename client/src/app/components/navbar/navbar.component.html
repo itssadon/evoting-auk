@@ -1,11 +1,11 @@
 <nav class="ui container large secondary inverted menu">
     <a class="toc item" id="menu_icon">
         <i class="content icon"></i>
-        <img class="logo" src="/assets/images/polylogo.jpg">
+        <img class="logo" src="/assets/images/logo.png">
         &nbsp; SUG FPTB
     </a>
     <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/']" class="item">
-        <img class="logo" src="/assets/images/polylogo.jpg">
+        <img class="logo" src="/assets/images/logo.png">
         &nbsp; SUG FPTB
     </a>
     <a class="ui item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
