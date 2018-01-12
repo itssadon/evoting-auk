@@ -20,10 +20,10 @@ export class AccreditationComponent implements OnInit {
     student: any;
 
     public accreditationTime = {
-        startingDay: '2017-04-02',
-        closingDay: '2017-10-04',
+        startingDay: '2018-01-12',
+        closingDay: '2018-01-30',
         startingTime: '09:00',
-        closingTime: '23:50'
+        closingTime: '16:00'
     }
 
     constructor(
