@@ -32,6 +32,6 @@
   },
   "homepage": "https://gitlab.com/dtrexx/evoting-fptb#README",
   "devDependencies": {
-    "@angular/cli": "^1.0.0"
+    "@angular/cli": "^1.6.4"
   }
 }
