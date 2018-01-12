@@ -28,13 +28,14 @@ export class LoginComponent implements OnInit {
         const user = {
             username: this.username,
             password: this.password
-        }
+        };
 
         this.authService.authenticateUser(user).subscribe(data => {
-            if(data.success) {
+            if (data.success) {
                 this.authService.storeUserData(data.token, data.user);
                 this.toasterService.pop('success', 'Successful!', 'You are now logged in');
                 this.router.navigate(['/dashboard']);
+                window.location.href = '/dashboard';
             } else {
                 this.toasterService.pop('error', 'Oops!', data.msg);
                 this.router.navigate(['/login']);
