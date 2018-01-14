@@ -4,7 +4,7 @@ const fs = require('fs');
 const cloudinary = require('cloudinary').v2;
 
 cloudinary.config({
-    cloud_name: 'evoting-fptb',
+    cloud_name: 'evoting-atbu',
     api_key: '936118271562774',
     api_secret: 'FWyXmy3Yogcpsrpq9jnoPm56Lf4'
 });

@@ -62,7 +62,7 @@ export class ElcomOfficersComponent implements OnInit {
 
     searchMatric() {
         $('#searchBtn').addClass("loading disabled");
-        var username = $('#username').val().replace(/\//g, ".").toUpperCase();
+        var username = $('#username').val().replace(/\//g, "-").toUpperCase();
         if(username === "" || username === null) {
             this.toasterService.pop('error', 'Oops!', 'Please enter student\'s matric number');
             $('#username').focus();
@@ -84,7 +84,9 @@ export class ElcomOfficersComponent implements OnInit {
                                 $('#name').val('');
                                 $('#searchBtn').removeClass("loading disabled");
                             } else {
-                                var studentName = this.name = response.student_info.studentName;
+                                var lastname = response.student_info.last_name;
+                                var firstname = response.student_info.first_name;
+                                var studentName = this.name = firstname + ' ' + lastname;
                                 $('#name').val(studentName);
                                 $('#searchBtn').removeClass("loading disabled");
                             }

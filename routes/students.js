@@ -32,6 +32,7 @@ router.post('/student', passport.authenticate('jwt', {session:false}), (req, res
     });
     Student.addStudent(newStudent, (err, user) => {
         if(err){
+            console.log(err);
             res.json({success:false, msg:'Failed to accredit student'})
         } else {
             res.json({success:true, msg:'Student accredited'});

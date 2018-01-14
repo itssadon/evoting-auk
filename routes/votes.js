@@ -96,7 +96,7 @@ router.post('', passport.authenticate('jwt', {session:false}), (req, res, next) 
 
 // Get vote status of a student
 router.get('/status/:matricno', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    var matricno = req.params.matricno.replace(/\./g, '/');
+    var matricno = req.params.matricno.replace(/\-/g, '/');
     Student.getVoteStatus(matricno, (err, student) => {
         if(err) res.send(err);
         var voteStatus = student[0].vote_status;

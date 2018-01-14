@@ -17,6 +17,7 @@ export class StatusComponent implements OnInit {
     paymentStatus: Boolean;
     reference: String;
     aspirant: any;
+    matricno: String;
 
     public aspirant_model = {
         matricno: '',
@@ -103,28 +104,26 @@ export class StatusComponent implements OnInit {
     }
 
     populateAspirantForm() {
-        var matricno = this.aspirant.matricno.replace(/\//g, ".");
+        var matricno = this.aspirant.matricno.replace(/\//g, "-");
         this.studentService.getStudentRecord(matricno).subscribe(
             response => {
                 if(response.student_info === 'Record not Found!') {
                     this.toasterService.pop('error', 'Oops!', response.student_info);
                 } else {
-                    var matricno = this.aspirant_model.matricno = response.student_info.regNumber;
-                    var studentName = response.student_info.studentName.split(" ");
-                    var lastname = this.aspirant_model.lastname = studentName[0];
-                    var firstname = this.aspirant_model.firstname = studentName[1];
-                    if(studentName[2]) var middlename = this.aspirant_model.middlename = studentName[2];
+                    this.matricno = this.aspirant_model.matricno = this.aspirant.matricno;
+                    var lastname = this.aspirant_model.lastname = response.student_info.last_name;
+                    var firstname = this.aspirant_model.firstname = response.student_info.first_name;
+                    this.aspirant_model.middlename = response.student_info.other_names;
                     var email = response.student_info.email;
-                    var phone = response.student_info.phoneNumber;
-                    var department = response.student_info.deptName;
-                    var course = response.student_info.optionName;
-                    var level = response.student_info.levelId+"00 Level";
+                    var department = response.student_info.department;
+                    var course = response.student_info.programme;
+                    var level = response.student_info.class;
                     var office = this.aspirant_model.office = this.aspirant.office;
                     var amount = this.aspirant.amount;
-                    $('#othernames').val(firstname + " " + middlename);
+                    $('#othernames').val(firstname + " " + response.student_info.other_names);
                     $('#lastname').val(lastname);
                     $('#email').val(email);
-                    $('#phone').val(phone);
+                    $('#phone').val();
                     $('#department').val(department);
                     $('#course').val(course);
                     $('#level').val(level);

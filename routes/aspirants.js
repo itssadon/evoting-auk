@@ -12,6 +12,7 @@ router.get('', (req, res, next) => {
         if(!aspirants) {
             return res.json({success:false, msg:'Aspirants not found'});
         }
+        console.log(aspirants);
         return res.json({
             success: true,
             aspirants: aspirants
@@ -45,7 +46,7 @@ router.post('/aspirant', (req, res, next) => {
 
 // Get an aspirant
 router.get('/aspirant/:matricno', (req, res, next) => {
-    var matricno = req.params.matricno.replace(/\./g, '/');
+    var matricno = req.params.matricno.replace(/\-/g, '/');
     Aspirant.getAspirant(matricno, (err, aspirant) => {
         if(err) res.send(err);
         if(aspirant.length < 1) {

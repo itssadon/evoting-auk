@@ -57,8 +57,8 @@ export class VoteComponent implements OnInit {
     dir_of_foods: any;
 
     public votingTime = {
-        votingDay: '2017-05-16',
-        startingTime: '00:01',
+        votingDay: '2018-01-14',
+        startingTime: '09:00',
         closingTime: '23:59'
     }
 
@@ -139,7 +139,7 @@ export class VoteComponent implements OnInit {
 
     getVoteStatus() {
         var userObj = JSON.parse(localStorage.user);
-        var matricno = userObj.username.replace(/\//g, ".");
+        var matricno = userObj.username.replace(/\//g, "-");
         this.voteService.getVoteStatus(matricno).subscribe(
             response => {
                 if(response.hasVoted) {

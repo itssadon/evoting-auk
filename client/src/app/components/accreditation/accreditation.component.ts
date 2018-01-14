@@ -22,8 +22,8 @@ export class AccreditationComponent implements OnInit {
     public accreditationTime = {
         startingDay: '2018-01-12',
         closingDay: '2018-01-30',
-        startingTime: '09:00',
-        closingTime: '16:00'
+        startingTime: '00:00',
+        closingTime: '23:00'
     }
 
     constructor(
@@ -102,7 +102,7 @@ export class AccreditationComponent implements OnInit {
 
     searchMatric() {
         $('#searchBtn').addClass("loading disabled");
-        var matricno = $('#matricno').val().replace(/\//g, ".").toUpperCase();
+        var matricno = $('#matricno').val().replace(/\//g, "-").toUpperCase();
         if(matricno === "" || matricno === null) {
             this.toasterService.pop('error', 'Oops!', 'Please enter your matric number');
             $('#matricno').trigger('focus');
@@ -126,30 +126,24 @@ export class AccreditationComponent implements OnInit {
                                 $('#submitBtn').addClass('disabled');
                                 $('#searchBtn').removeClass("loading disabled");
                             } else {
-                                var matricno = response.student_info.regNumber;
-                                var studentName = response.student_info.studentName.split(" ");
-                                var lastname = studentName[0];
-                                var firstname = studentName[1];
-                                if(studentName[2]) var middlename = studentName[2];
+                                var matricno = $('#matricno').val();
+                                var lastname = response.student_info.last_name;
+                                var firstname = response.student_info.first_name;
                                 var email = response.student_info.email;
-                                var phone = response.student_info.phoneNumber;
-                                var department = response.student_info.deptName;
-                                var course = response.student_info.optionName;
+                                var department = response.student_info.department;
+                                var course = response.student_info.programme;
 
-                                $('#picture').attr('src', response.student_info.picURL);
+                                $('#picture').attr('src', response.student_info.passport);
                                 $('#firstname').val(firstname);
-                                $('#middlename').val(middlename);
                                 $('#lastname').val(lastname);
                                 $('#email').val(email);
-                                $('#phone').val(phone);
                                 $('#department').val(department);
                                 $('#course').val(course);
 
                                 this.student = {
                                     matricno: matricno,
-                                    studentName: response.student_info.studentName,
+                                    studentName: firstname + ' ' + lastname,
                                     email: email,
-                                    phone: phone,
                                     department: department,
                                     course: course
                                 }
@@ -175,6 +169,9 @@ export class AccreditationComponent implements OnInit {
     onAccreditSubmit() {
         var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="student_info"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Accrediting student.<br><br>Please wait...</h3></div></div></div></div></div>';
         $('body').prepend(pageDimmer);
+
+        var phone = $('#phone').val();
+        this.student.phone = phone;
 
         this.accreditationService.addStudent(this.student).subscribe(
             response => {
