@@ -12,7 +12,6 @@ router.get('', (req, res, next) => {
         if(!aspirants) {
             return res.json({success:false, msg:'Aspirants not found'});
         }
-        console.log(aspirants);
         return res.json({
             success: true,
             aspirants: aspirants

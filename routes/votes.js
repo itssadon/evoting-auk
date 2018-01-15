@@ -99,8 +99,9 @@ router.get('/status/:matricno', passport.authenticate('jwt', {session:false}), (
     var matricno = req.params.matricno.replace(/\-/g, '/');
     Student.getVoteStatus(matricno, (err, student) => {
         if(err) res.send(err);
+        console.log(student);
         var voteStatus = student[0].vote_status;
-        if(voteStatus === 0) {
+        if(!voteStatus || voteStatus === 0) {
             return res.json({
                 hasVoted: false,
                 msg: 'Student has not voted'
