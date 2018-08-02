@@ -87,75 +87,91 @@ export class RegisterComponent implements OnInit {
         var amount_words = null, amount = null;
         switch(office) {
             case "president":
-            amount_words = "Ten thousand (N10,000)";
-            amount = 1000000;
-            break;
-            case "vice_president":
-            amount_words = "Six thousand (N6,000)";
-            amount = 600000;
-            break;
+                amount_words = "Five thousand (N5,000)";
+                amount = 500000;
+                break;
             case "sec_gen":
-            amount_words = "Eight thousand (N6,000)";
-            amount = 800000;
-            break;
-            case "asst_sec_gen":
-            amount_words = "Five thousand (N5,000)";
-            amount = 500000;
-            break;
+                amount_words = "Four thousand (N4,000)";
+                amount = 400000;
+                break;
+            case "vice_president_I":
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
+                break;
             case "fin_sec":
-            amount_words = "Eight thousand (N8,000)";
-            amount = 800000;
-            break;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
+                break;
             case "auditor":
-            amount_words = "Six thousand (N6,000)";
-            amount = 600000;
-            break;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
+                break;
             case "treasurer":
-            amount_words = "Six thousand (N6,000)";
-            amount = 600000;
-            break;
-            case "welfare_I":
-            amount_words = "Five thousand (N5,000)";
-            amount = 500000;
-            break;
-            case "welfare_II":
-            amount_words = "Four thousand (N4,000)";
-            amount = 400000;
-            break;
-            case "dir_of_socials":
-            amount_words = "Six thousand (N6,000)";
-            amount = 600000;
-            break;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
+                break;
+            case "software":
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
+                break;
             case "pro_I":
-            amount_words = "Five thousand (N5,000)";
-            amount = 500000;
-            break;
-            case "pro_II":
-            amount_words = "Four thousand (N4,000)";
-            amount = 400000;
-            break;
-            case "provost":
-            amount_words = "Six thousand (N6,000)";
-            amount = 600000;
-            break;
-            case "sales_dir":
-            amount_words = "Six thousand (N6,000)";
-            amount = 600000;
-            break;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
+                break;
+            case "liason":
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
+                break;
             case "sports_dir":
-            amount_words = "Six thousand (N6,000)";
-            amount = 600000;
-            break;
-            case "dir_of_food":
-            amount_words = "Six thousand (N6,000)";
-            amount = 600000;
-            break;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
+                break;
+            case "vice_president_II":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "asst_sec_gen":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "dir_of_socials":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "dir_of_business":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "welfare":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "dir_of_program":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "dir_of_library":
+                amount_words = "Two thousand (N2,000)";
+                amount = 200000;
+                break;
+            case "asst_welfare":
+                amount_words = "Two thousand (N2,000)";
+                amount = 200000;
+                break;
+            case "asst_sport":
+                amount_words = "Two thousand (N2,000)";
+                amount = 200000;
+                break;
+            case "pro_II":
+                amount_words = "Two thousand (N2,000)";
+                amount = 200000;
+                break;
 
             default:
-            amount_words = "Amount in words";
-            amount = null;
-            office = null;
-            break;
+                amount_words = "Amount in words";
+                amount = null;
+                office = null;
+                break;
         }
         $("#amount_words").val(amount_words);
         this.office = office;
@@ -274,7 +290,7 @@ export class RegisterComponent implements OnInit {
                     callback_url: window.location.host + "/status",
                     metadata: {
                         custom_fields: [
-                            {display_name: "Payment For", variable_name: "payment_purpose", value: "FPTB SUG Aspirant Form"},
+                            {display_name: "Payment For", variable_name: "payment_purpose", value: "NACOMSS AUK Aspirant Form"},
                             {display_name: "Office Aspiring For", variable_name: "office", value: this.aspirant.office}
                         ]
                     },

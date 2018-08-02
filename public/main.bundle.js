@@ -1193,7 +1193,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"ui container large secondary inverted menu\">\n    <a class=\"toc item\" id=\"menu_icon\">\n        <i class=\"content icon\"></i>\n        <img class=\"logo\" src=\"/assets/images/logo.png\">\n        &nbsp; SUG FPTB\n    </a>\n    <a [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/']\" class=\"item\">\n        <img class=\"logo\" src=\"/assets/images/logo.png\">\n        &nbsp; SUG FPTB\n    </a>\n    <a class=\"ui item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/aspirants']\">Aspirants</a>\n    <a class=\"ui item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/elcom-officers']\">Elcom Officers</a>\n    <a class=\"ui item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/electoral-guidelines']\">Electoral Guidelines</a>\n\n    <span class=\"ui item\" *ngIf=\"authService.loggedIn()\">Welcome,&nbsp;<span id=\"user_name\"></span></span>\n    <a class=\"ui item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/dashboard']\">Dashboard</a>\n    <a class=\"ui item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/profile']\">Profile</a>\n    <a class=\"ui item right\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" (click)=\"onLogoutClick()\" href=\"#\"><i class=\"power icon\"></i>Logout</a>\n</nav>\n"
+module.exports = "<nav class=\"ui container large secondary inverted menu\">\n    <a class=\"toc item\" id=\"menu_icon\">\n        <i class=\"content icon\"></i>\n        <img class=\"logo\" src=\"/assets/images/logo.png\">\n        &nbsp; NACOMSS AUK\n    </a>\n    <a [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/']\" class=\"item\">\n        <img class=\"logo\" src=\"/assets/images/logo.png\">\n        &nbsp; NACOMSS AUK\n    </a>\n    <a class=\"ui item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/aspirants']\">Aspirants</a>\n    <a class=\"ui item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/elcom-officers']\">Elcom Officers</a>\n    <a class=\"ui item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/electoral-guidelines']\">Electoral Guidelines</a>\n\n    <span class=\"ui item\" *ngIf=\"authService.loggedIn()\">Welcome,&nbsp;<span id=\"user_name\"></span></span>\n    <a class=\"ui item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/dashboard']\">Dashboard</a>\n    <a class=\"ui item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" [routerLink]=\"['/profile']\">Profile</a>\n    <a class=\"ui item right\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\" (click)=\"onLogoutClick()\" href=\"#\"><i class=\"power icon\"></i>Logout</a>\n</nav>\n"
 
 /***/ }),
 
@@ -1411,7 +1411,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui stackable grid\">\n    <div class=\"four wide column\"></div>\n    <div class=\"eight wide column\">\n        <div class=\"ui segment\">\n            <div class=\"ui one top attached steps\">\n                <div class=\"active step\">\n                    <i class=\"user icon\"></i>\n                    <div class=\"content\">\n                        <div class=\"title\">Candidate form payment</div>\n                        <div class=\"description\">Enter your matric number &amp; search</div>\n                    </div>\n                </div>\n            </div>\n            <form class=\"ui form attached segment\" autocomplete=\"off\" (submit)=\"onPaySubmit()\">\n                <div class=\"two fields\">\n                    <div class=\"field\">\n                        <div class=\"ui input\">\n                            <select class=\"ui fluid dropdown\" (change)=\"setOfficeAmount($event)\">\n                                <option value=\"\">Select Office</option>\n                                <option value=\"president\">President</option>\n                                <option value=\"vice_president\">Vice President</option>\n                                <option value=\"sec_gen\">Sectretary General</option>\n                                <option value=\"asst_sec_gen\">Asst. Secretary General</option>\n                                <option value=\"fin_sec\">Financial Secretary</option>\n                                <option value=\"auditor\">Internal Auditor</option>\n                                <option value=\"treasurer\">Treasurer</option>\n                                <option value=\"welfare_I\">Welfare Officer I – (Male)</option>\n                                <option value=\"welfare_II\">Welfare Officer II – (Female)</option>\n                                <option value=\"dir_of_socials\">Director of Socials (D.O.S)</option>\n                                <option value=\"pro_I\">Public Relation Officer I – (Male)</option>\n                                <option value=\"pro_II\">Public Relation Officer II – (Female)</option>\n                                <option value=\"provost\">Provost Marshal</option>\n                                <option value=\"sales_dir\">Sales Director</option>\n                                <option value=\"sports_dir\">Sports Director</option>\n                                <option value=\"dir_of_food\">Director of Food</option>\n                            </select>\n                        </div>\n                    </div>\n                    <div class=\"field\">\n                        <div class=\"ui input\">\n                            <input type=\"text\" value=\"\" placeholder=\"Amount in words\" id=\"amount_words\" readonly=\"\">\n                        </div>\n                    </div>\n                </div>\n                <div class=\"field\" id=\"matricno_div\">\n                    <div class=\"ui fluid action input\">\n                        <input type=\"text\" placeholder=\"Matric Number\" (keypress)=\"triggerSearch($event)\" [(ngModel)]=\"matricno\" name=\"matricno\" id=\"matricno\">\n                        <button type=\"button\" class=\"ui primary right labeled icon button\" (click)=\"searchMatric()\" id=\"searchBtn\">\n                            <i class=\"search icon\"></i>\n                            Get details\n                        </button>\n                    </div>\n                </div>\n                <div class=\"ui divider\"></div>\n                <div class=\"three fields\">\n                    <div class=\"field\" id=\"first_name_div\">\n                        <div class=\"ui input\">\n                            <input type=\"text\" placeholder=\"First Name\" [(ngModel)]=\"firstname\" name=\"firstname\" id=\"firstname\" readonly=\"\">\n                        </div>\n                    </div>\n                    <div class=\"field\" id=\"middle_name_div\">\n                        <div class=\"ui input\">\n                            <input type=\"text\" placeholder=\"Middle Name\" [(ngModel)]=\"middlename\" name=\"middlename\" id=\"middlename\" readonly=\"\">\n                        </div>\n                    </div>\n                    <div class=\"field\" id=\"last_name_div\">\n                        <div class=\"ui input\">\n                            <input type=\"text\" placeholder=\"Last Name\" [(ngModel)]=\"lastname\" name=\"lastname\" id=\"lastname\" readonly=\"\">\n                        </div>\n                    </div>\n                </div>\n                <div class=\"two fields\">\n                    <div class=\"field\" id=\"email_div\">\n                        <div class=\"ui input\">\n                            <input type=\"email\" placeholder=\"Email Addresss\" [(ngModel)]=\"email\" name=\"email\" id=\"email\">\n                        </div>\n                    </div>\n                    <div class=\"field\" id=\"phone_div\">\n                        <div class=\"ui input\">\n                            <input type=\"tel\" placeholder=\"Phone\" [(ngModel)]=\"phone\" name=\"phone\" id=\"phone\">\n                        </div>\n                    </div>\n                </div>\n                <div class=\"two fields\">\n                    <div class=\"field\" id=\"\">\n                        <div class=\"ui input\">\n                            <input type=\"email\" placeholder=\"Department\" [(ngModel)]=\"department\" name=\"department\" id=\"department\" readonly=\"\">\n                        </div>\n                    </div>\n                    <div class=\"field\" id=\"\">\n                        <div class=\"ui input\">\n                            <input type=\"text\" placeholder=\"Course of study\" [(ngModel)]=\"course\" name=\"course\" id=\"course\" readonly=\"\">\n                        </div>\n                    </div>\n                </div>\n                <div class=\"ui divider\"></div>\n                <button type=\"submit\" class=\"ui large fluid primary button\">\n                    <i class=\"credit card icon\"></i> Pay now\n                </button>\n            </form>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"ui stackable grid\">\n  <div class=\"four wide column\"></div>\n  <div class=\"eight wide column\">\n    <div class=\"ui segment\">\n      <div class=\"ui one top attached steps\">\n        <div class=\"active step\">\n          <i class=\"user icon\"></i>\n          <div class=\"content\">\n            <div class=\"title\">Candidate form payment</div>\n            <div class=\"description\">Enter your matric number &amp; search</div>\n          </div>\n        </div>\n      </div>\n      <form class=\"ui form attached segment\" autocomplete=\"off\" (submit)=\"onPaySubmit()\">\n        <div class=\"two fields\">\n          <div class=\"field\">\n            <div class=\"ui input\">\n              <select class=\"ui fluid dropdown\" (change)=\"setOfficeAmount($event)\">\n                <option value=\"\">Select Office</option>\n                <option value=\"president\">President (Male)</option>\n                <option value=\"sec_gen\">Sectretary General (Male)</option>\n                <option value=\"vice_president_I\">Vice President I (Female)</option>\n                <option value=\"fin_sec\">Financial Secretary (Male)</option>\n                <option value=\"auditor\">Auditor General (Male)</option>\n                <option value=\"treasurer\">Treasurer (Male)</option>\n                <option value=\"software\">Software Director (Male)</option>\n                <option value=\"pro_I\">Public Relation Officer I – (Male)</option>\n                <option value=\"liason\">Liason Officer (Male)</option>\n                <option value=\"sports_dir\">Sports Director (Male)</option>\n                <option value=\"vice_president_II\">Vice President II (Male)</option>\n                <option value=\"asst_sec_gen\">Asst. Secretary General (Male)</option>\n                <option value=\"dir_of_socials\">Director of Socials (D.O.S) (Male)</option>\n                <option value=\"dir_of_business\">Business Director</option>\n                <option value=\"welfare\">Welfare Director</option>\n                <option value=\"dir_of_program\">Program Director (Male)</option>\n                <option value=\"dir_of_library\">Library Director</option>\n                <option value=\"asst_welfare\">Asst. Welfare Director</option>\n                <option value=\"asst_sport\">Asst. Sports Director (Male)</option>\n                <option value=\"pro_II\">Public Relation Officer II – (Male)</option>\n              </select>\n            </div>\n          </div>\n          <div class=\"field\">\n            <div class=\"ui input\">\n              <input type=\"text\" value=\"\" placeholder=\"Amount in words\" id=\"amount_words\" readonly=\"\">\n            </div>\n          </div>\n        </div>\n        <div class=\"field\" id=\"matricno_div\">\n          <div class=\"ui fluid action input\">\n            <input type=\"text\" placeholder=\"Matric Number\" (keypress)=\"triggerSearch($event)\" [(ngModel)]=\"matricno\" name=\"matricno\"\n              id=\"matricno\">\n            <button type=\"button\" class=\"ui primary right labeled icon button\" (click)=\"searchMatric()\" id=\"searchBtn\">\n              <i class=\"search icon\"></i>\n              Get details\n            </button>\n          </div>\n        </div>\n        <div class=\"ui divider\"></div>\n        <div class=\"three fields\">\n          <div class=\"field\" id=\"first_name_div\">\n            <div class=\"ui input\">\n              <input type=\"text\" placeholder=\"First Name\" [(ngModel)]=\"firstname\" name=\"firstname\" id=\"firstname\" readonly=\"\">\n            </div>\n          </div>\n          <div class=\"field\" id=\"middle_name_div\">\n            <div class=\"ui input\">\n              <input type=\"text\" placeholder=\"Middle Name\" [(ngModel)]=\"middlename\" name=\"middlename\" id=\"middlename\" readonly=\"\">\n            </div>\n          </div>\n          <div class=\"field\" id=\"last_name_div\">\n            <div class=\"ui input\">\n              <input type=\"text\" placeholder=\"Last Name\" [(ngModel)]=\"lastname\" name=\"lastname\" id=\"lastname\" readonly=\"\">\n            </div>\n          </div>\n        </div>\n        <div class=\"two fields\">\n          <div class=\"field\" id=\"email_div\">\n            <div class=\"ui input\">\n              <input type=\"email\" placeholder=\"Email Addresss\" [(ngModel)]=\"email\" name=\"email\" id=\"email\">\n            </div>\n          </div>\n          <div class=\"field\" id=\"phone_div\">\n            <div class=\"ui input\">\n              <input type=\"tel\" placeholder=\"Phone\" [(ngModel)]=\"phone\" name=\"phone\" id=\"phone\">\n            </div>\n          </div>\n        </div>\n        <div class=\"two fields\">\n          <div class=\"field\" id=\"\">\n            <div class=\"ui input\">\n              <input type=\"email\" placeholder=\"Department\" [(ngModel)]=\"department\" name=\"department\" id=\"department\" readonly=\"\">\n            </div>\n          </div>\n          <div class=\"field\" id=\"\">\n            <div class=\"ui input\">\n              <input type=\"text\" placeholder=\"Course of study\" [(ngModel)]=\"course\" name=\"course\" id=\"course\" readonly=\"\">\n            </div>\n          </div>\n        </div>\n        <div class=\"ui divider\"></div>\n        <button type=\"submit\" class=\"ui large fluid primary button\">\n          <i class=\"credit card icon\"></i> Pay now\n        </button>\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1498,68 +1498,84 @@ var RegisterComponent = (function () {
         var amount_words = null, amount = null;
         switch (office) {
             case "president":
-                amount_words = "Ten thousand (N10,000)";
-                amount = 1000000;
-                break;
-            case "vice_president":
-                amount_words = "Six thousand (N6,000)";
-                amount = 600000;
+                amount_words = "Five thousand (N5,000)";
+                amount = 500000;
                 break;
             case "sec_gen":
-                amount_words = "Eight thousand (N6,000)";
-                amount = 800000;
+                amount_words = "Four thousand (N4,000)";
+                amount = 400000;
                 break;
-            case "asst_sec_gen":
-                amount_words = "Five thousand (N5,000)";
-                amount = 500000;
+            case "vice_president_I":
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
                 break;
             case "fin_sec":
-                amount_words = "Eight thousand (N8,000)";
-                amount = 800000;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
                 break;
             case "auditor":
-                amount_words = "Six thousand (N6,000)";
-                amount = 600000;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
                 break;
             case "treasurer":
-                amount_words = "Six thousand (N6,000)";
-                amount = 600000;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
                 break;
-            case "welfare_I":
-                amount_words = "Five thousand (N5,000)";
-                amount = 500000;
-                break;
-            case "welfare_II":
-                amount_words = "Four thousand (N4,000)";
-                amount = 400000;
-                break;
-            case "dir_of_socials":
-                amount_words = "Six thousand (N6,000)";
-                amount = 600000;
+            case "software":
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
                 break;
             case "pro_I":
-                amount_words = "Five thousand (N5,000)";
-                amount = 500000;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
                 break;
-            case "pro_II":
-                amount_words = "Four thousand (N4,000)";
-                amount = 400000;
-                break;
-            case "provost":
-                amount_words = "Six thousand (N6,000)";
-                amount = 600000;
-                break;
-            case "sales_dir":
-                amount_words = "Six thousand (N6,000)";
-                amount = 600000;
+            case "liason":
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
                 break;
             case "sports_dir":
-                amount_words = "Six thousand (N6,000)";
-                amount = 600000;
+                amount_words = "Three thousand five hundred (N3,500)";
+                amount = 350000;
                 break;
-            case "dir_of_food":
-                amount_words = "Six thousand (N6,000)";
-                amount = 600000;
+            case "vice_president_II":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "asst_sec_gen":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "dir_of_socials":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "dir_of_business":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "welfare":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "dir_of_program":
+                amount_words = "Three thousand (N3,000)";
+                amount = 300000;
+                break;
+            case "dir_of_library":
+                amount_words = "Two thousand (N2,000)";
+                amount = 200000;
+                break;
+            case "asst_welfare":
+                amount_words = "Two thousand (N2,000)";
+                amount = 200000;
+                break;
+            case "asst_sport":
+                amount_words = "Two thousand (N2,000)";
+                amount = 200000;
+                break;
+            case "pro_II":
+                amount_words = "Two thousand (N2,000)";
+                amount = 200000;
                 break;
             default:
                 amount_words = "Amount in words";
@@ -2320,7 +2336,7 @@ var VoteComponent = (function () {
             dir_of_food: String,
         };
         this.votingTime = {
-            votingDay: '2018-01-14',
+            votingDay: '2018-01-15',
             startingTime: '09:00',
             closingTime: '23:59'
         };

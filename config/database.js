@@ -1,5 +1,5 @@
 module.exports = {
-    database: 'mongodb://evoting:evotingAdmin@ds247347.mlab.com:47347/evoting-fptb',
+    database: 'mongodb://evoting:evotingAdmin1@ds247587.mlab.com:47587/evoting-auk',
     secret: 'yoursecret'
 }
 
