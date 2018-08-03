@@ -1700,7 +1700,7 @@ var RegisterComponent = (function () {
                             { display_name: "Office Aspiring For", variable_name: "office", value: _this.aspirant.office }
                         ]
                     },
-                    subaccount: "ACCT_h0ei6f30smsz0mg",
+                    subaccount: "ACCT_p4xsz1pedt1ytap",
                     bearer: "subaccount"
                 };
                 _this.paystackService.initializeTransaction(dataString).subscribe(function (response) {
@@ -2340,9 +2340,9 @@ var VoteComponent = (function () {
             dir_of_food: String,
         };
         this.votingTime = {
-            votingDay: '2018-01-15',
+            votingDay: '2018-08-06',
             startingTime: '09:00',
-            closingTime: '23:59'
+            closingTime: '17:00'
         };
     }
     VoteComponent.prototype.ngOnInit = function () {
@@ -3051,7 +3051,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var secret = 'sk_test_1cb9868b1a74a0b1e81c3fbb377033cb06862b76';
+var secret = "sk_test_4936d3da62fa021d9a5864c28ab031ec6e5cbe78";
 var live_secret = 'sk_live_2d3ca6a2fa4fcdb3e5dfdfb071748629c896fe43';
 var PaystackService = (function () {
     function PaystackService(http) {
