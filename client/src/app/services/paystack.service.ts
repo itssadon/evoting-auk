@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-var secret = "sk_test_4936d3da62fa021d9a5864c28ab031ec6e5cbe78";
+var secret = 'sk_test_1cb9868b1a74a0b1e81c3fbb377033cb06862b76';
 var live_secret = 'sk_live_2d3ca6a2fa4fcdb3e5dfdfb071748629c896fe43';
 
 @Injectable()
