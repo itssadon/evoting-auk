@@ -204,18 +204,23 @@ export class RegisterComponent implements OnInit {
                 } else {
                     this.studentService.getStudentRecord(matricno).subscribe(
                         response => {
-                            if(!response.success) {
+                            if (!response.success) {
                                 this.toasterService.pop('error', 'Oops!', response.msg);
                                 $('#searchBtn').removeClass("loading disabled");
                             } else {
+                                console.log(response.student_info);
                                 var matricno = $('#matricno').val();
-                                var lastname = response.student_info.last_name;
-                                var firstname = response.student_info.first_name;
-                                if (response.student_info.other_names) var middlename = response.student_info.other_names;
-                                var email = response.student_info.email;
-                                var phone = null; //response.student_info.phoneNumber;
-                                var department = response.student_info.department;
-                                var course = response.student_info.programme;
+                                var fullName = response.student_info.full_name;
+                                var nameArray = fullName.split(' ');
+                                var lastname = nameArray[0];
+                                var firstname = nameArray[1];
+                                if (nameArray[2]) {
+                                    var middlename = nameArray[2];
+                                }
+                                var email = null;
+                                var phone = null;
+                                var department = 'COMPUTER & MATHEMATICS';
+                                var course = 'COMP/MATH';
                                 var office = this.office;
                                 var amount = this.amount;
                                 $('#firstname').val(firstname);
@@ -234,7 +239,7 @@ export class RegisterComponent implements OnInit {
                                     phone: phone,
                                     office: office,
                                     amount: amount
-                                }
+                                };
                                 $('#searchBtn').removeClass("loading disabled");
                             }
                         },

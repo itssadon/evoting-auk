@@ -78,7 +78,7 @@ router.get('/student/:matricno', (req, res, next) => {
                 }
                 return res.json({
                     success: true,
-                    student_info: body.student
+                    student_info: body.student[0]
                 });
             });
         }
