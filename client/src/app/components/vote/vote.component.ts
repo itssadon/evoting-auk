@@ -57,9 +57,9 @@ export class VoteComponent implements OnInit {
     dir_of_foods: any;
 
     public votingTime = {
-        votingDay: '2018-01-15',
+        votingDay: '2018-08-06',
         startingTime: '09:00',
-        closingTime: '23:59'
+        closingTime: '17:00'
     }
 
     constructor(
@@ -129,7 +129,7 @@ export class VoteComponent implements OnInit {
     }
 
     hasVoted() {
-        if(!this.voteStatus) {
+        if (!this.voteStatus) {
             this.showSlip();
         } else {
             $("#votingForm").html('<div class="ui message red"><p>You have already voted for the aspirants you wish.<br><br>Thank you for exercising your rights.</p></div>');
