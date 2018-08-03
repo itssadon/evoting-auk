@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const https = require('https');
+const http = require('http');
 const config = require('../config/database');
 const Student = require('../models/student');
 
@@ -58,9 +58,9 @@ router.get('/count', passport.authenticate('jwt', {session:false}), (req, res, n
 });
 
 router.get('/student/:matricno', (req, res, next) => {
-    var apiUrl = 'https://api.fptb.edu.ng/student/';
+    var apiUrl = "http://aukapi.nacossatbu.com.ng/v1/student/";
     var matricno = req.params.matricno;
-    https.get(
+    http.get(
         apiUrl+matricno,
         function(response) {
             // Continuously update stream with data
@@ -68,9 +68,9 @@ router.get('/student/:matricno', (req, res, next) => {
             response.on('data', function(d) {
                 body += d;
             });
-            response.on('end', function() {
+            response.on('end', function () {
                 body = JSON.parse(body);
-                if(body.status != 200) {
+                if(!body.status) {
                     return res.json({
                         success: false,
                         msg: 'Record not Found!'
@@ -78,7 +78,7 @@ router.get('/student/:matricno', (req, res, next) => {
                 }
                 return res.json({
                     success: true,
-                    student_info: body.data
+                    student_info: body.student
                 });
             });
         }
