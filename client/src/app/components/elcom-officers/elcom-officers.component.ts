@@ -73,7 +73,7 @@ export class ElcomOfficersComponent implements OnInit {
         this.aspirantService.getAspirant(username).subscribe(
             response => {
                 if(response.isAspirant) {
-                    this.toasterService.pop('error', 'Oops!', response.msg+ ' and cannot be an ELCOM member');
+                    this.toasterService.pop('error', 'Oops!', response.msg + ' and cannot be an ELCOM member');
                     $('#searchBtn').removeClass("loading disabled");
                     return false;
                 } else {
@@ -84,9 +84,7 @@ export class ElcomOfficersComponent implements OnInit {
                                 $('#name').val('');
                                 $('#searchBtn').removeClass("loading disabled");
                             } else {
-                                var lastname = response.student_info.last_name;
-                                var firstname = response.student_info.first_name;
-                                var studentName = this.name = firstname + ' ' + lastname;
+                                var studentName = (this.name = response.student_info.full_namr);
                                 $('#name').val(studentName);
                                 $('#searchBtn').removeClass("loading disabled");
                             }

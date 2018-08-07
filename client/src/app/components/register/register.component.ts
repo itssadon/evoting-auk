@@ -229,7 +229,6 @@ export class RegisterComponent implements OnInit {
                 this.toasterService.pop('error', 'Oops!', response.msg);
                 $('#searchBtn').removeClass("loading disabled");
               } else {
-                console.log(response.student_info);
                 var matricno = $('#matricno').val();
                 var fullName = response.student_info.full_name;
                 var nameArray = fullName.split(' ');
