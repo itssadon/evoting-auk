@@ -15,11 +15,11 @@ export class SmsService {
     ) { }
 
     sendSMS(smsDetails) {
-        return this.http.post(this.apiService.getAPI()+'messaging/sms/', smsDetails).map(res => res.json()).catch(err => err.toString());
+        return this.http.post(this.apiService.getAPI() + 'messaging/sms/', smsDetails).map(res => res.json()).catch(err => err.toString());
     }
 
     checkBalance() {
-        return this.http.get(this.apiService.getAPI()+'/messaging/sms/').map(res => res.json()).catch(err => err.toString());
+        return this.http.get(this.apiService.getAPI() + '/messaging/sms/').map(res => res.json()).catch(err => err.toString());
     }
 
 }

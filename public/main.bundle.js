@@ -294,10 +294,10 @@ var AccreditationComponent = (function () {
         this.mailService = mailService;
         this.smsService = smsService;
         this.accreditationTime = {
-            startingDay: '2018-01-12',
-            closingDay: '2018-01-30',
-            startingTime: '00:00',
-            closingTime: '23:00'
+            startingDay: '2018-08-08',
+            closingDay: '2018-08-10',
+            startingTime: '09:00',
+            closingTime: '16:00'
         };
     }
     AccreditationComponent.prototype.ngOnInit = function () {
@@ -386,11 +386,16 @@ var AccreditationComponent = (function () {
                     }
                     else {
                         var matricno = __WEBPACK_IMPORTED_MODULE_9_jquery__('#matricno').val();
-                        var lastname = response.student_info.last_name;
-                        var firstname = response.student_info.first_name;
-                        var email = response.student_info.email;
-                        var department = response.student_info.department;
-                        var course = response.student_info.programme;
+                        var fullName = response.student_info.full_name;
+                        var nameArray = fullName.split(' ');
+                        var lastname = nameArray[0];
+                        var firstname = nameArray[1];
+                        if (nameArray[2]) {
+                            var middlename = nameArray[2];
+                        }
+                        var email = '';
+                        var department = 'COMPUTER & MATHEMATICS';
+                        var course = 'COMP/MATH';
                         __WEBPACK_IMPORTED_MODULE_9_jquery__('#picture').attr('src', response.student_info.passport);
                         __WEBPACK_IMPORTED_MODULE_9_jquery__('#firstname').val(firstname);
                         __WEBPACK_IMPORTED_MODULE_9_jquery__('#lastname').val(lastname);
@@ -2346,7 +2351,7 @@ var VoteComponent = (function () {
             pro_II: String,
         };
         this.votingTime = {
-            votingDay: '2018-08-06',
+            votingDay: '2018-08-13',
             startingTime: '09:00',
             closingTime: '17:00'
         };

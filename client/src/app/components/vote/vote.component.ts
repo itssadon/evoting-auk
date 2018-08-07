@@ -85,10 +85,10 @@ export class VoteComponent implements OnInit {
   pro_IIs: any;
 
   public votingTime = {
-    votingDay: '2018-08-06',
+    votingDay: '2018-08-13',
     startingTime: '09:00',
     closingTime: '17:00'
-  }
+  };
 
   constructor(
     private toasterService: ToasterService,
