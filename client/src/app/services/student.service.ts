@@ -9,7 +9,7 @@ import { ApiService } from './api.service';
 @Injectable()
 export class StudentService {
     student: Object;
-    apiUrl = 'http://api.fptb.edu.ng/student/';
+    apiUrl = 'http://aukapi.nacossatbu.com.ng/v1/student/';
 
     constructor(
         private http: Http,
