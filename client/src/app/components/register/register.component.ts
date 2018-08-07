@@ -299,11 +299,11 @@ export class RegisterComponent implements OnInit {
                             {display_name: "Office Aspiring For", variable_name: "office", value: this.aspirant.office}
                         ]
                     },
-                    subaccount: 'ACCT_h0ei6f30smsz0mg', //"ACCT_2hmxzt7lalj1rr7",
+                    subaccount: "ACCT_2hmxzt7lalj1rr7",
                     bearer: "subaccount"
                 };
                 this.paystackService.initializeTransaction(dataString).subscribe(response => {
-                    if(response.status) {
+                    if (response.status) {
                         this.toasterService.pop('success', 'Success!', 'Authorization URL created. Redirecting...');
                         window.location.href = response.data.authorization_url;
                     } else {
