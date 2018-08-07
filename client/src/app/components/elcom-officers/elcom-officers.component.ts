@@ -84,7 +84,7 @@ export class ElcomOfficersComponent implements OnInit {
                                 $('#name').val('');
                                 $('#searchBtn').removeClass("loading disabled");
                             } else {
-                                var studentName = (this.name = response.student_info.full_namr);
+                                var studentName = (this.name = response.student_info.full_name);
                                 $('#name').val(studentName);
                                 $('#searchBtn').removeClass("loading disabled");
                             }
