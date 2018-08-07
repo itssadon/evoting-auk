@@ -836,9 +836,7 @@ var ElcomOfficersComponent = (function () {
                         __WEBPACK_IMPORTED_MODULE_8_jquery__('#searchBtn').removeClass("loading disabled");
                     }
                     else {
-                        var lastname = response.student_info.last_name;
-                        var firstname = response.student_info.first_name;
-                        var studentName = _this.name = firstname + ' ' + lastname;
+                        var studentName = (_this.name = response.student_info.full_name);
                         __WEBPACK_IMPORTED_MODULE_8_jquery__('#name').val(studentName);
                         __WEBPACK_IMPORTED_MODULE_8_jquery__('#searchBtn').removeClass("loading disabled");
                     }
@@ -948,7 +946,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/electoral-guidelines/electoral-guidelines.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui segment\">\n    <div class=\"ui container\">\n        <h4>Guidelines</h4>\n        <p class=\"content\" style=\"text-align: justify;\">\n            The following are guidelines are of 'Article 10' of the reviewed student union constitution of FPTB, Bauchi.\n        </p>\n        <h4>ARTICLE 10</h4>\n        <h5>SECTION 1: Election.</h5>\n        <p>Prospective candidate(s) for any elective post must:</p>\n        <ol>\n            <li>\n                Be a matriculated and registered undergraduate student of Abubakar Tafawa Balewa\n                University, Bauchi.\n            </li>\n            <li>\n                Not be on probation and must possess a minimum of 2.50 C.G.P.A and must not\n                have more than nine (9) units of carry-over at the end of the previous academic year\n                and should not be one year behind his normal duration in the University.\n                Have fulfilled his financial obligation(s) to the Union.\n            </li>\n            <li>\n                Have fulfilled any other requirements set out in this Constitution by the Electoral\n                Committee.\n            </li>\n        </ol>\n\n        <p>Procedure for Seeking Redress for a Disqualification of Candidate(S)</p>\n        <ol>\n            <li>\n                Candidate seeking redress must do so to the judiciary committee within 24hrs in writing.\n            </li>\n            <li>\n                No candidate should be disqualified within 48 hrs before the election.\n            </li>\n        </ol>\n        <h5>SECTION 2: Rules and Regulations of Elections.</h5>\n        <ol>\n            <li>\n                Elections shall be by secret ballot.\n            </li>\n            <li>\n                Elections into S.U.E.C and PARLIAMENT shall be organised and conducted within the\n                first four (4) weeks of the Second Semester.\n            </li>\n            <li>\n                Elections shall be organised, conducted and supervised by the Electoral Committee.\n            </li>\n            <li>\n                The conduct of all elections shall be subject to the following rules:\n                <ol>\n                    <li>\n                        Elections into S.U.E.C and PARLIAMENT shall be conducted at Faculty levels\n                        under supervision of the Dean of the Faculty and his staff.\n                    </li>\n                    <li>\n                        Elections into H.E.C shall be conducted at the Hall level under the supervision\n                        of the Hall Warden and his staff.\n                    </li>\n                    <li>\n                        Prospective candidate(s) for any elective post shall have to be nominated in\n                        writing and passed to the Chairman of the Committee within a period\n                        specified by the Electoral Committee.\n                    </li>\n                    <li>\n                        No member of the Union shall propose or second more than one candidate\n                        for any elective post.\n                    </li>\n                    <li>\n                        Only members of the Union who fulfill their financial obligation(s) to the\n                        Union are eligible to nominate, second, vote and/or be voted for.\n                    </li>\n                    <li>\n                        In any election, each nomination papers shall bear the signatures of two\n                        proposers, two seconders and signed by the nominee.\n                    </li>\n                    <li>\n                        There shall be no voting by proxy and each voter shall be entitled to only one\n                        vote for any elective post.\n                    </li>\n                    <li>\n                        The Electoral Committee shall list in alphabetical order the names of\n                        candidates as they appear on the nomination papers and shall display the list\n                        of contestants on Students’ notice boards at least twenty four (24) hours\n                        before the commencement of campaigns. No names shall be added to the list\n                        after it has been displayed.\n                    </li>\n                    <li>\n                        The Electoral Committee shall commence counting of votes immediately\n                        after the elections and in the presence of the Dean of the Faculty, the Hall\n                        Warden and the Hall Supervisor where the elections took place.\n                    </li>\n                    <li>\n                        The Chairman of the Electoral Committee shall act as the Chief Returning\n                        Officer in all the elections.\n                    </li>\n                    <li>\n                        There shall be Presiding Officers, Polling clerks and Polling Assistants who\n                        must be from the Electoral Committee members.\n                    </li>\n                    <li>\n                        These Presiding Officers, Polling clerks and Polling Assistants shall be\n                        responsible for the conduct of elections into S.U.G in the various Faculty and\n                        Halls of residence, as the case may be.\n                    </li>\n                    <li>\n                        Results of the elections should be declared in each polling station in the\n                        presence of the Dean of the Faculty, or Hall Warden/ Hall Supervisor as the\n                        case may be, as well as agents of the contestants.\n                    </li>\n                    <li>\n                        The Presiding Officer, agents of contestants, Deans and/or Hall Wardens/Hall\n                        Supervisor and the security personnel must sign on the result sheet and each\n                        of them should be given a copy.\n                    </li>\n                    <li>\n                        The result shall be submitted to the Chief Returning Officer by the Presiding\n                        Officer.\n                    </li>\n                    <li>\n                        The Chief Returning Officer shall enter the scores of each candidate as they\n                        are brought in from the polling centres in the presence of the agents of the\n                        candidates and security personnel.\n                    </li>\n                    <li>\n                        The overall result shall be declared by the Chief Returning Officer and a copy\n                        be sent to the University Authority.\n                    </li>\n                </ol>\n            </li>\n            <li>\n                Before the commencement of voting, the Electoral Committee shall make necessary\n                arrangements for candidates contesting for elections into the various offices to\n                campaign for votes.\n            </li>\n            <li>\n                All campaigns shall end at least 24 hours before the commencement of voting.\n                In the event of a tie in an election in respect of any elective post(s), the Electoral\n                Committee shall within forty-eight (48) hours organise and conduct fresh elections\n                into such office(s).\n            </li>\n            <li>\n                Without prejudice to the provision of sub-section (ii) of this section, in case of\n                inability to conduct elections into S.U.E.C and PARLIAMENT within first 4 weeks of\n                the Second Semester of the new academic session, a new date shall be determined\n                by the University Authority.\n            </li>\n            <li>\n                Withdrawals of candidature by any candidate shall:\n                <ol>\n                    <li>\n                        Be made within 12 hours after exhibition of the list of candidates.\n                    </li>\n                    <li>\n                        Be made in writing to the Chairman of the Electoral Committee in respect of\n                        that decision.\n                    </li>\n                    <li>\n                        Not be accepted after the expiration of the 12 hours as provided in paragraph\n                        (1) above.\n                    </li>\n                </ol>\n            </li>\n            <li>\n                Subject to the provisions of this constitution, the Electoral Committee may make\n                guidelines for the orderly conduct of the elections which must be endorsed by the\n                University Authority.\n            </li>\n        </ol>\n\n        <h5>SECTION 3: Disqualification of Candidates for Elective Post</h5>\n        <p>Any candidate for an elective post shall be disqualified if:</p>\n        <ol>\n            <li>\n                His campaign strategies are based on religious or ethnic affiliation or any\n                form of sectionalism.\n            </li>\n            <li>\n                Found guilty of abuse of office, corruption, misappropriation of funds,\n                misconduct of any kind, cultism, drug abuse and criminal offences by any of\n                the following:\n                <ol>\n                    <li>\n                        A duly Constituted Nigerian Court of Law\n                    </li>\n                    <li>\n                        Any Students’ Union Association\n                    </li>\n                    <li>\n                        FPTB Students’ Disciplinary Committee\n                    </li>\n                    <li>\n                        Any organisation recognised by the Union\n                    </li>\n                </ol>\n            </li>\n            <li>\n                He is on the payroll or an affiliate of any political party or Labour Union.\n            </li>\n            <li>\n                He receives money or any form of aid or grant from the University Authorities\n                or external body(ies) for the purpose of his campaign.\n            </li>\n            <li>\n                He or his supporters use or attempts to use derogatory verbal phrases and or\n                physical violence to intimidate his opponents or their supporters.\n            </li>\n            <li>\n                He violates any of the provisions of this Constitution.\n            </li>\n        </ol>\n        <h5>SECTION 4: Order of Election</h5>\n        <p>\n            Elections into PARLIAMENT, S.U.E.C and H.E.C should be conducted based on the time table\n            provided by the Electoral Committee and in accordance with the provision of this\n            Constitution.\n        </p>\n        <h5>SECTION 5: Election Petition</h5>\n        <ol>\n            <li>\n                Election petitions against the decision(s) of the Electoral Committee shall be filed\n                with the Judicial Committee, copied to the Chairman Electoral Committee and Dean\n                of Students Affairs.\n            </li>\n            <li>\n                Election petitions shall be filed within twenty-four (24) hours after the declaration of\n                the result by the Electoral Committee.\n            </li>\n            <li>\n                The said petition shall be determined within four (4) days of its receipt by the Judicial\n                Committee.\n            </li>\n            <li>\n                The decisions of the Judicial Committee on any petition shall be sent to the\n                University Authority and the Security Department immediately.\n            </li>\n        </ol>\n        <h5>SECTION 6: Swearing in Ceremony</h5>\n        <ol>\n            <li>\n                Elected Officers of the Union shall not exercise any function unless and until sworn-\n                in, in accordance with the provisions of this Constitution.\n            </li>\n            <li>\n                The Oath of Office shall be administered on all elected members of the Union by the\n                Registrar not more than one week of the declaration of the election results.\n            </li>\n        </ol>\n    </div>\n</div>\n"
+module.exports = "<div class=\"ui segment\">\n    <div class=\"ui container\">\n        <h4>Guidelines</h4>\n        <p class=\"content\" style=\"text-align: justify;\">\n            The following are guidelines are of 'Article 10' of the reviewed student union constitution of Al-Qalam University, Katsina.\n        </p>\n        <h4>ARTICLE 10</h4>\n        <h5>SECTION 1: Election.</h5>\n        <p>Prospective candidate(s) for any elective post must:</p>\n        <ol>\n            <li>\n                Be a matriculated and registered undergraduate student of Al-Qalam University Katsina.\n            </li>\n            <li>\n                Not be on probation and must possess a minimum of 2.50 C.G.P.A and must not\n                have more than nine (9) units of carry-over at the end of the previous academic year\n                and should not be one year behind his normal duration in the University.\n                Have fulfilled his financial obligation(s) to the Union.\n            </li>\n            <li>\n                Have fulfilled any other requirements set out in this Constitution by the Electoral Committee.\n            </li>\n        </ol>\n\n        <p>Procedure for Seeking Redress for a Disqualification of Candidate(S)</p>\n        <ol>\n            <li>\n                Candidate seeking redress must do so to the judiciary committee within 24hrs in writing.\n            </li>\n            <li>\n                No candidate should be disqualified within 48 hrs before the election.\n            </li>\n        </ol>\n        <h5>SECTION 2: Rules and Regulations of Elections.</h5>\n        <ol>\n            <li>\n                Elections shall be by secret ballot.\n            </li>\n            <li>\n                Elections into S.U.E.C and PARLIAMENT shall be organised and conducted within the\n                first four (4) weeks of the Second Semester.\n            </li>\n            <li>\n                Elections shall be organised, conducted and supervised by the Electoral Committee.\n            </li>\n            <li>\n                The conduct of all elections shall be subject to the following rules:\n                <ol>\n                    <li>\n                        Elections into S.U.E.C and PARLIAMENT shall be conducted at Faculty levels\n                        under supervision of the Dean of the Faculty and his staff.\n                    </li>\n                    <li>\n                        Elections into H.E.C shall be conducted at the Hall level under the supervision\n                        of the Hall Warden and his staff.\n                    </li>\n                    <li>\n                        Prospective candidate(s) for any elective post shall have to be nominated in\n                        writing and passed to the Chairman of the Committee within a period\n                        specified by the Electoral Committee.\n                    </li>\n                    <li>\n                        No member of the Union shall propose or second more than one candidate\n                        for any elective post.\n                    </li>\n                    <li>\n                        Only members of the Union who fulfill their financial obligation(s) to the\n                        Union are eligible to nominate, second, vote and/or be voted for.\n                    </li>\n                    <li>\n                        In any election, each nomination papers shall bear the signatures of two\n                        proposers, two seconders and signed by the nominee.\n                    </li>\n                    <li>\n                        There shall be no voting by proxy and each voter shall be entitled to only one\n                        vote for any elective post.\n                    </li>\n                    <li>\n                        The Electoral Committee shall list in alphabetical order the names of\n                        candidates as they appear on the nomination papers and shall display the list\n                        of contestants on Students’ notice boards at least twenty four (24) hours\n                        before the commencement of campaigns. No names shall be added to the list\n                        after it has been displayed.\n                    </li>\n                    <li>\n                        The Electoral Committee shall commence counting of votes immediately\n                        after the elections and in the presence of the Dean of the Faculty, the Hall\n                        Warden and the Hall Supervisor where the elections took place.\n                    </li>\n                    <li>\n                        The Chairman of the Electoral Committee shall act as the Chief Returning\n                        Officer in all the elections.\n                    </li>\n                    <li>\n                        There shall be Presiding Officers, Polling clerks and Polling Assistants who\n                        must be from the Electoral Committee members.\n                    </li>\n                    <li>\n                        These Presiding Officers, Polling clerks and Polling Assistants shall be\n                        responsible for the conduct of elections into S.U.G in the various Faculty and\n                        Halls of residence, as the case may be.\n                    </li>\n                    <li>\n                        Results of the elections should be declared in each polling station in the\n                        presence of the Dean of the Faculty, or Hall Warden/ Hall Supervisor as the\n                        case may be, as well as agents of the contestants.\n                    </li>\n                    <li>\n                        The Presiding Officer, agents of contestants, Deans and/or Hall Wardens/Hall\n                        Supervisor and the security personnel must sign on the result sheet and each\n                        of them should be given a copy.\n                    </li>\n                    <li>\n                        The result shall be submitted to the Chief Returning Officer by the Presiding\n                        Officer.\n                    </li>\n                    <li>\n                        The Chief Returning Officer shall enter the scores of each candidate as they\n                        are brought in from the polling centres in the presence of the agents of the\n                        candidates and security personnel.\n                    </li>\n                    <li>\n                        The overall result shall be declared by the Chief Returning Officer and a copy\n                        be sent to the University Authority.\n                    </li>\n                </ol>\n            </li>\n            <li>\n                Before the commencement of voting, the Electoral Committee shall make necessary\n                arrangements for candidates contesting for elections into the various offices to\n                campaign for votes.\n            </li>\n            <li>\n                All campaigns shall end at least 24 hours before the commencement of voting.\n                In the event of a tie in an election in respect of any elective post(s), the Electoral\n                Committee shall within forty-eight (48) hours organise and conduct fresh elections\n                into such office(s).\n            </li>\n            <li>\n                Without prejudice to the provision of sub-section (ii) of this section, in case of\n                inability to conduct elections into S.U.E.C and PARLIAMENT within first 4 weeks of\n                the Second Semester of the new academic session, a new date shall be determined\n                by the University Authority.\n            </li>\n            <li>\n                Withdrawals of candidature by any candidate shall:\n                <ol>\n                    <li>\n                        Be made within 12 hours after exhibition of the list of candidates.\n                    </li>\n                    <li>\n                        Be made in writing to the Chairman of the Electoral Committee in respect of\n                        that decision.\n                    </li>\n                    <li>\n                        Not be accepted after the expiration of the 12 hours as provided in paragraph\n                        (1) above.\n                    </li>\n                </ol>\n            </li>\n            <li>\n                Subject to the provisions of this constitution, the Electoral Committee may make\n                guidelines for the orderly conduct of the elections which must be endorsed by the\n                University Authority.\n            </li>\n        </ol>\n\n        <h5>SECTION 3: Disqualification of Candidates for Elective Post</h5>\n        <p>Any candidate for an elective post shall be disqualified if:</p>\n        <ol>\n            <li>\n                His campaign strategies are based on religious or ethnic affiliation or any\n                form of sectionalism.\n            </li>\n            <li>\n                Found guilty of abuse of office, corruption, misappropriation of funds,\n                misconduct of any kind, cultism, drug abuse and criminal offences by any of\n                the following:\n                <ol>\n                    <li>\n                        A duly Constituted Nigerian Court of Law\n                    </li>\n                    <li>\n                        Any Students’ Union Association\n                    </li>\n                    <li>\n                        FPTB Students’ Disciplinary Committee\n                    </li>\n                    <li>\n                        Any organisation recognised by the Union\n                    </li>\n                </ol>\n            </li>\n            <li>\n                He is on the payroll or an affiliate of any political party or Labour Union.\n            </li>\n            <li>\n                He receives money or any form of aid or grant from the University Authorities\n                or external body(ies) for the purpose of his campaign.\n            </li>\n            <li>\n                He or his supporters use or attempts to use derogatory verbal phrases and or\n                physical violence to intimidate his opponents or their supporters.\n            </li>\n            <li>\n                He violates any of the provisions of this Constitution.\n            </li>\n        </ol>\n        <h5>SECTION 4: Order of Election</h5>\n        <p>\n            Elections into PARLIAMENT, S.U.E.C and H.E.C should be conducted based on the time table\n            provided by the Electoral Committee and in accordance with the provision of this\n            Constitution.\n        </p>\n        <h5>SECTION 5: Election Petition</h5>\n        <ol>\n            <li>\n                Election petitions against the decision(s) of the Electoral Committee shall be filed\n                with the Judicial Committee, copied to the Chairman Electoral Committee and Dean\n                of Students Affairs.\n            </li>\n            <li>\n                Election petitions shall be filed within twenty-four (24) hours after the declaration of\n                the result by the Electoral Committee.\n            </li>\n            <li>\n                The said petition shall be determined within four (4) days of its receipt by the Judicial\n                Committee.\n            </li>\n            <li>\n                The decisions of the Judicial Committee on any petition shall be sent to the\n                University Authority and the Security Department immediately.\n            </li>\n        </ol>\n        <h5>SECTION 6: Swearing in Ceremony</h5>\n        <ol>\n            <li>\n                Elected Officers of the Union shall not exercise any function unless and until sworn-\n                in, in accordance with the provisions of this Constitution.\n            </li>\n            <li>\n                The Oath of Office shall be administered on all elected members of the Union by the\n                Registrar not more than one week of the declaration of the election results.\n            </li>\n        </ol>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -1617,7 +1615,6 @@ var RegisterComponent = (function () {
                         __WEBPACK_IMPORTED_MODULE_8_jquery__('#searchBtn').removeClass("loading disabled");
                     }
                     else {
-                        console.log(response.student_info);
                         var matricno = __WEBPACK_IMPORTED_MODULE_8_jquery__('#matricno').val();
                         var fullName = response.student_info.full_name;
                         var nameArray = fullName.split(' ');
@@ -1695,12 +1692,17 @@ var RegisterComponent = (function () {
                     email: _this.aspirant.email,
                     callback_url: window.location.host + "/status",
                     metadata: {
-                        custom_fields: [
-                            { display_name: "Payment For", variable_name: "payment_purpose", value: "NACOMSS AUK Aspirant Form" },
-                            { display_name: "Office Aspiring For", variable_name: "office", value: _this.aspirant.office }
-                        ]
+                        custom_fields: [{
+                                display_name: "Payment For",
+                                variable_name: "payment_purpose",
+                                value: "NACOMSS AUK Aspirant Form"
+                            }, {
+                                display_name: "Office Aspiring For",
+                                variable_name: "office",
+                                value: _this.aspirant.office
+                            }]
                     },
-                    subaccount: 'ACCT_h0ei6f30smsz0mg',
+                    subaccount: "ACCT_g3ejjv7py15vrby",
                     bearer: "subaccount"
                 };
                 _this.paystackService.initializeTransaction(dataString).subscribe(function (response) {
@@ -2323,21 +2325,25 @@ var VoteComponent = (function () {
         this.voteSlip = {
             matricno: String,
             president: String,
-            vice_president: String,
             sec_gen: String,
-            asst_sec_gen: String,
+            vice_president_I: String,
             fin_sec: String,
             auditor: String,
             treasurer: String,
-            welfare_I: String,
-            welfare_II: String,
-            dir_of_socials: String,
+            software: String,
             pro_I: String,
-            pro_II: String,
-            provost: String,
-            sales_dir: String,
+            liason: String,
             sports_dir: String,
-            dir_of_food: String,
+            vice_president_II: String,
+            asst_sec_gen: String,
+            dir_of_socials: String,
+            dir_of_business: String,
+            welfare: String,
+            dir_of_program: String,
+            dir_of_library: String,
+            asst_welfare: String,
+            asst_sport: String,
+            pro_II: String,
         };
         this.votingTime = {
             votingDay: '2018-08-06',
@@ -2430,14 +2436,11 @@ var VoteComponent = (function () {
                 if (office === 'president') {
                     _this.presidents = aspirants;
                 }
-                else if (office === 'vice_president') {
-                    _this.vice_presidents = aspirants;
-                }
                 else if (office === 'sec_gen') {
                     _this.sec_gens = aspirants;
                 }
-                else if (office === 'asst_sec_gen') {
-                    _this.asst_sec_gens = aspirants;
+                else if (office === 'vice_president_I') {
+                    _this.vice_president_Is = aspirants;
                 }
                 else if (office === 'fin_sec') {
                     _this.fin_secs = aspirants;
@@ -2448,32 +2451,47 @@ var VoteComponent = (function () {
                 else if (office === 'treasurer') {
                     _this.treasurers = aspirants;
                 }
-                else if (office === 'welfare_I') {
-                    _this.welfare_Is = aspirants;
-                }
-                else if (office === 'welfare_II') {
-                    _this.welfare_IIs = aspirants;
-                }
-                else if (office === 'dir_of_socials') {
-                    _this.dir_of_socialss = aspirants;
+                else if (office === 'software') {
+                    _this.softwares = aspirants;
                 }
                 else if (office === 'pro_I') {
                     _this.pro_Is = aspirants;
                 }
-                else if (office === 'pro_II') {
-                    _this.pro_IIs = aspirants;
-                }
-                else if (office === 'provost') {
-                    _this.provosts = aspirants;
-                }
-                else if (office === 'sales_dir') {
-                    _this.sales_dirs = aspirants;
+                else if (office === 'liason') {
+                    _this.liasons = aspirants;
                 }
                 else if (office === 'sports_dir') {
                     _this.sports_dirs = aspirants;
                 }
-                else if (office === 'dir_of_food') {
-                    _this.dir_of_foods = aspirants;
+                else if (office === 'vice_president_II') {
+                    _this.vice_president_IIs = aspirants;
+                }
+                else if (office === 'asst_sec_gen') {
+                    _this.asst_sec_gens = aspirants;
+                }
+                else if (office === 'dir_of_socials') {
+                    _this.dirs_of_socials = aspirants;
+                }
+                else if (office === 'dir_of_business') {
+                    _this.dirs_of_business = aspirants;
+                }
+                else if (office === 'welfare') {
+                    _this.welfares = aspirants;
+                }
+                else if (office === 'dir_program') {
+                    _this.dirs_of_program = aspirants;
+                }
+                else if (office === 'dir_of_library') {
+                    _this.dirs_of_library = aspirants;
+                }
+                else if (office === 'asst_welfare') {
+                    _this.asst_welfares = aspirants;
+                }
+                else if (office === 'asst_sport') {
+                    _this.asst_sports = aspirants;
+                }
+                else if (office === 'pro_II') {
+                    _this.pro_IIs = aspirants;
                 }
                 else {
                     _this.toasterService.pop('error', 'Oops!', 'Office not available');
@@ -2483,14 +2501,11 @@ var VoteComponent = (function () {
                 if (office === 'president') {
                     _this.presidents = false;
                 }
-                else if (office === 'vice_president') {
-                    _this.vice_presidents = false;
-                }
                 else if (office === 'sec_gen') {
                     _this.sec_gens = aspirants;
                 }
-                else if (office === 'asst_sec_gen') {
-                    _this.asst_sec_gens = aspirants;
+                else if (office === 'vice_president_I') {
+                    _this.vice_president_Is = aspirants;
                 }
                 else if (office === 'fin_sec') {
                     _this.fin_secs = aspirants;
@@ -2501,32 +2516,47 @@ var VoteComponent = (function () {
                 else if (office === 'treasurer') {
                     _this.treasurers = aspirants;
                 }
-                else if (office === 'welfare_I') {
-                    _this.welfare_Is = aspirants;
-                }
-                else if (office === 'welfare_II') {
-                    _this.welfare_IIs = aspirants;
-                }
-                else if (office === 'dir_of_socials') {
-                    _this.dir_of_socialss = aspirants;
+                else if (office === 'software') {
+                    _this.softwares = aspirants;
                 }
                 else if (office === 'pro_I') {
                     _this.pro_Is = aspirants;
                 }
-                else if (office === 'pro_II') {
-                    _this.pro_IIs = aspirants;
-                }
-                else if (office === 'provost') {
-                    _this.provosts = aspirants;
-                }
-                else if (office === 'sales_dir') {
-                    _this.sales_dirs = aspirants;
+                else if (office === 'liason') {
+                    _this.liasons = aspirants;
                 }
                 else if (office === 'sports_dir') {
                     _this.sports_dirs = aspirants;
                 }
-                else if (office === 'dir_of_food') {
-                    _this.dir_of_foods = aspirants;
+                else if (office === 'vice_president_II') {
+                    _this.vice_president_IIs = aspirants;
+                }
+                else if (office === 'asst_sec_gen') {
+                    _this.asst_sec_gens = aspirants;
+                }
+                else if (office === 'dir_of_socials') {
+                    _this.dirs_of_socials = aspirants;
+                }
+                else if (office === 'dir_of_business') {
+                    _this.dirs_of_business = aspirants;
+                }
+                else if (office === 'welfare') {
+                    _this.welfares = aspirants;
+                }
+                else if (office === 'dir_program') {
+                    _this.dirs_of_program = aspirants;
+                }
+                else if (office === 'dir_of_library') {
+                    _this.dirs_of_library = aspirants;
+                }
+                else if (office === 'asst_welfare') {
+                    _this.asst_welfares = aspirants;
+                }
+                else if (office === 'asst_sport') {
+                    _this.asst_sports = aspirants;
+                }
+                else if (office === 'pro_II') {
+                    _this.pro_IIs = aspirants;
                 }
             }
         }, function (error) {
@@ -2535,21 +2565,25 @@ var VoteComponent = (function () {
     };
     VoteComponent.prototype.showSlip = function () {
         this.getAspirantsByOffice('president');
-        this.getAspirantsByOffice('vice_president');
         this.getAspirantsByOffice('sec_gen');
-        this.getAspirantsByOffice('asst_sec_gen');
+        this.getAspirantsByOffice('vice_president_I');
         this.getAspirantsByOffice('fin_sec');
         this.getAspirantsByOffice('auditor');
         this.getAspirantsByOffice('treasurer');
-        this.getAspirantsByOffice('welfare_I');
-        this.getAspirantsByOffice('welfare_II');
-        this.getAspirantsByOffice('dir_of_socials');
+        this.getAspirantsByOffice('software');
         this.getAspirantsByOffice('pro_I');
-        this.getAspirantsByOffice('pro_II');
-        this.getAspirantsByOffice('provost');
-        this.getAspirantsByOffice('sales_dir');
+        this.getAspirantsByOffice('liason');
         this.getAspirantsByOffice('sports_dir');
-        this.getAspirantsByOffice('dir_of_food');
+        this.getAspirantsByOffice('vice_president_II');
+        this.getAspirantsByOffice('asst_sec_gen');
+        this.getAspirantsByOffice('dir_of_socials');
+        this.getAspirantsByOffice('dir_of_business');
+        this.getAspirantsByOffice('welfare');
+        this.getAspirantsByOffice('dir_of_program');
+        this.getAspirantsByOffice('dir_of_library');
+        this.getAspirantsByOffice('asst_welfare');
+        this.getAspirantsByOffice('asst_sport');
+        this.getAspirantsByOffice('pro_II');
     };
     VoteComponent.prototype.onVoteSubmit = function () {
         var _this = this;
@@ -2558,21 +2592,25 @@ var VoteComponent = (function () {
         this.voteSlip = {
             matricno: this.voteSlip.matricno,
             president: this.voteSlip.president,
-            vice_president: this.voteSlip.vice_president,
             sec_gen: this.voteSlip.sec_gen,
-            asst_sec_gen: this.voteSlip.asst_sec_gen,
+            vice_president_I: this.voteSlip.vice_president_I,
             fin_sec: this.voteSlip.fin_sec,
             auditor: this.voteSlip.auditor,
             treasurer: this.voteSlip.treasurer,
-            welfare_I: this.voteSlip.welfare_I,
-            welfare_II: this.voteSlip.welfare_II,
-            dir_of_socials: this.voteSlip.dir_of_socials,
+            software: this.voteSlip.software,
             pro_I: this.voteSlip.pro_I,
-            pro_II: this.voteSlip.pro_II,
-            provost: this.voteSlip.provost,
-            sales_dir: this.voteSlip.sales_dir,
+            liason: this.voteSlip.liason,
             sports_dir: this.voteSlip.sports_dir,
-            dir_of_food: this.voteSlip.dir_of_food,
+            vice_president_II: this.voteSlip.vice_president_II,
+            asst_sec_gen: this.voteSlip.asst_sec_gen,
+            dir_of_socials: this.voteSlip.dir_of_socials,
+            dir_of_business: this.voteSlip.dir_of_business,
+            welfare: this.voteSlip.welfare,
+            dir_of_program: this.voteSlip.dir_of_program,
+            dir_of_library: this.voteSlip.dir_of_library,
+            asst_welfare: this.voteSlip.asst_welfare,
+            asst_sport: this.voteSlip.asst_sport,
+            pro_II: this.voteSlip.pro_II
         };
         this.voteService.saveVote(this.voteSlip).subscribe(function (response) {
             if (response.success) {
@@ -3165,7 +3203,7 @@ var StudentService = (function () {
     function StudentService(http, apiService) {
         this.http = http;
         this.apiService = apiService;
-        this.apiUrl = 'http://api.fptb.edu.ng/student/';
+        this.apiUrl = 'http://aukapi.nacossatbu.com.ng/v1/student/';
     }
     StudentService.prototype.getStudentRecord = function (matricno) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
