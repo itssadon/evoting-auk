@@ -18,21 +18,21 @@ export class PaystackService {
 
     createCustomer(data) {
         let headers = new Headers();
-        headers.append('Authorization', 'Bearer ' + secret);
+        headers.append('Authorization', 'Bearer ' + live_secret);
         headers.append('Content-Type', 'application/json');
         return this.http.post('https://api.paystack.co/customer', data, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
     initializeTransaction(data) {
         let headers = new Headers();
-        headers.append('Authorization', 'Bearer ' + secret);
+        headers.append('Authorization', 'Bearer ' + live_secret);
         headers.append('Content-Type', 'application/json');
         return this.http.post('https://api.paystack.co/transaction/initialize', data, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
 
     verifyTransaction(reference) {
         let headers = new Headers();
-        headers.append('Authorization', 'Bearer ' + secret);
+        headers.append('Authorization', 'Bearer ' + live_secret);
         headers.append('Content-Type', 'application/json');
         return this.http.get('https://api.paystack.co/transaction/verify/'+reference, {headers: headers}).map(res => res.json()).catch(err => err.toString());
     }
