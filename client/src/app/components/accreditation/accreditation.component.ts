@@ -234,7 +234,7 @@ export class AccreditationComponent implements OnInit {
                 // Send SMS
                 const smsDetails = {
                   recipient: this.student.phone,
-                  message: this.student.studentName + ', you have been accredited to vote. Your Password to be used to login is: ' + user.password
+                  message: this.student.studentName + ', you have been accredited to vote and your password is: ' + user.password
                 }
                 this.smsService.sendSMS(smsDetails).subscribe(
                   response => {

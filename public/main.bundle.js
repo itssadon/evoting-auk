@@ -459,7 +459,7 @@ var AccreditationComponent = (function () {
                         // Send SMS
                         var smsDetails = {
                             recipient: _this.student.phone,
-                            message: _this.student.studentName + ', you have been accredited to vote. Your Password to be used to login is: ' + user_1.password
+                            message: _this.student.studentName + ', you have been accredited to vote and your password is: ' + user_1.password
                         };
                         _this.smsService.sendSMS(smsDetails).subscribe(function (response) {
                             if (response.success) {

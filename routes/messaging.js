@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 
 var smtpTransport = nodemailer.createTransport({
     service: "gmail",
-    host: "smtp.gmail.com",
+    //host: "smtp.gmail.com",
     auth: {
         user: "abubakarhassan59@gmail.com",
         pass: "Sadon4ME2!#"
@@ -16,7 +16,7 @@ var smtpTransport = nodemailer.createTransport({
 
 router.post('/mail', (req, res, next) => {
     var mailOptions = {
-        from: 'SUG FPTB ELCOM <elcom@sugatbu.com>',
+        from: 'NACOMSS AUK ELCOM <elcom@nacossauk.com.ng>',
         to: req.body.to,
         subject: req.body.subject,
         text: req.body.text
@@ -33,7 +33,7 @@ router.post('/mail', (req, res, next) => {
 
 router.post('/sms', (req, res, next) => {
     var apiUrl = 'https://api.smartsmssolutions.com/smsapi.php?username=sadon12&password=LIacAnuclommIc2';
-    var sender = 'FPTB ELCOM';
+    var sender = 'NACOMSS';
     var recipient = req.body.recipient;
     var message = req.body.message;
     https.get(
