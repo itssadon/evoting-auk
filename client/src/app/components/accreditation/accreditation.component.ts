@@ -215,13 +215,13 @@ export class AccreditationComponent implements OnInit {
                 const mailDetails = {
                   to: this.student.email || $('#email').val(),
                   subject: 'Accreditation Successful',
-                  text: 'You have been accredited to vote. Here are your login detail. \nUsername: ' + this.student.matricno + ',\n Password: ' + user.password,
+                  text: 'Hello ' +  this.student.studentName + ', \n\nYou have been accredited to vote. Here are your login detail. \n\nUsername: ' + this.student.matricno + ',\n Password: ' + user.password + '\n\nThank you!\nNACOMSS AUK Team.',
                   html: ''
                 }
                 this.mailService.sendMail(mailDetails).subscribe(
                   response => {
                     if (response.success) {
-                      this.toasterService.pop('success', 'Success', 'Email has been sent.');
+                      this.toasterService.pop('success', 'Success', 'A mail has been sent to student\'s email.');
                     } else {
                       this.toasterService.pop('error', 'Oops!', 'Could not send mail');
                     }
@@ -239,7 +239,7 @@ export class AccreditationComponent implements OnInit {
                 this.smsService.sendSMS(smsDetails).subscribe(
                   response => {
                     if (response.success) {
-                      this.toasterService.pop('success', 'Success', 'Password has been sent to student\'s phone');
+                      this.toasterService.pop('success', 'Success', 'An SMS has been sent to student\'s phone');
                     } else {
                       this.toasterService.pop('error', 'Oops!', response.msg);
                     }
