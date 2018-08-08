@@ -101,7 +101,13 @@
                         <div class="field" id="">
                             <label for="level">7. Level</label>
                             <div class="ui input">
-                                <input type="text" placeholder="Level of study" [(ngModel)]="level" name="level" id="level" readonly="" />
+                                <select class="ui fluid dropdown" [(ngModel)]="level" name="level" id="level" required>
+                                    <option value="">Select Level</option>
+                                    <option value="100">100 Level</option>
+                                    <option value="200">200 Level</option>
+                                    <option value="300">300 Level</option>
+                                    <option value="400">400 Level</option>
+                                </select>
                             </div>
                         </div>
                         <div class="field" id="">

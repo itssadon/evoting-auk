@@ -104,29 +104,32 @@ export class StatusComponent implements OnInit {
     }
 
     populateAspirantForm() {
-        var matricno = this.aspirant.matricno.replace(/\//g, "-");
+        const matricno = this.aspirant.matricno.replace(/\//g, "-");
         this.studentService.getStudentRecord(matricno).subscribe(
             response => {
-                if(response.student_info === 'Record not Found!') {
+                if (response.student_info === 'Record not Found!') {
                     this.toasterService.pop('error', 'Oops!', response.student_info);
                 } else {
+                    const fullName = response.student_info.full_name;
+                    const nameArray = fullName.split(' ');
+                    let middlename = '';
+                    if (nameArray[2]) {
+                        middlename = nameArray[2];
+                    }
                     this.matricno = this.aspirant_model.matricno = this.aspirant.matricno;
-                    var lastname = this.aspirant_model.lastname = response.student_info.last_name;
-                    var firstname = this.aspirant_model.firstname = response.student_info.first_name;
-                    this.aspirant_model.middlename = response.student_info.other_names;
-                    var email = response.student_info.email;
-                    var department = response.student_info.department;
-                    var course = response.student_info.programme;
-                    var level = response.student_info.class;
-                    var office = this.aspirant_model.office = this.aspirant.office;
-                    var amount = this.aspirant.amount;
-                    $('#othernames').val(firstname + " " + response.student_info.other_names);
+                    const lastname = this.aspirant_model.lastname = nameArray[0];
+                    const firstname = this.aspirant_model.firstname = nameArray[1];
+                    this.aspirant_model.middlename = middlename;
+                    const email = response.student_info.email;
+                    const department = 'COMPUTER & MATHEMATICS';
+                    const course = 'COMP/MATH';
+                    this.aspirant_model.office = this.aspirant.office;
+                    $('#othernames').val(firstname + ' ' + middlename);
                     $('#lastname').val(lastname);
                     $('#email').val(email);
                     $('#phone').val();
                     $('#department').val(department);
                     $('#course').val(course);
-                    $('#level').val(level);
                     $('#pageDimmer').remove();
                     $('#msg_grid').remove();
                     this.toasterService.pop('success', response.message, 'Please fill in all the empty fields in the form.');
