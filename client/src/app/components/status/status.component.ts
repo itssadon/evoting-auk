@@ -48,8 +48,12 @@ export class StatusComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        const script = document.createElement('script');
+        script.innerText = "$('select.dropdown').dropdown();";
+        $('body').append(script);
+
         this.reference = this.getUrlParameter(('reference' || 'trxref'));
-        if(!this.reference) {
+        if (!this.reference) {
             this.paymentStatus = false;
             this.toasterService.pop('error', 'Sorry!', 'You must pay for a position before you can proceed.');
             this.router.navigate(['/register']);
