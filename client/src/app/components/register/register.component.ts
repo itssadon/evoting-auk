@@ -103,9 +103,9 @@ export class RegisterComponent implements OnInit {
   }
 
   setOfficeAmount(event) {
-    var office = event.target.value;
-    var amount_words = null,
-      amount = null;
+    let office = event.target.value;
+    let amount_words = null,
+    amount = null;
     switch (office) {
       case "president":
         amount_words = "Five thousand (N5,000)";
@@ -200,16 +200,16 @@ export class RegisterComponent implements OnInit {
   }
 
   triggerSearch(event) {
-    if (event.which == 13) {
+    if (event.which === 13) {
       event.preventDefault();
-      $('#searchBtn').trigger("click");
+      $('#searchBtn').trigger('click');
     }
   }
 
   searchMatric() {
     $('#searchBtn').addClass("loading disabled");
-    var matricno = $('#matricno').val().replace(/\//g, "-").toUpperCase();
-    if (matricno === "" || matricno === null) {
+    const matricno = $('#matricno').val().replace(/\//g, '-').toUpperCase();
+    if (matricno === '' || matricno === null) {
       this.toasterService.pop('error', 'Oops!', 'Please enter your matric number');
       $('#matricno').focus();
       $('#searchBtn').removeClass("loading disabled");
@@ -229,27 +229,26 @@ export class RegisterComponent implements OnInit {
                 this.toasterService.pop('error', 'Oops!', response.msg);
                 $('#searchBtn').removeClass("loading disabled");
               } else {
-                var matricno = $('#matricno').val();
-                var fullName = response.student_info.full_name;
-                var nameArray = fullName.split(' ');
-                var lastname = nameArray[0];
-                var firstname = nameArray[1];
+                this.matricno = $('#matricno').val();
+                const fullName = response.student_info.full_name;
+                const nameArray = fullName.split(' ');
+                const lastname = nameArray[0];
+                const firstname = nameArray[1];
+                let middlename = '';
                 if (nameArray[2]) {
-                  var middlename = nameArray[2];
+                  middlename = nameArray[2];
                 }
-                var email = null;
-                var phone = null;
-                var department = 'COMPUTER & MATHEMATICS';
-                var course = 'COMP/MATH';
-                var office = this.office;
-                var amount = this.amount;
+                const department = 'COMPUTER & MATHEMATICS';
+                const course = 'COMP/MATH';
+                const office = this.office;
+                const amount = this.amount;
                 $('#firstname').val(firstname);
                 $('#middlename').val(middlename);
                 $('#lastname').val(lastname);
-                $('#email').val(email);
-                $('#phone').val(phone);
                 $('#department').val(department);
                 $('#course').val(course);
+                const email = $('#email').val();
+                const phone = $('#phone').val();
 
                 this.aspirant = {
                   matricno: matricno,
@@ -260,12 +259,12 @@ export class RegisterComponent implements OnInit {
                   office: office,
                   amount: amount
                 };
-                $('#searchBtn').removeClass("loading disabled");
+                $('#searchBtn').removeClass('loading disabled');
               }
             },
             error => {
               this.toasterService.pop('error', 'Oops!', 'Search failed due to server error. Please try after a while');
-              $('#searchBtn').removeClass("loading disabled");
+              $('#searchBtn').removeClass('loading disabled');
             }
           );
         }
@@ -280,6 +279,9 @@ export class RegisterComponent implements OnInit {
   onPaySubmit() {
     var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="student_info"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Connecting to Payment Service.<br><br>Please wait...</h3></div></div></div></div></div>';
     $('body').prepend(pageDimmer);
+
+    this.aspirant.email = $('#email').val();
+    this.aspirant.phone = $('#phone').val();
 
     // Required Fields
     if (!this.validateService.validatePayerDetails(this.aspirant)) {
@@ -312,20 +314,20 @@ export class RegisterComponent implements OnInit {
           reference: Date.now(),
           amount: this.aspirant.amount,
           email: this.aspirant.email,
-          callback_url: window.location.host + "/status",
+          callback_url: window.location.host + '/status',
           metadata: {
             custom_fields: [{
-              display_name: "Payment For",
-              variable_name: "payment_purpose",
-              value: "NACOMSS AUK Aspirant Form"
+              display_name: 'Payment For',
+              variable_name: 'payment_purpose',
+              value: 'NACOMSS AUK Aspirant Form'
             }, {
-              display_name: "Office Aspiring For",
-              variable_name: "office",
+              display_name: 'Office Aspiring For',
+              variable_name: 'office',
               value: this.aspirant.office
             }]
           },
-          subaccount: "ACCT_g3ejjv7py15vrby",
-          bearer: "subaccount"
+          subaccount: 'ACCT_2hmxzt7lalj1rr7',
+          bearer: 'subaccount'
         };
         this.paystackService.initializeTransaction(dataString).subscribe(response => {
           if (response.status) {
