@@ -3102,19 +3102,19 @@ var PaystackService = (function () {
     }
     PaystackService.prototype.createCustomer = function (data) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Authorization', 'Bearer ' + secret);
+        headers.append('Authorization', 'Bearer ' + live_secret);
         headers.append('Content-Type', 'application/json');
         return this.http.post('https://api.paystack.co/customer', data, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     PaystackService.prototype.initializeTransaction = function (data) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Authorization', 'Bearer ' + secret);
+        headers.append('Authorization', 'Bearer ' + live_secret);
         headers.append('Content-Type', 'application/json');
         return this.http.post('https://api.paystack.co/transaction/initialize', data, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
     PaystackService.prototype.verifyTransaction = function (reference) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Authorization', 'Bearer ' + secret);
+        headers.append('Authorization', 'Bearer ' + live_secret);
         headers.append('Content-Type', 'application/json');
         return this.http.get('https://api.paystack.co/transaction/verify/' + reference, { headers: headers }).map(function (res) { return res.json(); }).catch(function (err) { return err.toString(); });
     };
