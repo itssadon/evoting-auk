@@ -1,7 +1,7 @@
 {
-  "name": "evoting-fptb",
+  "name": "evoting-auk",
   "version": "1.0.0",
-  "description": "FPTB E-voting application",
+  "description": "Al-Qalam University E-voting application",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/dtrexx/evoting-fptb.git"
+    "url": "git+ssh://git@gitlab.com/dtrexx/evoting-auk.git"
   },
   "author": "Sadiq Hassan",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/dtrexx/evoting-fptb/issues"
+    "url": "https://gitlab.com/dtrexx/evoting-auk/issues"
   },
-  "homepage": "https://gitlab.com/dtrexx/evoting-fptb#README",
+  "homepage": "https://gitlab.com/dtrexx/evoting-auk#README",
   "devDependencies": {
     "@angular-devkit/schematics": "0.0.43",
     "@angular/cli": "^1.6.4"
