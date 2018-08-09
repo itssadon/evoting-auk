@@ -9,13 +9,20 @@
         </span>
     </h1>
     <div class="ui hidden divider"></div>
-    <a *ngIf="!authService.loggedIn()" [routerLink]="['/register']" class="ui huge inverted download button"><i class="icon credit card"></i>Buy Form</a>
+    <a *ngIf="!authService.loggedIn()" [routerLink]="['/register']" class="ui huge primary button"><i class="icon credit card"></i>Click here to Buy Form</a>
     <a *ngIf="!authService.loggedIn()" [routerLink]="['/login']" class="ui huge inverted basic button"><i class="icon sign in"></i>Login</a>
     <a *ngIf="authService.loggedIn()" [routerLink]="['/dashboard']" class="ui huge inverted basic button"><i class="icon dashboard"></i>Dashboard</a>
+    <div class="ui divider"></div>
     <div class="ui hidden divider"></div>
     <div class="ui hidden divider"></div>
-    <div *ngIf="!authService.loggedIn()" class="ui fluid action huge input">
-        <input type="text" placeholder="Please enter your payent reference number here" (keypress)="triggerProceed($event)" [(ngModel)]="payment_ref" maxlength="13" name="payment_ref" id="payment_ref">
+    <h3 class="ui inverted header">
+        <span class="bigheader">
+            Aspirant's Data Form
+        </span>
+    </h3>
+    <div *ngIf="!authService.loggedIn()" class="ui left icon fluid action huge input">
+        <i class="id badge icon"></i>
+        <input type="text" placeholder="Please enter your payment reference number here and click proceed ->" (keypress)="triggerProceed($event)" [(ngModel)]="payment_ref" maxlength="13" name="payment_ref" id="payment_ref">
         <button type="button" class="ui primary right labeled icon button" (click)="proceed()" id="proceedBtn">
             <i class="arrow right icon"></i>
             Proceed
