@@ -16,7 +16,7 @@ var smtpTransport = nodemailer.createTransport({
 
 router.post('/mail', (req, res, next) => {
     var mailOptions = {
-        from: 'NACOMSS AUK ELCOM <elcom@nacossauk.com.ng>',
+        from: 'NAMCOSS AUK ELCOM <elcom@nacossauk.com.ng>',
         to: req.body.to,
         subject: req.body.subject,
         text: req.body.text
@@ -33,7 +33,7 @@ router.post('/mail', (req, res, next) => {
 
 router.post('/sms', (req, res, next) => {
     var apiUrl = 'https://api.smartsmssolutions.com/smsapi.php?username=sadon12&password=LIacAnuclommIc2';
-    var sender = 'NACOMSS';
+    var sender = 'NAMCOSS';
     var recipient = req.body.recipient;
     var message = req.body.message;
     https.get(
