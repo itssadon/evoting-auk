@@ -21,20 +21,19 @@ export class HomeComponent implements OnInit {
     }
 
     triggerProceed(event) {
-        if(event.which == 13) {
+        if (event.which === 13) {
             event.preventDefault();
-            $('#proceedBtn').trigger("click");
+            $('#proceedBtn').trigger('click');
         }
     }
 
     proceed() {
-        var payment_ref = $('#payment_ref').val();
-        console.log('Payment: '+payment_ref);
-        if(payment_ref === '' || payment_ref === null || isNaN(payment_ref) || !isFinite(payment_ref)) {
+        const payment_ref = $('#payment_ref').val();
+        if (payment_ref === '' || payment_ref === null || isNaN(payment_ref) || !isFinite(payment_ref)) {
             this.toasterService.pop('error', 'Error', 'You have not supplied a valid payment reference number.');
             return false;
         }
-        window.location.href = '/status?trxref='+payment_ref+'&reference='+payment_ref;
+        window.location.href = '/status?trxref=' + payment_ref + '&reference=' + payment_ref;
     }
 
 }

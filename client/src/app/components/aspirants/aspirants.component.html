@@ -48,7 +48,11 @@
                         <td>{{aspirant.cgpa}}</td>
                         <td><span style="text-transform: capitalize;">{{aspirant.office}}</span></td>
                         <td>{{aspirant.reason}}</td>
-                        <td><button type="button" class="ui red tiny fluid left labelled icon button"><i class="trash icon"></i>Screen out</button></td>
+                        <td>
+                            <button type="button" class="ui red tiny fluid icon button" (click)="removeAspirant(aspirant.matricno)">
+                                <i class="trash icon" title="Screen out aspirant"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

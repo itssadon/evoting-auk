@@ -26,7 +26,9 @@ export class AspirantsComponent implements OnInit {
             const user_name = userObj.name;
             $('#user_name').text(user_name);
         }
-        let pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+
+        const pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+
         $('body').prepend(pageDimmer);
         this.getAspirants();
     }
@@ -112,6 +114,27 @@ export class AspirantsComponent implements OnInit {
             }
         );
         $('#pageDimmer').remove();
+    }
+
+    removeAspirant(matricNo) {
+        const pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+        $('body').prepend(pageDimmer);
+
+        this.aspirateService.deleteAspirant(matricNo).subscribe(
+            data => {
+                if (data.success) {
+                    this.toasterService.pop('success', 'Success!', data.message);
+                } else {
+                    this.toasterService.pop('info', 'Oops!', 'Aspirant could not be deleted at the moment.');
+                }
+                this.ngOnInit();
+            },
+            err => {
+                this.toasterService.pop('error', 'Oops!', err);
+                $('#pageDimmer').remove();
+                return false;
+            }
+        );
     }
 
 }
