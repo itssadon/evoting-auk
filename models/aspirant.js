@@ -72,20 +72,21 @@ module.exports.addAspirant = function (aspirant, callback) {
 };
 
 module.exports.getAspirants = function(callback) {
-    Aspirant.find(callback);
+    const mysort = { office: 1 };
+    Aspirant.find(callback).sort(mysort);
 };
 
 module.exports.getAspirant = function(matricno, callback) {
-    const query = {matricno: matricno}
+    const query = {matricno: matricno};
     Aspirant.find(query, callback);
 };
 
 module.exports.getAspirantsByOffice = function(office, callback) {
-    const query = {office: office}
+    const query = {office: office};
     Aspirant.find(query, callback);
 };
 
 module.exports.updateAspirantVote = function(matricno, callback) {
-    const query = {matricno: matricno}
+    const query = {matricno: matricno};
     Aspirant.update(query, {$inc: {"votes":1}}, callback);
-}
+};
