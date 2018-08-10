@@ -90,3 +90,8 @@ module.exports.updateAspirantVote = function(matricno, callback) {
     const query = {matricno: matricno};
     Aspirant.update(query, {$inc: {"votes":1}}, callback);
 };
+
+module.exports.deleteAspirant = function(matricno, callback) {
+    const query = {matricno: matricno};
+    Aspirant.deleteOne(query, callback);
+};

@@ -36,7 +36,7 @@ router.post('/aspirant', (req, res, next) => {
     });
     Aspirant.addAspirant(newAspirant, (err, user) => {
         if(err){
-            res.json({success:false, msg:'Failed to register aspirant'})
+            res.json({success:false, msg:'Failed to register aspirant'});
         } else {
             res.json({success:true, msg:'Aspirant registered'});
         }
@@ -76,6 +76,19 @@ router.get('/office/:office', passport.authenticate('jwt', {session:false}), (re
         return res.json({
             success: true,
             aspirants: aspirants
+        });
+    });
+});
+
+// Delete an aspirant from the database
+router.delete('/aspirant/:matricno', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+    const matricno = req.params.matricno;
+    console.log('About to delete aspirant: ' + matricno);
+    Aspirant.deleteAspirant(matricno, (err, response) => {
+        if (err) res.send(err);
+        return res.json({
+            success: true,
+            message: "Aspirant has been screened out!"
         });
     });
 });
