@@ -79,7 +79,7 @@ module.exports.addVote = function (voteSlip, callback) {
     voteSlip.save(callback);
 };
 
-module.exports.getVoteSLip = function(matricno, callback) {
-    const query = {matricno: matricno}
+module.exports.getVoteSlip = function(matricno, callback) {
+    const query = {matricno: matricno};
     Vote.find(query, callback);
 };

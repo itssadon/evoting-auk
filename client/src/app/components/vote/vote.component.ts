@@ -38,6 +38,7 @@ export class VoteComponent implements OnInit {
   isVotingTime: Boolean;
   voteStatus: Boolean;
   message: any;
+  voteReceipt: any;
 
   voteSlip = {
     matricno: String,
@@ -60,8 +61,8 @@ export class VoteComponent implements OnInit {
     dir_of_library: String,
     asst_welfare: String,
     asst_sport: String,
-    pro_II: String,
-  }
+    pro_II: String
+  };
 
   presidents: any;
   sec_gens: any;
@@ -87,7 +88,7 @@ export class VoteComponent implements OnInit {
   public votingTime = {
     votingDay: '2018-08-13',
     startingTime: '09:00',
-    closingTime: '17:00'
+    closingTime: '16:00'
   };
 
   constructor(
@@ -102,30 +103,30 @@ export class VoteComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    var userObj = JSON.parse(localStorage.user);
-    var user_name = userObj.name;
+    const userObj = JSON.parse(localStorage.user);
+    const user_name = userObj.name;
     this.voteSlip.matricno = userObj.username;
     $('#user_name').text(user_name);
 
-    var dateObj = new Date();
+    const dateObj = new Date();
 
-    var month = '' + (dateObj.getUTCMonth() + 1); //months from 1-12
-    if (month.length < 2) month = '0' + month;
+    let month = '' + (dateObj.getUTCMonth() + 1); // months from 1-12
+    if (month.length < 2) { month = '0' + month; }
 
-    var day = '' + dateObj.getUTCDate();
-    if (day.length < 2) day = '0' + day;
+    let day = '' + dateObj.getUTCDate();
+    if (day.length < 2) { day = '0' + day; }
 
-    var year = dateObj.getUTCFullYear();
+    const year = dateObj.getUTCFullYear();
 
-    var todayDay = year + "-" + month + "-" + day;
+    const todayDay = year + '-' + month + '-' + day;
 
-    var hour = dateObj.getHours().toString();
-    if (hour.length < 2) hour = '0' + hour;
+    let hour = dateObj.getHours().toString();
+    if (hour.length < 2) { hour = '0' + hour; }
 
-    var minute = dateObj.getMinutes().toString();
-    if (minute.length < 2) minute = '0' + minute;
+    let minute = dateObj.getMinutes().toString();
+    if (minute.length < 2) { minute = '0' + minute; }
 
-    var todayTime = hour + ":" + minute;
+    const todayTime = hour + ':' + minute;
 
     if (todayDay < this.votingTime.votingDay) {
       this.isVotingTime = false;
@@ -166,8 +167,8 @@ export class VoteComponent implements OnInit {
   }
 
   getVoteStatus() {
-    var userObj = JSON.parse(localStorage.user);
-    var matricno = userObj.username.replace(/\//g, "-");
+    const userObj = JSON.parse(localStorage.user);
+    const matricno = userObj.username.replace(/\//g, '-');
     this.voteService.getVoteStatus(matricno).subscribe(
       response => {
         if (response.hasVoted) {
@@ -186,8 +187,9 @@ export class VoteComponent implements OnInit {
   getAspirantsByOffice(office) {
     this.aspirantService.getAspirantsByOffice(office).subscribe(
       response => {
+        let aspirants = '';
         if (response.success) {
-          var aspirants = response.aspirants;
+          aspirants = response.aspirants;
           if (office === 'president') {
             this.presidents = aspirants;
           } else if (office === 'sec_gen') {
@@ -330,7 +332,7 @@ export class VoteComponent implements OnInit {
       asst_welfare: this.voteSlip.asst_welfare,
       asst_sport: this.voteSlip.asst_sport,
       pro_II: this.voteSlip.pro_II
-    }
+    };
 
     this.voteService.saveVote(this.voteSlip).subscribe(
       response => {
@@ -354,8 +356,22 @@ export class VoteComponent implements OnInit {
 
   }
 
-  voterSlip() {
-    // TODO: Get voter's vote receipt
+  voterSlip(matricno) {
+    this.voteService.fetchVoterReceipt(matricno).subscribe(
+      response => {
+        if (response.success) {
+          this.voteReceipt = response.voteSlip;
+          $('#pageDimmer').remove();
+        } else {
+          this.toasterService.pop('info', 'Sorry!', 'We could not find your receipt.');
+          $('#pageDimmer').remove();
+        }
+      },
+      error => {
+        this.toasterService.pop('error', 'Oops!', 'We just encountered a server error fetching your receipt.');
+        $('#pageDimmer').remove();
+      }
+    );
   }
 
 }

@@ -114,5 +114,16 @@ router.get('/status/:matricno', passport.authenticate('jwt', {session:false}), (
     });
 });
 
+// Fetch voter's receipt
+router.get('/receipt/:matricno', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    var matricno = req.param.matricno;
+    Vote.getVoteSlip(matricno, (err, slip) => {
+        if (err) res.send(err);
+        return res.json({
+            success: true,
+            voteReceipt: slip
+        });
+    });
+});
 
 module.exports = router;
