@@ -41,9 +41,13 @@ router.post('/authenticate', (req, res, next) => {
         User.comparePassword(password, user.password, (err, isMatch) => {
             if(err) {
                 console.error(err);
-                res.send(err);
+                res.json({
+                    success: false,
+                    error: err
+                });
             }
             if(isMatch){
+                console.log('Loggedin: ' + user);
                 const token = jwt.sign(user, config.secret, {
                     expiresIn: 14400
                 });
