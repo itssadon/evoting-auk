@@ -21,15 +21,15 @@ export class AspirantsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+        $('body').prepend(pageDimmer);
+
         if (this.authService.loggedIn()) {
-            const userObj = JSON.parse(localStorage.user);
-            const user_name = userObj.name;
-            $('#user_name').text(user_name);
+          const userObj = JSON.parse(localStorage.user);
+          const user_name = userObj.name;
+          $('#user_name').text(user_name);
         }
 
-        const pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
-
-        $('body').prepend(pageDimmer);
         this.getAspirants();
     }
 
