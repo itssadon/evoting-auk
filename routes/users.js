@@ -39,7 +39,10 @@ router.post('/authenticate', (req, res, next) => {
             return res.json({success: false, msg:'User not found'});
         }
         User.comparePassword(password, user.password, (err, isMatch) => {
-            if(err) res.send(err);
+            if(err) {
+                console.error(err);
+                res.send(err);
+            }
             if(isMatch){
                 const token = jwt.sign(user, config.secret, {
                     expiresIn: 14400
