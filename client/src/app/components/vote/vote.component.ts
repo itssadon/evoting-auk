@@ -103,6 +103,9 @@ export class VoteComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    var pageDimmer = '<div class="ui inverted page dimmer active" id="pageDimmer"><div class="content"><div class="center"><div class="center"><div class="ui indeterminate large text loader"><h3>Please wait...</h3></div></div></div></div></div>';
+    $('body').prepend(pageDimmer);
+
     const userObj = JSON.parse(localStorage.user);
     const user_name = userObj.name;
     this.voteSlip.matricno = userObj.username;
@@ -131,18 +134,22 @@ export class VoteComponent implements OnInit {
     if (todayDay < this.votingTime.votingDay) {
       this.isVotingTime = false;
       this.message = 'Voting is not openned yet.';
+      $('#pageDimmer').remove();
     } else {
       if (todayDay > this.votingTime.votingDay) {
         this.isVotingTime = false;
         this.message = 'Voting day has passed.';
+        $('#pageDimmer').remove();
       } else {
         if (todayTime < this.votingTime.startingTime) {
           this.isVotingTime = false;
           this.message = 'It is not yet voting time.';
+          $('#pageDimmer').remove();
         } else {
           if (todayTime > this.votingTime.closingTime) {
             this.isVotingTime = false;
             this.message = 'Voting time has elapsed.';
+            $('#pageDimmer').remove();
           } else {
             this.isVotingTime = true;
             this.message = 'Voting is open';
@@ -163,6 +170,7 @@ export class VoteComponent implements OnInit {
     } else {
       $("#votingForm").html('<div class="ui message red"><p>You have already voted for the aspirants you wish.<br><br>Thank you for exercising your rights.</p></div>');
       $("#votingForm").append('<a href="/receipt" class="ui button large green">View/Download your vote slip</a> <a href="/results" class="ui button large blue">View Election results</a>');
+      $('#pageDimmer').remove();
     }
   }
 
@@ -276,9 +284,10 @@ export class VoteComponent implements OnInit {
             this.pro_IIs = aspirants;
           }
         }
+        $('#pageDimmer').remove();
       },
       error => {
-        this.toasterService.pop('error', 'Oops!', 'We just encountered a server error fetching aspirants.');
+        this.toasterService.pop('error', 'Oops!', 'We just encountered a server error fetching aspirants. Please refresh your browser!');
       }
     );
   }

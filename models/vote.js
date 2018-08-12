@@ -11,15 +11,11 @@ const VoteSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    vice_president: {
-        type: String,
-        required: false
-    },
     sec_gen: {
         type: String,
         required: false
     },
-    asst_sec_gen: {
+    vice_president_I: {
         type: String,
         required: false
     },
@@ -27,11 +23,7 @@ const VoteSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    pro_I: {
-        type: String,
-        required: false
-    },
-    pro_II: {
+    auditor: {
         type: String,
         required: false
     },
@@ -39,23 +31,15 @@ const VoteSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    welfare_I: {
+    software: {
         type: String,
         required: false
     },
-    welfare_II: {
+    pro_I: {
         type: String,
         required: false
     },
-    dir_of_socials: {
-        type: String,
-        required: false
-    },
-    dir_of_food: {
-        type: String,
-        required: false
-    },
-    sales_dir: {
+    liason: {
         type: String,
         required: false
     },
@@ -63,11 +47,43 @@ const VoteSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    auditor: {
+    vice_president_II: {
         type: String,
         required: false
     },
-    provost: {
+    asst_sec_gen: {
+        type: String,
+        required: false
+    },
+    dir_of_socials: {
+        type: String,
+        required: false
+    },
+    dir_of_business: {
+        type: String,
+        required: false
+    },
+    welfare: {
+        type: String,
+        required: false
+    },
+    dir_of_program: {
+        type: String,
+        required: false
+    },
+    dir_of_library: {
+        type: String,
+        required: false
+    },
+    asst_welfare: {
+        type: String,
+        required: false
+    },
+    asst_sport: {
+        type: String,
+        required: false
+    },
+    pro_II: {
         type: String,
         required: false
     }

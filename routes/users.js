@@ -50,7 +50,7 @@ router.post('/authenticate', (req, res, next) => {
                 const token = jwt.sign(user.toJSON(), config.secret, {
                     expiresIn: 14400
                 });
-                return res.json({
+                res.json({
                     success: true,
                     token: 'JWT ' + token,
                     user: {

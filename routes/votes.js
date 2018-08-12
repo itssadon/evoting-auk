@@ -18,39 +18,44 @@ router.post('', passport.authenticate('jwt', {session:false}), (req, res, next) 
     let newVoteSlip = new Vote({
         matricno: req.body.matricno,
         president: req.body.president,
-        vice_president: req.body.vice_president,
         sec_gen: req.body.sec_gen,
-        asst_sec_gen: req.body.asst_sec_gen,
+        vice_president_I: req.body.vice_president_I,
         fin_sec: req.body.fin_sec,
         auditor: req.body.auditor,
         treasurer: req.body.treasurer,
-        welfare_I: req.body.welfare_I,
-        welfare_II: req.body.welfare_II,
-        dir_of_socials: req.body.dir_of_socials,
+        software: req.body.software,
         pro_I: req.body.pro_I,
-        pro_II: req.body.pro_II,
-        provost: req.body.provost,
-        sales_dir: req.body.sales_dir,
+        liason: req.body.liason,
         sports_dir: req.body.sports_dir,
-        dir_of_food: req.body.dir_of_food
+        vice_president_II: req.body.vice_president_II,
+        asst_sec_gen: req.body.asst_sec_gen,
+        dir_of_socials: req.body.dir_of_socials,
+        dir_of_business: req.body.dir_of_business,
+        welfare: req.body.welfare,
+        dir_of_program: req.body.dir_of_program,
+        dir_of_library: req.body.dir_of_library,
+        asst_welfare: req.body.asst_welfare,
+        asst_sport: req.body.asst_sport,
+        pro_II: req.body.pro_II
     });
     Vote.addVote(newVoteSlip, (err, voter) => {
-        if(err) {
+        if (err) {
             res.json({success:false, msg:'Failed to submit vote slip'});
-        } else {
-            Student.setVoteStatus(newVoteSlip.matricno, (err, status) => {
-                if(err) res.json({success:false, msg:'Failed to update vote status'});
-            });
+        }
+        Student.setVoteStatus(newVoteSlip.matricno, (err, status) => {
+            if (err) {
+                res.json({
+                    success: false,
+                    msg: 'Failed to update vote status'
+                });
+            }
             Aspirant.updateAspirantVote(newVoteSlip.president, (err, status) => {
-                //if(err) res.json({success:false, msg:'Failed to update vote status'});
-            });
-            Aspirant.updateAspirantVote(newVoteSlip.vice_president, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
             Aspirant.updateAspirantVote(newVoteSlip.sec_gen, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
-            Aspirant.updateAspirantVote(newVoteSlip.asst_sec_gen, (err, status) => {
+            Aspirant.updateAspirantVote(newVoteSlip.vice_president_I, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
             Aspirant.updateAspirantVote(newVoteSlip.fin_sec, (err, status) => {
@@ -62,35 +67,53 @@ router.post('', passport.authenticate('jwt', {session:false}), (req, res, next) 
             Aspirant.updateAspirantVote(newVoteSlip.treasurer, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
-            Aspirant.updateAspirantVote(newVoteSlip.welfare_I, (err, status) => {
-                //if(err) res.json({success:false, msg:'Failed to update vote status'});
-            });
-            Aspirant.updateAspirantVote(newVoteSlip.welfare_II, (err, status) => {
-                //if(err) res.json({success:false, msg:'Failed to update vote status'});
-            });
-            Aspirant.updateAspirantVote(newVoteSlip.dir_of_socials, (err, status) => {
+            Aspirant.updateAspirantVote(newVoteSlip.software, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
             Aspirant.updateAspirantVote(newVoteSlip.pro_I, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
-            Aspirant.updateAspirantVote(newVoteSlip.pro_II, (err, status) => {
-                //if(err) res.json({success:false, msg:'Failed to update vote status'});
-            });
-            Aspirant.updateAspirantVote(newVoteSlip.provost, (err, status) => {
-                //if(err) res.json({success:false, msg:'Failed to update vote status'});
-            });
-            Aspirant.updateAspirantVote(newVoteSlip.sales_dir, (err, status) => {
+            Aspirant.updateAspirantVote(newVoteSlip.liason, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
             Aspirant.updateAspirantVote(newVoteSlip.sports_dir, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
-            Aspirant.updateAspirantVote(newVoteSlip.dir_of_food, (err, status) => {
+            Aspirant.updateAspirantVote(newVoteSlip.vice_president_II, (err, status) => {
                 //if(err) res.json({success:false, msg:'Failed to update vote status'});
             });
-            res.json({success:true, msg:'Vote slip submitted'});
-        }
+            Aspirant.updateAspirantVote(newVoteSlip.asst_sec_gen, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            Aspirant.updateAspirantVote(newVoteSlip.dir_of_socials, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            Aspirant.updateAspirantVote(newVoteSlip.dir_of_business, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            Aspirant.updateAspirantVote(newVoteSlip.welfare, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            Aspirant.updateAspirantVote(newVoteSlip.dir_of_program, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            Aspirant.updateAspirantVote(newVoteSlip.dir_of_library, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            Aspirant.updateAspirantVote(newVoteSlip.asst_welfare, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            Aspirant.updateAspirantVote(newVoteSlip.asst_sport, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            Aspirant.updateAspirantVote(newVoteSlip.pro_II, (err, status) => {
+                //if(err) res.json({success:false, msg:'Failed to update vote status'});
+            });
+            res.json({
+                success: true,
+                msg: 'Vote slip submitted'
+            });
+        });
     });
 });
 
@@ -99,7 +122,6 @@ router.get('/status/:matricno', passport.authenticate('jwt', {session:false}), (
     var matricno = req.params.matricno.replace(/\-/g, '/');
     Student.getVoteStatus(matricno, (err, student) => {
         if(err) res.send(err);
-        console.log(student);
         var voteStatus = student[0].vote_status;
         if(!voteStatus || voteStatus === 0) {
             return res.json({

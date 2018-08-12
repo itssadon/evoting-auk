@@ -17,16 +17,15 @@
             <table class="ui compact celled definition table segment">
                 <thead>
                     <tr>
-                        <th></th><th>Full Names</th><th>Nickname</th><th>Office</th><th>Votes</th>
+                        <th></th><th>Full Name</th><th>Nickname</th><th>Office</th><th>Votes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let aspirant of aspirants; let i = index">
-                        <td><img class="ui image" style="max-height:50px;" src="{{this.apiService.getAPI()+aspirant.picture}}" /></td>
+                        <td align-center><img class="ui image" style="max-height:50px;" src="{{aspirant.picture}}" /></td>
                         <td>{{aspirant.firstname}} {{aspirant.middlename}} {{aspirant.lastname}}</td>
                         <td>{{aspirant.nickname}}</td>
-                        <td>{{aspirant.cgpa}}</td>
-                        <td><span style="text-transform: capitalize;">{{aspirant.office}}</span></td>
+                        <td>{{aspirant.office}}</td>
                         <td>{{aspirant.votes}}</td>
                     </tr>
                 </tbody>
