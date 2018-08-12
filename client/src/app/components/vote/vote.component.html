@@ -48,29 +48,6 @@
                 </div>
                 <div class="ui segment">
                     <div class="ui message info">
-                        <p>Aspirants for the office of Vice President</p>
-                    </div>
-                    <div class="ui five raised cards" *ngIf="vice_presidents">
-                        <div class="card" *ngFor="let vice_president of vice_presidents; let i = index">
-                            <div class="image">
-                                <img style="max-height: 110px;" src="{{vice_president.picture}}">
-                            </div>
-                            <div class="content">
-                                <div class="description">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.vice_president" name="vice_president" value="{{vice_president.matricno}}">
-                                        <label>Vote {{ vice_president.nickname }} as Vice President</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui message" *ngIf="vice_presidents<1">
-                        No aspirants are contesting for this office
-                    </div>
-                </div>
-                <div class="ui segment">
-                    <div class="ui message info">
                         <p>Aspirants for the office of Sectretary General</p>
                     </div>
                     <div class="ui five raised cards" *ngIf="sec_gens">
@@ -94,24 +71,24 @@
                 </div>
                 <div class="ui segment">
                     <div class="ui message info">
-                        <p>Aspirants for the office of Asst. Secretary General</p>
+                        <p>Aspirants for the office of Vice President I</p>
                     </div>
-                    <div class="ui five raised cards" *ngIf="asst_sec_gens">
-                        <div class="card" *ngFor="let asst_sec_gen of asst_sec_gens; let i = index">
+                    <div class="ui five raised cards" *ngIf="vice_president_Is">
+                        <div class="card" *ngFor="let vice_president_I of vice_president_Is; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{asst_sec_gen.picture}}">
+                                <img style="max-height: 110px;" src="{{vice_president_I.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.asst_sec_gen" name="asst_sec_gen" value="{{asst_sec_gen.matricno}}">
-                                        <label>Vote {{ asst_sec_gen.nickname }} as Asst. Secretary General</label>
+                                        <input type="radio" [(ngModel)]="voteSlip.vice_president_I" name="vice_president_I" value="{{vice_president_I.matricno}}">
+                                        <label>Vote {{ vice_president_I.nickname }} as Vice President I</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui message" *ngIf="asst_sec_gens<1">
+                    <div class="ui message" *ngIf="vice_president_Is<1">
                         No aspirants are contesting for this office
                     </div>
                 </div>
@@ -140,7 +117,7 @@
                 </div>
                 <div class="ui segment">
                     <div class="ui message info">
-                        <p>Aspirants for the office of Internal Auditor</p>
+                        <p>Aspirants for the office of Auditor General</p>
                     </div>
                     <div class="ui five raised cards" *ngIf="auditors">
                         <div class="card" *ngFor="let auditor of auditors; let i = index">
@@ -151,7 +128,7 @@
                                 <div class="description">
                                     <div class="ui radio checkbox">
                                         <input type="radio" [(ngModel)]="voteSlip.auditor" name="auditor" value="{{auditor.matricno}}">
-                                        <label>Vote {{ auditor.nickname }} as Internal Auditor</label>
+                                        <label>Vote {{ auditor.nickname }} as Auditor General</label>
                                     </div>
                                 </div>
                             </div>
@@ -186,76 +163,30 @@
                 </div>
                 <div class="ui segment">
                     <div class="ui message info">
-                        <p>Aspirants for the office of Welfare Officer I – (Male)</p>
+                        <p>Aspirants for the office of Director of Software</p>
                     </div>
-                    <div class="ui five raised cards" *ngIf="welfare_Is">
-                        <div class="card" *ngFor="let welfare_I of welfare_Is; let i = index">
+                    <div class="ui five raised cards" *ngIf="softwares">
+                        <div class="card" *ngFor="let software of softwares; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{welfare_I.picture}}">
+                                <img style="max-height: 110px;" src="{{software.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.welfare_I" name="welfare_I" value="{{welfare_I.matricno}}">
-                                        <label>Vote {{ welfare_I.nickname }} as Welfare Officer I – (Male)</label>
+                                        <input type="radio" [(ngModel)]="voteSlip.software" name="software" value="{{software.matricno}}">
+                                        <label>Vote {{ software.nickname }} as Director of Software</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui message" *ngIf="welfare_Is<1">
+                    <div class="ui message" *ngIf="softwares<1">
                         No aspirants are contesting for this office
                     </div>
                 </div>
                 <div class="ui segment">
                     <div class="ui message info">
-                        <p>Aspirants for the office of Welfare Officer II – (Female)</p>
-                    </div>
-                    <div class="ui five raised cards" *ngIf="welfare_IIs">
-                        <div class="card" *ngFor="let welfare_II of welfare_IIs; let i = index">
-                            <div class="image">
-                                <img style="max-height: 110px;" src="{{welfare_II.picture}}">
-                            </div>
-                            <div class="content">
-                                <div class="description">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.welfare_II" name="welfare_II" value="{{welfare_II.matricno}}">
-                                        <label>Vote {{ welfare_II.nickname }} as Welfare Officer II – (Female)</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui message" *ngIf="welfare_IIs<1">
-                        No aspirants are contesting for this office
-                    </div>
-                </div>
-                <div class="ui segment">
-                    <div class="ui message info">
-                        <p>Aspirants for the office of Director of Socials (D.O.S)</p>
-                    </div>
-                    <div class="ui five raised cards" *ngIf="dir_of_socialss">
-                        <div class="card" *ngFor="let dir_of_socials of dir_of_socialss; let i = index">
-                            <div class="image">
-                                <img style="max-height: 110px;" src="{{dir_of_socials.picture}}">
-                            </div>
-                            <div class="content">
-                                <div class="description">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.dir_of_socials" name="dir_of_socials" value="{{dir_of_socials.matricno}}">
-                                        <label>Vote {{ dir_of_socials.nickname }} as Director of Socials (D.O.S)</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui message" *ngIf="dir_of_socialss<1">
-                        No aspirants are contesting for this office
-                    </div>
-                </div>
-                <div class="ui segment">
-                    <div class="ui message info">
-                        <p>Aspirants for the office of Public Relation Officer I – (Male)</p>
+                        <p>Aspirants for the office of Public Relation Officer I</p>
                     </div>
                     <div class="ui five raised cards" *ngIf="pro_Is">
                         <div class="card" *ngFor="let pro_I of pro_Is; let i = index">
@@ -266,7 +197,7 @@
                                 <div class="description">
                                     <div class="ui radio checkbox">
                                         <input type="radio" [(ngModel)]="voteSlip.pro_I" name="pro_I" value="{{pro_I.matricno}}">
-                                        <label>Vote {{ pro_I.nickname }} as Public Relation Officer I – (Male)</label>
+                                        <label>Vote {{ pro_I.nickname }} as Public Relation Officer I</label>
                                     </div>
                                 </div>
                             </div>
@@ -278,70 +209,24 @@
                 </div>
                 <div class="ui segment">
                     <div class="ui message info">
-                        <p>Aspirants for the office of Public Relation Officer II – (Female)</p>
+                        <p>Aspirants for the office of Liason Officer</p>
                     </div>
-                    <div class="ui five raised cards" *ngIf="pro_IIs">
-                        <div class="card" *ngFor="let pro_II of pro_IIs; let i = index">
+                    <div class="ui five raised cards" *ngIf="liasons">
+                        <div class="card" *ngFor="let liason of liasons; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{pro_II.picture}}">
+                                <img style="max-height: 110px;" src="{{liason.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.pro_II" name="pro_II" value="{{pro_II.matricno}}">
-                                        <label>Vote {{ pro_II.nickname }} as Public Relation Officer II – (Female)</label>
+                                        <input type="radio" [(ngModel)]="voteSlip.liason" name="liason" value="{{liason.matricno}}">
+                                        <label>Vote {{ liason.nickname }} as Liason Officer</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui message" *ngIf="pro_IIs<1">
-                        No aspirants are contesting for this office
-                    </div>
-                </div>
-                <div class="ui segment">
-                    <div class="ui message info">
-                        <p>Aspirants for the office of Provost Marshal</p>
-                    </div>
-                    <div class="ui five raised cards" *ngIf="provosts">
-                        <div class="card" *ngFor="let provost of provosts; let i = index">
-                            <div class="image">
-                                <img style="max-height: 110px;" src="{{provost.picture}}">
-                            </div>
-                            <div class="content">
-                                <div class="description">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.provost" name="provost" value="{{provost.matricno}}">
-                                        <label>Vote {{ provost.nickname }} as Provost Marshal</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui message" *ngIf="provosts<1">
-                        No aspirants are contesting for this office
-                    </div>
-                </div>
-                <div class="ui segment">
-                    <div class="ui message info">
-                        <p>Aspirants for the office of Sales Director</p>
-                    </div>
-                    <div class="ui five raised cards" *ngIf="sales_dirs">
-                        <div class="card" *ngFor="let sales_dir of sales_dirs; let i = index">
-                            <div class="image">
-                                <img style="max-height: 110px;" src="{{sales_dir.picture}}">
-                            </div>
-                            <div class="content">
-                                <div class="description">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.sales_dir" name="sales_dir" value="{{sales_dir.matricno}}">
-                                        <label>Vote {{ sales_dir.nickname }} as Sales Director</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui message" *ngIf="sales_dirs<1">
+                    <div class="ui message" *ngIf="liasons<1">
                         No aspirants are contesting for this office
                     </div>
                 </div>
@@ -370,24 +255,231 @@
                 </div>
                 <div class="ui segment">
                     <div class="ui message info">
-                        <p>Aspirants for the office of Director of Food</p>
+                        <p>Aspirants for the office of Vice President II</p>
                     </div>
-                    <div class="ui five raised cards" *ngIf="dir_of_foods">
-                        <div class="card" *ngFor="let dir_of_food of dir_of_foods; let i = index">
+                    <div class="ui five raised cards" *ngIf="vice_president_IIs">
+                        <div class="card" *ngFor="let vice_president_II of vice_president_IIs; let i = index">
                             <div class="image">
-                                <img style="max-height: 110px;" src="{{dir_of_food.picture}}">
+                                <img style="max-height: 110px;" src="{{vice_president_II.picture}}">
                             </div>
                             <div class="content">
                                 <div class="description">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" [(ngModel)]="voteSlip.dir_of_food" name="dir_of_food" value="{{dir_of_food.matricno}}">
-                                        <label>Vote {{ dir_of_food.nickname }} as Director of Food</label>
+                                        <input type="radio" [(ngModel)]="voteSlip.vice_president_II" name="vice_president_II" value="{{vice_president_II.matricno}}">
+                                        <label>Vote {{ vice_president_II.nickname }} as Vice President II</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui message" *ngIf="dir_of_foods<1">
+                    <div class="ui message" *ngIf="vice_president_IIs<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Asst. Secretary General</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="asst_sec_gens">
+                        <div class="card" *ngFor="let asst_sec_gen of asst_sec_gens; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{asst_sec_gen.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.asst_sec_gen" name="asst_sec_gen" value="{{asst_sec_gen.matricno}}">
+                                        <label>Vote {{ asst_sec_gen.nickname }} as Asst. Secretary General</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="asst_sec_gens<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Director of Socials (D.O.S)</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="dirs_of_socials">
+                        <div class="card" *ngFor="let dir_of_socials of dirs_of_socials; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{dir_of_socials.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.dir_of_socials" name="dir_of_socials" value="{{dir_of_socials.matricno}}">
+                                        <label>Vote {{ dir_of_socials.nickname }} as Director of Socials (D.O.S)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="dirs_of_socials<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Director of Business</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="dirs_of_business">
+                        <div class="card" *ngFor="let dir_of_business of dirs_of_business; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{dir_of_business.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.dir_of_business" name="dir_of_business" value="{{dir_of_business.matricno}}">
+                                        <label>Vote {{ dir_of_business.nickname }} as Director of Business</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="dirs_of_business<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Welfare Director</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="welfares">
+                        <div class="card" *ngFor="let welfare of welfares; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{welfare.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.welfare" name="welfare" value="{{welfare.matricno}}">
+                                        <label>Vote {{ welfare.nickname }} as Welfare Director</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="welfares<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Director of Program</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="dirs_of_program">
+                        <div class="card" *ngFor="let dir_of_program of dirs_of_program; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{dir_of_program.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.dir_of_program" name="dir_of_program" value="{{dir_of_program.matricno}}">
+                                        <label>Vote {{ dir_of_program.nickname }} as Director of Program</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="dirs_of_program<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Director of Library</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="dirs_of_library">
+                        <div class="card" *ngFor="let dir_of_library of dirs_of_library; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{dir_of_library.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.dir_of_library" name="dir_of_library" value="{{dir_of_library.matricno}}">
+                                        <label>Vote {{ dir_of_library.nickname }} as Director of Library</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="dirs_of_library<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Asst. Welfare Director</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="asst_welfares">
+                        <div class="card" *ngFor="let asst_welfare of asst_welfares; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{asst_welfare.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.asst_welfare" name="asst_welfare" value="{{asst_welfare.matricno}}">
+                                        <label>Vote {{ asst_welfare.nickname }} as Asst. Welfare Director</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="asst_welfares<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Asst. Sports Director</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="asst_sports">
+                        <div class="card" *ngFor="let asst_sport of asst_sports; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{asst_sport.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.asst_sport" name="asst_sport" value="{{asst_sport.matricno}}">
+                                        <label>Vote {{ asst_sport.nickname }} as Asst. Sports Director</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="asst_sports<1">
+                        No aspirants are contesting for this office
+                    </div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui message info">
+                        <p>Aspirants for the office of Public Relation Officer II</p>
+                    </div>
+                    <div class="ui five raised cards" *ngIf="pro_IIs">
+                        <div class="card" *ngFor="let pro_II of pro_IIs; let i = index">
+                            <div class="image">
+                                <img style="max-height: 110px;" src="{{pro_II.picture}}">
+                            </div>
+                            <div class="content">
+                                <div class="description">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" [(ngModel)]="voteSlip.pro_II" name="pro_II" value="{{pro_II.matricno}}">
+                                        <label>Vote {{ pro_II.nickname }} as Public Relation Officer II</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui message" *ngIf="pro_IIs<1">
                         No aspirants are contesting for this office
                     </div>
                 </div>
