@@ -107,13 +107,13 @@ export class AspirantsComponent implements OnInit {
                 } else {
                     this.toasterService.pop('info', 'Oops!', 'There are no aspirants registered yet');
                 }
+                $('#pageDimmer').remove();
             },
             err => {
                 this.toasterService.pop('error', 'Oops!', err);
-                return false;
+                $('#pageDimmer').remove();
             }
         );
-        $('#pageDimmer').remove();
     }
 
     removeAspirant(matricNo) {
