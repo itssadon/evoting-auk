@@ -1,7 +1,7 @@
 {
   "name": "evoting-auk",
   "version": "1.0.0",
-  "description": "Al-Qalam University E-voting application",
+  "description": "Al-Qalam University E-voting system",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,29 +10,28 @@
   "dependencies": {
     "apiai": "^4.0.2",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.17.1",
-    "cloudinary": "^1.9.0",
+    "body-parser": "^1.18.3",
+    "cloudinary": "^1.11.0",
     "cors": "^2.8.3",
-    "express": "^4.15.2",
-    "jsonwebtoken": "^7.4.0",
-    "mongoose": "^4.9.9",
-    "nodemailer": "^4.0.1",
-    "nodemon": "^1.14.11",
+    "express": "^4.16.3",
+    "install": "^0.12.1",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^4.13.14",
+    "nodemailer": "^4.6.7",
+    "nodemon": "^1.18.3",
+    "npm": "^6.3.0",
     "passport": "^0.3.2",
-    "passport-jwt": "^2.2.1"
+    "passport-jwt": "^4.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/dtrexx/evoting-auk.git"
+    "url": "git+ssh://git@github.com/itssadon/evoting-auk.git"
   },
   "author": "Sadiq Hassan",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/dtrexx/evoting-auk/issues"
+    "url": "https://github.com/itssadon/evoting-auk/issues"
   },
-  "homepage": "https://gitlab.com/dtrexx/evoting-auk#README",
-  "devDependencies": {
-    "@angular-devkit/schematics": "0.0.43",
-    "@angular/cli": "^1.6.4"
-  }
+  "homepage": "https://github.com/itssadon/evoting-auk#README",
+  "devDependencies": {}
 }
