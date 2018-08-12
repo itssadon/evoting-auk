@@ -356,7 +356,7 @@ export class VoteComponent implements OnInit {
 
   }
 
-  voterSlip(matricno) {
+  voterReceipt(matricno) {
     this.voteService.fetchVoterReceipt(matricno).subscribe(
       response => {
         if (response.success) {

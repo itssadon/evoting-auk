@@ -36,21 +36,21 @@ import { ReceiptComponent } from './components/receipt/receipt.component';
 import { ReportsComponent } from './components/reports/reports.component';
 
 const appRoutes: Routes = [
-    {path:'', component: HomeComponent},
-    {path:'aspirants', component: AspirantsComponent},
-    {path:'elcom-officers', component: ElcomOfficersComponent},
-    {path:'electoral-guidelines', component: ElectoralGuidelinesComponent},
-    {path:'register', component: RegisterComponent},
-    {path:'status', component: StatusComponent},
-    {path:'login', component: LoginComponent},
-    {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-    {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-    {path:'accreditation', component: AccreditationComponent, canActivate:[AuthGuard]},
-    {path:'vote', component: VoteComponent, canActivate:[AuthGuard]},
-    {path:'results', component: ResultsComponent, canActivate:[AuthGuard]},
-    {path:'receipt', component:ReceiptComponent, canActivate:[AuthGuard]},
-    {path:'reports', component:ReportsComponent, canActivate:[AuthGuard]}
-]
+    {path: '', component: HomeComponent},
+    {path: 'aspirants', component: AspirantsComponent},
+    {path: 'elcom-officers', component: ElcomOfficersComponent},
+    {path: 'electoral-guidelines', component: ElectoralGuidelinesComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'status', component: StatusComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+    {path: 'accreditation', component: AccreditationComponent, canActivate: [AuthGuard]},
+    {path: 'vote', component: VoteComponent, canActivate: [AuthGuard]},
+    {path: 'results', component: ResultsComponent, canActivate: [AuthGuard]},
+    {path: 'receipt', component: ReceiptComponent, canActivate: [AuthGuard]},
+    {path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]}
+];
 
 @NgModule({
     declarations: [
