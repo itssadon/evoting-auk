@@ -47,7 +47,7 @@ router.post('/authenticate', (req, res, next) => {
             }
             if(isMatch){
                 console.log('Loggedin: ' + user.username);
-                const token = jwt.sign(user, config.secret, {
+                const token = jwt.sign(user.toJSON(), config.secret, {
                     expiresIn: 14400
                 });
                 return res.json({
