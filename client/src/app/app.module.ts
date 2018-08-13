@@ -34,6 +34,7 @@ import { ResultsComponent } from './components/results/results.component';
 import { VoteService } from './services/vote.service';
 import { ReceiptComponent } from './components/receipt/receipt.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     {path: 'vote', component: VoteComponent, canActivate: [AuthGuard]},
     {path: 'results', component: ResultsComponent, canActivate: [AuthGuard]},
     {path: 'receipt', component: ReceiptComponent, canActivate: [AuthGuard]},
-    {path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]}
+    {path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
+    {path: 'reset-password', component: ResetPasswordComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -70,6 +72,7 @@ const appRoutes: Routes = [
         ResultsComponent,
         ReceiptComponent,
         ReportsComponent,
+        ResetPasswordComponent,
     ],
     imports: [
         BrowserModule,

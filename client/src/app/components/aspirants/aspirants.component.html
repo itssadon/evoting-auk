@@ -26,7 +26,7 @@
             <a class="item" *ngIf="authService.canPerformTask('elcom')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/elcom-officers']">ELCOM</a>
             <a class="item" *ngIf="authService.canPerformTask('aspirants')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/aspirants']">Aspirants</a>
             <a class="item" *ngIf="authService.canPerformTask('accreditation')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/accreditation']">Accreditation</a>
-            <a class="item" *ngIf="authService.canPerformTask('password')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/resend-password']">Passwords</a>
+            <a class="item" *ngIf="authService.canPerformTask('password')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/reset-password']">Passwords</a>
             <a class="item" *ngIf="authService.canPerformTask('vote')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/vote']">Vote</a>
             <a class="item" *ngIf="authService.canPerformTask('results')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/results']">Results</a>
             <a class="item" *ngIf="authService.canPerformTask('reports')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/reports']">Reports</a>
