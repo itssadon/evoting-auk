@@ -123,4 +123,29 @@ router.delete('/elcom/:matricno', passport.authenticate('jwt', {session:false}),
     });
 });
 
+// Reset password
+router.post('/password', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    let user = new User({
+        name: req.body.name,
+        username: req.body.username,
+        password: req.body.password,
+        user_role: req.body.user_role
+    });
+    
+    console.log('Reseting password for ' + user.username);
+    User.resetPassword(user, (err, updatedUser) => {
+        if (err) {
+            res.json({
+                success:false,
+                msg:'Failed to reset user password'
+            });
+        } else {
+            res.json({
+                success:true,
+                msg:'User password reset successful'
+            });
+        }
+    });
+});
+
 module.exports = router;

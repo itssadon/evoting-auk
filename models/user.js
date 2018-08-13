@@ -60,3 +60,14 @@ module.exports.deleteUserByUsername = function(username, callback) {
     const query = {username: username};
     User.deleteOne(query, callback);
 };
+
+module.exports.resetPassword = function(olduser, callback) {
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(olduser.password, salt, (err, hash) => {
+            if (err) res.send(err);
+            olduser.password = hash;
+            const query = {username: olduser.username};
+            User.update(query, {$set: {"password": olduser.password}}, callback);
+        });
+    });
+};
