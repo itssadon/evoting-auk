@@ -29,7 +29,8 @@ module.exports.getUserById = function(id, callback){
 };
 
 module.exports.getUserByUsername = function(username, callback) {
-    const query = {username: username}
+    var regex = new RegExp(["^", username, "$"].join(""), "i");
+    const query = {username: regex};
     User.findOne(query, callback);
 };
 
@@ -40,7 +41,7 @@ module.exports.addUser = function (newUser, callback) {
             newUser.password = hash;
             newUser.save(callback);
         });
-    })
+    });
 };
 
 module.exports.comparePassword = function (candidatePassword, hash, callback) {
@@ -51,11 +52,11 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
 };
 
 module.exports.getUsersByUserRole = function(user_role, callback) {
-    const query = {user_role: user_role}
+    const query = {user_role: user_role};
     User.find(query, callback);
 };
 
 module.exports.deleteUserByUsername = function(username, callback) {
-    const query = {username: username}
+    const query = {username: username};
     User.deleteOne(query, callback);
-}
+};
