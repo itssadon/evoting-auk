@@ -88,7 +88,7 @@ export class VoteComponent implements OnInit {
   public votingTime = {
     votingDay: '2018-08-13',
     startingTime: '09:00',
-    closingTime: '16:00'
+    closingTime: '17:00'
   };
 
   constructor(
