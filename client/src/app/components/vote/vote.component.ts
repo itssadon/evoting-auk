@@ -243,7 +243,7 @@ export class VoteComponent implements OnInit {
           }
         } else {
           if (office === 'president') {
-            this.presidents = false;
+            this.presidents = aspirants;
           } else if (office === 'sec_gen') {
             this.sec_gens = aspirants;
           } else if (office === 'vice_president_I') {
