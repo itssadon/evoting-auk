@@ -86,9 +86,9 @@ export class VoteComponent implements OnInit {
   pro_IIs: any;
 
   public votingTime = {
-    votingDay: '2018-09-28',
-    startingTime: '00:00',
-    closingTime: '23:00'
+    votingDay: '2018-10-02',
+    startingTime: '10:00',
+    closingTime: '23:59'
   };
 
   constructor(
