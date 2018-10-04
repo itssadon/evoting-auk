@@ -133,7 +133,7 @@ export class VoteComponent implements OnInit {
 
     if (todayDay < this.votingTime.votingDay) {
       this.isVotingTime = false;
-      this.message = 'Voting is not openned yet.';
+      this.message = 'Voting is not openned yet. Today is: ' + todayDay;
       $('#pageDimmer').remove();
     } else {
       if (todayDay > this.votingTime.votingDay) {
