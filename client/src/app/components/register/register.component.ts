@@ -326,7 +326,7 @@ export class RegisterComponent implements OnInit {
               value: this.aspirant.office
             }]
           },
-          subaccount: 'ACCT_2hmxzt7lalj1rr7',
+          subaccount: 'ACCT_g3ejjv7py15vrby', // Live subaccount 'ACCT_2hmxzt7lalj1rr7'
           bearer: 'subaccount'
         };
         this.paystackService.initializeTransaction(dataString).subscribe(response => {
